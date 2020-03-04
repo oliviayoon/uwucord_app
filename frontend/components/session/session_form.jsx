@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const DEMO_USER = {
     email: "demo@uwu.com",
-    password: "password"
+    password: "passwod"
 }
 
 class SessionForm extends React.Component {
@@ -28,14 +28,14 @@ class SessionForm extends React.Component {
         e.preventDefault();
         this.setState(DEMO_USER)
         setTimeout(() => this.props.processForm(DEMO_USER)
-            .then(() => this.props.history.push('/@me')), 1000)
+            .then(() => this.props.history.push('/channels/@me')), 1000)
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state)
         this.props.processForm(user)
-            .then(() => this.props.history.push('/@me'))
+            .then(() => this.props.history.push('/channels/@me'))
     }
 
     componentWillUnmount(){
@@ -53,8 +53,8 @@ class SessionForm extends React.Component {
         const button = (this.props.formType === "signup") ? 
         ("ÒwÓ LES GO !!") : ("Wog In")
 
-        return(<div className="session-background"  style={{backgroundImage: `url("https://discordapp.com/assets/fd91131ea693096d6be5e8aa99d18f9e.jpg")`}} >
-                <img src="https://cdn.discordapp.com/attachments/369614958356463617/684448035425615902/wogo.png" width={"150px"} position={'absolute'}/>
+        return(<div className="session-background"  style={{backgroundImage: `url("assets/discord_bg.jpg")`}} >
+                <img src="assets/wogo.png" width={"150px"} position={'absolute'}/>
                 {/* <img src="https://cdn.discordapp.com/attachments/369614958356463617/684495108049076230/Untitled_Artwork.png" height={"500"} position={'relative'}/> */}
                 <form className="session-form" >
                 <header className="session-form-header">

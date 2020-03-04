@@ -192,7 +192,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
-    path: "/@me",
+    path: "/channels/@me",
     component: _welcome_welcome_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
     path: "/login",
@@ -243,7 +243,7 @@ var Nav = function Nav(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "login-sigup"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "https://cdn.discordapp.com/attachments/369614958356463617/684448035425615902/wogo.png",
+    src: "assets/wogo.png",
     width: "150px"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "GitHub"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn-login",
@@ -393,7 +393,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var DEMO_USER = {
   email: "demo@uwu.com",
-  password: "password"
+  password: "passwod"
 };
 
 var SessionForm = /*#__PURE__*/function (_React$Component) {
@@ -432,7 +432,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       this.setState(DEMO_USER);
       setTimeout(function () {
         return _this3.props.processForm(DEMO_USER).then(function () {
-          return _this3.props.history.push('/@me');
+          return _this3.props.history.push('/channels/@me');
         });
       }, 1000);
     }
@@ -444,7 +444,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
-        return _this4.props.history.push('/@me');
+        return _this4.props.history.push('/channels/@me');
       });
     }
   }, {
@@ -467,10 +467,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-background",
         style: {
-          backgroundImage: "url(\"https://discordapp.com/assets/fd91131ea693096d6be5e8aa99d18f9e.jpg\")"
+          backgroundImage: "url(\"assets/discord_bg.jpg\")"
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://cdn.discordapp.com/attachments/369614958356463617/684448035425615902/wogo.png",
+        src: "assets/wogo.png",
         width: "150px",
         position: 'absolute'
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {

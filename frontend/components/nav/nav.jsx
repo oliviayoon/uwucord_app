@@ -14,7 +14,7 @@ const Nav = ({currentUser, logout}) => {
     return (
         <nav className="login-sigup">
             <ul>
-            <li><img src="https://cdn.discordapp.com/attachments/369614958356463617/684448035425615902/wogo.png" width={"150px"} /></li>
+            <li><img src="assets/wogo.png" width={"150px"} /></li>
             </ul>
         <ul>
             <li>LinkedIn</li>

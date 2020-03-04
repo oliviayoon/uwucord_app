@@ -66,11 +66,16 @@
     border-style: inset;
 }
 
+.session-form input:focus {
+    outline: white 2px auto;
+}
+
 .session-form button {
     box-sizing: border-box;
     color: white;
     background-color: #988DD7;
-    border: 1px solid white;
+    /* border: 1px solid white; */
+    border: 1px solid rgba(0,0,0,0.3);
     text-transform: capitalize;
     margin-top: 24px;
     font-size: 16px;
