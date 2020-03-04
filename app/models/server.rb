@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Server < ApplicationRecord
-    validates :name, :invite, :owner_id, private, presence: true
+    validates :name, :invite, :owner_id, :private, presence: true
     validates :private, inclusion: { in: [:true, :false] }
 
     after_initialize :generate_invite

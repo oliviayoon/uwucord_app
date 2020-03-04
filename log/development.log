@@ -6015,3 +6015,89 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 42ms (Views: 38.7ms | ActiveRecord: 0.3ms)
 
 
+  [1m[36mMessage Load (1.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Started GET "/" for ::1 at 2020-03-03 22:15:35 -0800
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/hippo/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 1243ms (Views: 1234.8ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-03 22:16:11 -0800
+
+AbstractController::ActionNotFound - The action 'index' could not be found for Api::ServersController:
+
+Started GET "/api/users" for ::1 at 2020-03-03 22:16:38 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/api/users"):
+  
+actionpack (5.2.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-03-03 22:18:45 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 93ms (Views: 87.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-03 22:18:48 -0800
+Processing by Api::ServersController#index as JSON
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 6.7ms)
+
+
+
+NoMethodError - undefined method `to_sym' for #<Class:0x00007fc76d5d71e0>
+Did you mean?  to_s:
+  app/models/server.rb:14:in `<class:Server>'
+  app/models/server.rb:13:in `<top (required)>'
+  app/controllers/api/servers_controller.rb:13:in `index'
+
+Started GET "/" for ::1 at 2020-03-03 22:19:29 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 70ms (Views: 65.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-03 22:19:32 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (2.5ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/index.json.jbuilder (5.7ms)
+Completed 200 OK in 24ms (Views: 12.7ms | ActiveRecord: 4.0ms)
+
+
