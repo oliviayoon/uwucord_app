@@ -10,10 +10,13 @@
 
 .login-sigup {
     display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
     padding: 20px;
     color: white;
-    align-items: center;
 }
 
 .login-sigup ul {

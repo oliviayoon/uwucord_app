@@ -16,13 +16,13 @@ const Nav = ({currentUser, logout}) => {
             <ul>
             <li><img src={window.wogoURL} width={"150px"} /></li>
             </ul>
-        <ul>
+            <ul>
             <li>LinkedIn</li>
             <li>GitHub</li>
                 <li>
                 <Link className="btn-login" to="/login">wogin</Link>
                 </li>
-        </ul>
+            </ul>
         </nav>
     )
 }

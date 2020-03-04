@@ -29,11 +29,11 @@ body {
     overflow: hidden;
   }
   
-  main {
-    display: flex;
-    height: 100vh;
-  }
-  
+main {
+display: flex;
+height: 100vh;
+}
+
 a {
     color: #ffa7a7;
     text-decoration: none;

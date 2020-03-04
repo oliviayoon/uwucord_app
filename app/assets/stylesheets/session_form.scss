@@ -8,8 +8,8 @@
     background-image: image-url('discord_bg.jpg');
     background-size: cover;
     background-position: center;
-    /* width: 100vw; */
-    height: 100vh;
+    width: 100vw;
+    // height: 100vh;
 }
 
 .session-form {
@@ -86,5 +86,5 @@
 .session-errors {
     color: white;
     font-weight: bold;
-    /* text-shadow: -1px 1px #7E72A7, 1px 1px #7E72A7, 1px -1px #7E72A7, -1px -1px #7E72A7; */
+    text-shadow: -1px 1px #7E72A7, 1px 1px #7E72A7, 1px -1px #7E72A7, -1px -1px #7E72A7; 
 }

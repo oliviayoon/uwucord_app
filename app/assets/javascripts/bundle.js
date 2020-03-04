@@ -805,7 +805,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "session-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "session-form-header"
-      }, header, this.props.formType === "login" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "we missed u!") : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, header, this.props.formType === "login" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "it's not like i missed u b-baka!") : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "session-errors"
       }, !this.props.errors.length ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "ERROR: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.errors.length > 1 ? this.props.errors.join(" & ") : this.props.errors))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Emwail", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "email",
@@ -1206,7 +1206,7 @@ var Auth = function Auth(_ref) {
     path: path,
     render: function render(props) {
       return loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: "/@me"
+        to: "/channels/@me"
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
     }
   });

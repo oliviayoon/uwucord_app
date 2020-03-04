@@ -58,7 +58,7 @@ class SessionForm extends React.Component {
                 <form className="session-form" >
                 <header className="session-form-header">
                     {header}
-                    {this.props.formType === "login" ? (<h2>we missed u!</h2>) : "" }
+                    {this.props.formType === "login" ? (<h2>it's not like i missed u b-baka!</h2>) : "" }
                 </header>
                 <span className="session-errors">{!this.props.errors.length ? "" : <>ERROR: <i>{this.props.errors.length > 1 ? this.props.errors.join(" & ") : this.props.errors}</i></>}</span>
                     <label>Emwail

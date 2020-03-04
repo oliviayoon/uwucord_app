@@ -1,12 +1,19 @@
 .server-index {
     height: 100%;
-    width: 72px;
+    width: 100px;
     min-width: 72px;
     display: flex;
     flex-direction: column;
     padding: 5px;
     box-sizing: border-box;
-    background-color: #202225;
+    background-image: linear-gradient(
+        to bottom, #faaca8 0%, #6c7fec 100%
+    ); 
+    /* border: solid white 1px; */
+    /* border-radius: 2px; */
     overflow: hidden;
-    
+}
+
+.server-index li {
+    padding: 5px;
 }
