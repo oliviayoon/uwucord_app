@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Welcome extends React.Component {
+class SideChannel extends React.Component {
 
     render(){
         const {currentUser, logout} = this.props
@@ -13,4 +13,4 @@ class Welcome extends React.Component {
     }
 }
 
-export default Welcome
+export default SideChannel
