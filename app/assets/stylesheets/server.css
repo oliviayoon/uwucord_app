@@ -1,0 +1,12 @@
+.server-index {
+    height: 100%;
+    width: 72px;
+    min-width: 72px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #202225;
+    overflow: hidden;
+    
+}

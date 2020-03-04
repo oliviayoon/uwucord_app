@@ -1,0 +1,16 @@
+.side-bar {
+    display: flex;
+}
+
+.channel-info {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #2f3136;
+}
+
+.user-info p {
+    margin: 0px 8px 0px 0px
+}
