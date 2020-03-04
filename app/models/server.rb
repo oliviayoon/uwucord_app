@@ -15,7 +15,7 @@ class Server < ApplicationRecord
     validates :private, inclusion: { in: [:true, :false] }
 
     after_initialize :generate_invite
-    after_create :default_channel
+    # after_create :default_channel
 
     belongs_to :user,
     foreign_key: :owner_id
