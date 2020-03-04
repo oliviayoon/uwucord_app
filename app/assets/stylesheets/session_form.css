@@ -1,0 +1,85 @@
+.session-form h1 {
+    color: white;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.session-background {
+    /* background-image: url("https://discordapp.com/assets/fd91131ea693096d6be5e8aa99d18f9e.jpg"); */
+    background-size: cover;
+    background-position: center;
+    /* width: 100vw; */
+    height: 100vh;
+}
+
+.session-form {
+    box-sizing: border-box;
+    width: 480px;
+    padding: 40px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-image: linear-gradient(
+        to bottom, #faaca8 0%, #6c7fec 100%
+    );    
+    color: white;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    /* align-items: stretch; */
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    /* animation-name: bounce-in;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    user-select: none; */
+    
+ }
+
+ .session-form-header {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.session-form label {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+ }
+
+ .session-form input {
+    box-sizing: border-box;
+    padding: 10px;
+    height: 40px;
+    margin-top: 8px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 3px;
+    background-color: rgb(0,0,0,0.2);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: lighter;
+    width: 100%;
+    border-style: inset;
+}
+
+.session-form button {
+    box-sizing: border-box;
+    color: white;
+    background-color: #988DD7;
+    border: 1px solid white;
+    text-transform: capitalize;
+    margin-top: 24px;
+    font-size: 16px;
+    height: 44px;
+    transition: background-color 0.2s;
+}
+
+.session-errors {
+    color: white;
+    font-weight: bold;
+    /* text-shadow: -1px 1px #7E72A7, 1px 1px #7E72A7, 1px -1px #7E72A7, -1px -1px #7E72A7; */
+}
