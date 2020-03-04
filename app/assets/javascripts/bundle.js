@@ -342,7 +342,7 @@ var Nav = function Nav(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "login-sigup"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "assets/wogo.png",
+    src: window.wogoURL,
     width: "150px"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "GitHub"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn-login",
@@ -564,14 +564,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var header = this.props.formType === "signup" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sign Uwup!") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcombe back !! ^ w ^");
       var button = this.props.formType === "signup" ? "ÒwÓ LES GO !!" : "Wog In";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-background",
-        style: {
-          backgroundImage: "url(\"assets/discord_bg.jpg\")"
-        }
+        className: "session-background"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "assets/wogo.png",
-        width: "150px",
-        position: 'absolute'
+        src: window.wogoURL,
+        width: "150px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "session-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {

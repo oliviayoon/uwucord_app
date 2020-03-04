@@ -53,9 +53,8 @@ class SessionForm extends React.Component {
         const button = (this.props.formType === "signup") ? 
         ("ÒwÓ LES GO !!") : ("Wog In")
 
-        return(<div className="session-background"  style={{backgroundImage: `url("assets/discord_bg.jpg")`}} >
-                <img src="assets/wogo.png" width={"150px"} position={'absolute'}/>
-                {/* <img src="https://cdn.discordapp.com/attachments/369614958356463617/684495108049076230/Untitled_Artwork.png" height={"500"} position={'relative'}/> */}
+        return(<div className="session-background">
+                <img src={window.wogoURL} width={"150px"}/>
                 <form className="session-form" >
                 <header className="session-form-header">
                     {header}
