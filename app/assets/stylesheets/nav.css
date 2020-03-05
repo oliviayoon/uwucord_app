@@ -8,15 +8,16 @@
    margin-right: 18px;
 }
 
-.login-sigup {
+nav.login-sigup {
     display: flex;
     width: 100%;
     height: auto;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     padding: 20px;
     color: white;
+    position: absolute;
 }
 
 .login-sigup ul {

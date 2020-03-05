@@ -54,7 +54,7 @@ class SessionForm extends React.Component {
         ("ÒwÓ LES GO !!") : ("Wog In")
 
         return(<div className="session-background">
-                <img src={window.wogoURL} width={"150px"}/>
+                <img src={window.pinkWogo} width={"150px"}/>
                 <form className="session-form" >
                 <header className="session-form-header">
                     {header}

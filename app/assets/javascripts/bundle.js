@@ -575,7 +575,7 @@ var Nav = function Nav(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "login-sigup"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.wogoURL,
+    src: window.whiteWogo,
     width: "150px"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "GitHub"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn-login",
@@ -799,7 +799,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-background"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.wogoURL,
+        src: window.pinkWogo,
         width: "150px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "session-form"
