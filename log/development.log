@@ -19691,3 +19691,377 @@ Processing by Api::ServersController#index as JSON
 Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 1.3ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5804967173175378810)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateActiveStorageTables (20200305194620)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (24.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20200305194620_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20200305194620_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20200305194620_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20200305194620_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20200305194620_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200305194620"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5804967173175378810)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mServer Load (1.1ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mServer Load (1.2ms)[0m  [1m[34mSELECT "servers".* FROM "servers" WHERE "servers"."owner_id" = $1[0m  [["owner_id", 92]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.5ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 125]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (1.6ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 123]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.5ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 125]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 92]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 125], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mServer Load (0.4ms)[0m  [1m[34mSELECT "servers".* FROM "servers" WHERE "servers"."owner_id" = $1[0m  [["owner_id", 93]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.9ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 126]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.3ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 124]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 126]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 131]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.3ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 129]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 131]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 93]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 126], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 131], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mServer Load (0.7ms)[0m  [1m[34mSELECT "servers".* FROM "servers" WHERE "servers"."owner_id" = $1[0m  [["owner_id", 94]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.4ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 127]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.3ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 125]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 127]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 132]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 130]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.3ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 132]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 94]]
+  ↳ db/seeds.rb:9
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 127], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 132], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mServer Load (0.6ms)[0m  [1m[34mSELECT "servers".* FROM "servers" WHERE "servers"."owner_id" = $1[0m  [["owner_id", 95]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.3ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 128]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.3ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 126]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 128]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 133]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.3ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 131]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 133]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 95]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 128], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 133], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mServer Load (0.2ms)[0m  [1m[34mSELECT "servers".* FROM "servers" WHERE "servers"."owner_id" = $1[0m  [["owner_id", 96]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.1ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 129]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 127]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 129]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 96]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 129], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mServer Load (0.2ms)[0m  [1m[34mSELECT "servers".* FROM "servers" WHERE "servers"."owner_id" = $1[0m  [["owner_id", 97]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.1ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 130]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.2ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 128]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 130]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Load (0.2ms)[0m  [1m[34mSELECT "channels".* FROM "channels" WHERE "channels"."server_id" = $1[0m  [["server_id", 134]]
+  ↳ db/seeds.rb:9
+  [1m[36mChannel Destroy (0.9ms)[0m  [1m[31mDELETE FROM "channels" WHERE "channels"."id" = $1[0m  [["id", 132]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Destroy (0.3ms)[0m  [1m[31mDELETE FROM "servers" WHERE "servers"."id" = $1[0m  [["id", 134]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 97]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 130], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 134], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mServer Load (0.2ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "users"."user_number" FROM "users"[0m
+  ↳ app/models/user.rb:64
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@uwu.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "QWmGcxzohyWQQPB4F9WK1w"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."user_number" = $2 LIMIT $3[0m  [["username", "demo-chan"], ["user_number", 639], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Create (3.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_number", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "demo-chan"], ["user_number", 639], ["email", "demo@uwu.com"], ["password_digest", "$2a$12$JEKo2mC5kKejvl/pw55YouhTd481elS.sccjHQySUboEuBm9SpxNK"], ["session_token", "QWmGcxzohyWQQPB4F9WK1w"], ["created_at", "2020-03-05 19:53:46.647059"], ["updated_at", "2020-03-05 19:53:46.647059"]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 98], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51
+  [1m[36mServer Create (0.9ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at", "private") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Home"], ["invite", "MKWR27IrdBfHLawEy9-oIQ"], ["owner_id", 98], ["created_at", "2020-03-05 19:53:46.657460"], ["updated_at", "2020-03-05 19:53:46.657460"], ["private", true]]
+  ↳ app/models/user.rb:51
+  [1m[36mChannel Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 135], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.2ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 135], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.5ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 135], ["created_at", "2020-03-05 19:53:46.661586"], ["updated_at", "2020-03-05 19:53:46.661586"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "users"."user_number" FROM "users"[0m
+  ↳ app/models/user.rb:64
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ryan@aa.io"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "W9OWaOpjv2UdxMbUfWwhOQ"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."user_number" = $2 LIMIT $3[0m  [["username", "pwesident wagyu"], ["user_number", 4694], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_number", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "pwesident wagyu"], ["user_number", 4694], ["email", "ryan@aa.io"], ["password_digest", "$2a$12$dIIwyGBUeCgGvJk/PjgW4OmdJ.qdO/iBDgd7w/6nwx.3skOL0xQ1."], ["session_token", "W9OWaOpjv2UdxMbUfWwhOQ"], ["created_at", "2020-03-05 19:53:46.931152"], ["updated_at", "2020-03-05 19:53:46.931152"]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51
+  [1m[36mServer Create (0.8ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at", "private") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Home"], ["invite", "c9CCfguXLzducVgb8BpNzg"], ["owner_id", 99], ["created_at", "2020-03-05 19:53:46.939295"], ["updated_at", "2020-03-05 19:53:46.939295"], ["private", true]]
+  ↳ app/models/user.rb:51
+  [1m[36mChannel Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 136], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.6ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.3ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 136], ["created_at", "2020-03-05 19:53:46.945223"], ["updated_at", "2020-03-05 19:53:46.945223"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "users"."user_number" FROM "users"[0m
+  ↳ app/models/user.rb:64
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vic@uwu.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JsoB5ft28sUljVBiJutE-Q"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."user_number" = $2 LIMIT $3[0m  [["username", "eggie mcmuffie"], ["user_number", 4336], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_number", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "eggie mcmuffie"], ["user_number", 4336], ["email", "vic@uwu.com"], ["password_digest", "$2a$12$4ucuUd/M9ZppEOOZcF3BdudsK7XRno7aVsJ5pb6CY922INTL/DwHq"], ["session_token", "JsoB5ft28sUljVBiJutE-Q"], ["created_at", "2020-03-05 19:53:47.190747"], ["updated_at", "2020-03-05 19:53:47.190747"]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51
+  [1m[36mServer Create (0.3ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at", "private") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Home"], ["invite", "3LVmCLISJNeTCMdW61lo5g"], ["owner_id", 100], ["created_at", "2020-03-05 19:53:47.192812"], ["updated_at", "2020-03-05 19:53:47.192812"], ["private", true]]
+  ↳ app/models/user.rb:51
+  [1m[36mChannel Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 137], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.3ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 137], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.3ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 137], ["created_at", "2020-03-05 19:53:47.195810"], ["updated_at", "2020-03-05 19:53:47.195810"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "users"."user_number" FROM "users"[0m
+  ↳ app/models/user.rb:64
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "oli@uwu.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a5wyp8b741vNUssqKCLGvw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."user_number" = $2 LIMIT $3[0m  [["username", "nerdlover"], ["user_number", 9420], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_number", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "nerdlover"], ["user_number", 9420], ["email", "oli@uwu.com"], ["password_digest", "$2a$12$IwLW4gBrgKvmXhesCdCoke38V.XkdIdb1l9HaeZ27vGFegAKvukHq"], ["session_token", "a5wyp8b741vNUssqKCLGvw"], ["created_at", "2020-03-05 19:53:47.417998"], ["updated_at", "2020-03-05 19:53:47.417998"]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 101], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51
+  [1m[36mServer Create (0.3ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at", "private") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Home"], ["invite", "_MCj1zEtvWSyCKv_u72u2g"], ["owner_id", 101], ["created_at", "2020-03-05 19:53:47.420224"], ["updated_at", "2020-03-05 19:53:47.420224"], ["private", true]]
+  ↳ app/models/user.rb:51
+  [1m[36mChannel Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 138], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.2ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 138], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.2ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 138], ["created_at", "2020-03-05 19:53:47.422610"], ["updated_at", "2020-03-05 19:53:47.422610"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "users"."user_number" FROM "users"[0m
+  ↳ app/models/user.rb:64
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jon@uwu.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "RDURGaxFII4umvFPIWdfYw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."user_number" = $2 LIMIT $3[0m  [["username", "sailboi"], ["user_number", 7190], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_number", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "sailboi"], ["user_number", 7190], ["email", "jon@uwu.com"], ["password_digest", "$2a$12$hEqtm.O7Jqn5MoDP6.qjauSlNjaIfTJ0cF2AP4lO9rQAtlzAOZauq"], ["session_token", "RDURGaxFII4umvFPIWdfYw"], ["created_at", "2020-03-05 19:53:47.637993"], ["updated_at", "2020-03-05 19:53:47.637993"]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 102], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51
+  [1m[36mServer Create (0.3ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at", "private") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Home"], ["invite", "Sul7IHQl75wETUnFWGSNoA"], ["owner_id", 102], ["created_at", "2020-03-05 19:53:47.639926"], ["updated_at", "2020-03-05 19:53:47.639926"], ["private", true]]
+  ↳ app/models/user.rb:51
+  [1m[36mChannel Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 139], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.3ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 139], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.3ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 139], ["created_at", "2020-03-05 19:53:47.642730"], ["updated_at", "2020-03-05 19:53:47.642730"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "users"."user_number" FROM "users"[0m
+  ↳ app/models/user.rb:64
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nate@uwu.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "jGK-NIwEdn0Jq_NAxT7-_w"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."user_number" = $2 LIMIT $3[0m  [["username", "nwate mwendes"], ["user_number", 5942], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "user_number", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "nwate mwendes"], ["user_number", 5942], ["email", "nate@uwu.com"], ["password_digest", "$2a$12$2tNgKkAEWlECmQVvjflXc.4cWl8r8ejpgv8hLIlE9ZRHSiGaaJSoC"], ["session_token", "jGK-NIwEdn0Jq_NAxT7-_w"], ["created_at", "2020-03-05 19:53:47.867463"], ["updated_at", "2020-03-05 19:53:47.867463"]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  ↳ app/models/user.rb:51
+  [1m[36mServer Create (0.5ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at", "private") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Home"], ["invite", "k4QcEQTWOjOsu9RvsrqwUQ"], ["owner_id", 103], ["created_at", "2020-03-05 19:53:47.873626"], ["updated_at", "2020-03-05 19:53:47.873626"], ["private", true]]
+  ↳ app/models/user.rb:51
+  [1m[36mChannel Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 140], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.3ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 140], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.3ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 140], ["created_at", "2020-03-05 19:53:47.877403"], ["updated_at", "2020-03-05 19:53:47.877403"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mServer Create (0.3ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "wyan dweams of suwushi"], ["invite", "XpdsBesX1VFLbcFyWFI8bw"], ["owner_id", 99], ["created_at", "2020-03-05 19:53:47.881569"], ["updated_at", "2020-03-05 19:53:47.881569"]]
+  ↳ db/seeds.rb:20
+  [1m[36mChannel Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 141], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.3ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 141], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.4ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 141], ["created_at", "2020-03-05 19:53:47.887596"], ["updated_at", "2020-03-05 19:53:47.887596"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mServer Create (0.3ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "memes and dweams"], ["invite", "6priJfQ6cIHQaxheNl3jOg"], ["owner_id", 100], ["created_at", "2020-03-05 19:53:47.890727"], ["updated_at", "2020-03-05 19:53:47.890727"]]
+  ↳ db/seeds.rb:21
+  [1m[36mChannel Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 142], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.1ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 142], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.3ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 142], ["created_at", "2020-03-05 19:53:47.893071"], ["updated_at", "2020-03-05 19:53:47.893071"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 101], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mServer Create (0.6ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "boats and sails"], ["invite", "4r53BdeaX4XafPl46y5ffw"], ["owner_id", 101], ["created_at", "2020-03-05 19:53:47.896237"], ["updated_at", "2020-03-05 19:53:47.896237"]]
+  ↳ db/seeds.rb:22
+  [1m[36mChannel Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 143], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.2ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 143], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.3ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 143], ["created_at", "2020-03-05 19:53:47.899268"], ["updated_at", "2020-03-05 19:53:47.899268"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 103], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[36mServer Create (0.8ms)[0m  [1m[32mINSERT INTO "servers" ("name", "invite", "owner_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "animes & weeabaes"], ["invite", "yWEPpNn9ZQhA8Y1ZkBwErw"], ["owner_id", 103], ["created_at", "2020-03-05 19:53:47.906075"], ["updated_at", "2020-03-05 19:53:47.906075"]]
+  ↳ db/seeds.rb:23
+  [1m[36mChannel Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "channels" WHERE "channels"."name" = $1 AND "channels"."server_id" = $2 LIMIT $3[0m  [["name", "general"], ["server_id", 144], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mServer Load (0.1ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" WHERE "servers"."id" = $1 LIMIT $2[0m  [["id", 144], ["LIMIT", 1]]
+  ↳ app/models/server.rb:35
+  [1m[36mChannel Create (0.3ms)[0m  [1m[32mINSERT INTO "channels" ("name", "server_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "general"], ["server_id", 144], ["created_at", "2020-03-05 19:53:47.910038"], ["updated_at", "2020-03-05 19:53:47.910038"]]
+  ↳ app/models/server.rb:35
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[36mServer Load (1.9ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" ORDER BY "servers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mServer Load (0.5ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" ORDER BY "servers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 135], ["record_type", "Server"], ["name", "photo"], ["LIMIT", 1]]
+  [1m[36mServer Load (0.6ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" ORDER BY "servers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mServer Load (0.6ms)[0m  [1m[34mSELECT  "servers".* FROM "servers" ORDER BY "servers"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]

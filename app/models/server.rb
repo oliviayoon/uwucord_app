@@ -24,6 +24,8 @@ class Server < ApplicationRecord
     has_many :channels,
     dependent: :destroy
 
+    has_one_attached :profile_pic
+
 
     def generate_invite
         self.invite ||= SecureRandom.urlsafe_base64
