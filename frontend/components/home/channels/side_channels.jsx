@@ -10,7 +10,7 @@ class SideChannel extends React.Component {
             <ServerIndexContainer />
             <div className="channel-info">
                 <div className="user-info">
-            <p style={{color: `white`}}>{currentUser.username}#{currentUser.user_number}</p>
+            <p style={{color: `white`}}>{currentUser.username}#{currentUser.userNumber}</p>
                 <button onClick={logout}>w-wog out ? ;w;</button>
                 </div>
             </div>

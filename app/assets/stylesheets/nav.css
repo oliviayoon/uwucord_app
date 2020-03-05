@@ -24,3 +24,9 @@ nav.login-sigup {
     display: flex;
     align-items: center;
 }
+
+.fab {
+    color: white;
+    font-size: 35px;
+    margin: 5px
+}

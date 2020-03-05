@@ -2,7 +2,7 @@ import React from 'react';
 import {closeModal} from '../actions/modal_actions';
 import {connect} from 'react-redux';
 import CreateServerContainer from './home/servers/create_server_container'
-import JoinServerContainer from './home/servers/join_server_container'
+import JoinServerForm from './home/servers/join_server_form'
 import ChooseServer from './home/servers/choose_server';
 
 function Modal({modal, closeModal}) {
@@ -20,7 +20,7 @@ function Modal({modal, closeModal}) {
             component = <ChooseServer />;
             break;
         case 'joinServer':
-            component = <JoinServerContainer />;
+            component = <JoinServerForm />;
             break;
         default:
             return null;

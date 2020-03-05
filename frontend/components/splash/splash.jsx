@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Splash = () => (
-    <div>
-        <p style={{color: `white`}}> dis where splash will be </p>
+    <div className="splish-splash">
+        <p style={{color: `white`}}> dis where splishy splashy will be </p>
     </div>
 )
 

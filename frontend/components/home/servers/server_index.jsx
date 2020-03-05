@@ -11,7 +11,7 @@ class ServerIndex extends React.Component {
         const {servers, currentUser } = this.props
         const publicServers = servers.filter(server => server.name !== "Home")
         // debugger
-        const homeServer = servers.filter(server => (server.name === "Home" && server.owner_id === currentUser.id))
+        const homeServer = servers.filter(server => (server.name === "Home" && server.ownerId === currentUser.id))
         // debugger
         return (
             <div className="server-index">
