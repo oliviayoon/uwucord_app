@@ -22,7 +22,7 @@ class ServerIndex extends React.Component {
             </div>
             <ul className="server-membership">
                 {publicServers.map(server => <ServerIndexItem key={server.id} server={server} />)}
-                <a className="add-server"><li><p>+</p></li></a>
+                <a className="add-server" onClick={() => this.props.openModal("chooseServer")}><li><p>+</p></li></a>
             </ul>
             </div>
         )

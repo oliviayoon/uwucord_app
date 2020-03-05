@@ -18572,3 +18572,251 @@ Processing by Api::ServersController#index as JSON
 Completed 200 OK in 39ms (Views: 37.7ms | ActiveRecord: 1.0ms)
 
 
+Started GET "/" for ::1 at 2020-03-05 00:43:01 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 486ms (Views: 482.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:43:02 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (1.0ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (0.3ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (10.8ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (32.8ms)
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-05 00:46:55 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 399ms (Views: 395.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:46:55 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (1.1ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (1.0ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (29.3ms)
+Completed 200 OK in 43ms (Views: 41.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-03-05 00:49:03 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 375ms (Views: 372.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:49:03 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (1.0ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (0.4ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (25.6ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2020-03-05 00:50:45 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 98ms (Views: 95.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:50:45 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (0.4ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (0.3ms)
+  Rendered api/servers/_server.json.jbuilder (0.4ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (22.4ms)
+Completed 200 OK in 32ms (Views: 31.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-05 00:51:35 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 149ms (Views: 141.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:51:35 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (0.4ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (4.3ms)
+  Rendered api/servers/_server.json.jbuilder (0.3ms)
+  Rendered api/servers/_server.json.jbuilder (0.4ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.3ms)
+  Rendered api/servers/_server.json.jbuilder (0.4ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (47.0ms)
+Completed 200 OK in 64ms (Views: 62.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-05 00:51:48 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (2.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 157ms (Views: 151.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:51:49 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (0.7ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (0.7ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.0ms)
+  Rendered api/servers/_server.json.jbuilder (0.0ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (21.1ms)
+Completed 200 OK in 41ms (Views: 39.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2020-03-05 00:52:13 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 111ms (Views: 104.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:52:14 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (0.4ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (0.6ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.8ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (20.0ms)
+Completed 200 OK in 30ms (Views: 29.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-03-05 00:59:37 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "EXwMa5Xa4UnF2xELpx1-ww"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 109ms (Views: 104.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/servers" for ::1 at 2020-03-05 00:59:37 -0800
+Processing by Api::ServersController#index as JSON
+  Rendering api/servers/index.json.jbuilder
+  [1m[36mServer Load (1.1ms)[0m  [1m[34mSELECT "servers".* FROM "servers"[0m
+  ↳ app/views/api/servers/index.json.jbuilder:1
+  Rendered api/servers/_server.json.jbuilder (0.4ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.5ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.2ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/_server.json.jbuilder (0.1ms)
+  Rendered api/servers/index.json.jbuilder (31.0ms)
+Completed 200 OK in 42ms (Views: 40.8ms | ActiveRecord: 1.1ms)
+
+
