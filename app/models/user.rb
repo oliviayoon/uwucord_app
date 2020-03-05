@@ -48,7 +48,7 @@ class User < ApplicationRecord
     end
 
     def generate_home_server
-        self.owned_servers.create!(name: "Home", private: true)
+        Server.create!(name: "Home", private: true, owner_id: self.id)
     end
 
     def ensure_session_token

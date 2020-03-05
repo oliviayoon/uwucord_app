@@ -30,7 +30,6 @@ class Server < ApplicationRecord
     end
 
     def default_channel
-        self.channels.create!(name: "general", is_dm?: false)
-        #create default 'general channel for each server created'
+        Channel.create!(name:"general", is_dm?: false, server_id: self.id)
     end
 end
