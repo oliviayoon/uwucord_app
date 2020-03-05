@@ -1,0 +1,55 @@
+.server-index {
+    height: 100%;
+    width: 89px;
+    min-width: 69px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.server-home > a, .server-membership > a {
+    /* padding: 15px; */
+    position: relative;
+}
+
+.server-name > li, .add-server > li {
+    display: block;
+    background-color: #2f3136;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    margin: 10px auto;
+    height: 25px;
+    cursor: pointer;
+    padding: 15px;
+    text-align: center;
+    transition: border-radius .25s;
+}
+
+li > p {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+}
+
+.server-name > li:hover, .server-name > li:active {
+    background-image: linear-gradient(
+        to bottom, #faaca8 0%, #6c7fec 100%
+    ); 
+    border-radius: 16px;
+}
+
+.add-server > li:hover {
+    background-color: #6c7fec;
+    border-radius: 16px;
+}
+
+.divider {
+    width: 50%;
+    margin: 0 auto;
+    border-bottom: 1px solid #988DD7;
+}

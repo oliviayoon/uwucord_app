@@ -4,16 +4,25 @@ import ServerIndexItem from './server_index_item'
 class ServerIndex extends React.Component {
 
     componentDidMount(){
-        // debugger
         this.props.fetchAllServers()
     }
 
     render(){
-        const {servers} = this.props
+        const {servers, currentUser } = this.props
+        const publicServers = servers.filter(server => server.name !== "Home")
+        // debugger
+        const homeServer = servers.filter(server => (server.name === "Home" && server.owner_id === currentUser.id))
+        // debugger
         return (
             <div className="server-index">
-            <ul>
-                {servers.map(server => <ServerIndexItem key={server.id} server={server} />)}
+            <ul className="server-home">
+                {homeServer.map(server => <ServerIndexItem key={server.id} server={server} />)}
+            </ul>
+            <div className="divider">
+            </div>
+            <ul className="server-membership">
+                {publicServers.map(server => <ServerIndexItem key={server.id} server={server} />)}
+                <a className="add-server"><li><p>+</p></li></a>
             </ul>
             </div>
         )

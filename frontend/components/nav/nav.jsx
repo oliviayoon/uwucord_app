@@ -14,7 +14,7 @@ const Nav = ({currentUser, logout}) => {
     return (
         <nav className="login-sigup">
             <ul>
-            <li><img src={window.whiteWogo} width={"150px"} /></li>
+            <li><img src={window.whiteWogo} width={"180px"} /></li>
             </ul>
             <ul>
             <li>LinkedIn</li>

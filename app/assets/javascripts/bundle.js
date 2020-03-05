@@ -466,21 +466,43 @@ var ServerIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(ServerIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger
       this.props.fetchAllServers();
     }
   }, {
     key: "render",
     value: function render() {
-      var servers = this.props.servers;
+      var _this$props = this.props,
+          servers = _this$props.servers,
+          currentUser = _this$props.currentUser;
+      var publicServers = servers.filter(function (server) {
+        return server.name !== "Home";
+      }); // debugger
+
+      var homeServer = servers.filter(function (server) {
+        return server.name === "Home" && server.owner_id === currentUser.id;
+      }); // debugger
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, servers.map(function (server) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "server-home"
+      }, homeServer.map(function (server) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_server_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: server.id,
           server: server
         });
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "divider"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "server-membership"
+      }, publicServers.map(function (server) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_server_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: server.id,
+          server: server
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "add-server"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "+")))));
     }
   }]);
 
@@ -509,7 +531,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   return {
-    servers: Object.values(state.entities.servers)
+    servers: Object.values(state.entities.servers),
+    currentUser: state.entities.users[state.session.id]
   };
 };
 
@@ -517,6 +540,9 @@ var mdp = function mdp(dispatch) {
   return {
     fetchAllServers: function fetchAllServers() {
       return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllServers"])());
+    },
+    createServer: function createServer(server) {
+      return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_2__["createServer"])(server));
     }
   };
 };
@@ -540,7 +566,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var ServerIndexItem = function ServerIndexItem(_ref) {
   var server = _ref.server;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, server.name);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "server-name",
+    href: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0])));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ServerIndexItem);
@@ -576,7 +605,7 @@ var Nav = function Nav(_ref) {
     className: "login-sigup"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: window.whiteWogo,
-    width: "150px"
+    width: "180px"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "GitHub"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn-login",
     to: "/login"
@@ -800,7 +829,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
         className: "session-background"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.pinkWogo,
-        width: "150px"
+        width: "180px"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "session-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
