@@ -20,9 +20,12 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6, allow_nil: true}
 
     after_initialize :ensure_session_token, :ensure_user_number
+    after_create :generate_home_server
     
     has_many :owned_servers,
-    foreign_key: :owner_id
+    foreign_key: :owner_id,
+    class_name: :Server,
+    dependent: :destroy
 
 
     def self.find_by_creds(email, password)
@@ -37,6 +40,15 @@ class User < ApplicationRecord
 
     def is_password?(password)
         BCrypt::Password.new(self.password_digest).is_password?(password)
+    end
+    
+    def reset_session_token
+        self.update(session_token: SecureRandom.urlsafe_base64)
+        self.session_token
+    end
+
+    def generate_home_server
+        self.owned_servers.create!(name: "Home", private: true)
     end
 
     def ensure_session_token
@@ -57,10 +69,6 @@ class User < ApplicationRecord
             end
         end
     end
-
-    def reset_session_token
-        self.update(session_token: SecureRandom.urlsafe_base64)
-        self.session_token
-    end
+    
 
 end
