@@ -15,29 +15,7 @@
     transform: translate(-50%, -50%);
   }
 
-  .server-form {
-    background-color: white;
-    width: 540px;
-    height: 420px;
-    box-sizing: border-box;
-    padding: 28px 40px;
-    border-radius: 10px;
-    user-select: none;
-  }
+  
 
-  .server-form.choose {
-    background-image: linear-gradient(
-        to bottom, #faaca8 0%, #6c7fec 100%
-    );
-  }
 
-  .server-form.choose > h1 {
-      color: white;
-  }
 
-  .server-form > h1 {
-      text-align: center;
-      text-transform: uppercase;
-      color: #faaca8;
-      font-weight: bold;
-  }

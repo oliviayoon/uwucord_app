@@ -6,9 +6,9 @@
 #  name       :string           not null
 #  invite     :string           not null
 #  owner_id   :integer          not null
-#  private    :boolean          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  private    :boolean          default("false"), not null
 #
 class Server < ApplicationRecord
     validates :name, :invite, :owner_id, presence: true
@@ -23,6 +23,16 @@ class Server < ApplicationRecord
 
     has_many :channels,
     dependent: :destroy
+
+    has_many :channel_messages,
+    through: :channels,
+    source: :messages
+
+    has_many :user_members,
+    foreign_key: :server_id,
+    class_name: :ServerUser
+
+    
 
     has_one_attached :profile_pic
 

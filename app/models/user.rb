@@ -27,6 +27,11 @@ class User < ApplicationRecord
     class_name: :Server,
     dependent: :destroy
 
+    has_many :server_memberships,
+    foreign_key: :user_id,
+    class_name: :ServerUser,
+    dependent: :destroy
+
 
     def self.find_by_creds(email, password)
         user = User.find_by(email: email)

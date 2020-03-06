@@ -7,7 +7,7 @@ class ServerForm extends React.Component {
         this.state = this.props.server;
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleBack = this.handbleBack.bind(this);
+        this.handleBack = this.handleBack.bind(this);
     }
 
     handleChange(e){
@@ -15,6 +15,7 @@ class ServerForm extends React.Component {
     }
 
     handleBack(){
+        debugger
         this.props.prevModal();
     }
 
@@ -31,6 +32,9 @@ class ServerForm extends React.Component {
         const { formType } = this.props; // will need one for create and edit
         return (
             <div className="server-form">
+                <div className="server-form-container">
+                    <h1>IZ TIME TO CWEATE</h1>
+                    <p className="server-form-text">bye cweating a servew, u will has access to fwee voice and text chwat !!</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         servawr name:
@@ -41,9 +45,12 @@ class ServerForm extends React.Component {
                         placeholder="what's it gonna be pal òwó"
                         />
                     </label>
-                <button>{formType} server !!</button>
-                <button onClick={this.handleBack}>gowo back ?</button>
                 </form>
+                <div className="server-form-footer">
+                    <button onClick={this.handleBack}>gowo back ?</button>
+                    <button>{formType} server !!</button>
+                </div>
+                </div>
             </div>
         )
     }

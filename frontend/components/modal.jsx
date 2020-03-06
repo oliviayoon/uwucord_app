@@ -12,6 +12,7 @@ function Modal({modal, closeModal}) {
 
     let component;
 
+
     switch (modal) {
         case 'createServer':
             component = <CreateServerContainer />;

@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import ServerForm from './server_form';
-import {closeModal} from '../../../actions/modal_actions'
+import {closeModal, openModal} from '../../../actions/modal_actions'
 import { createServer } from '../../../util/server_api_util';
 import {withRouter} from 'react-router-dom';
 
 const msp = state => ({
-    formType: "reate",
+    formType: "Create",
     server: {
         name: ""
     }

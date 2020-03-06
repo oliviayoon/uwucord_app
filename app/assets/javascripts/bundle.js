@@ -459,17 +459,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 
 
-var ChooseServer = function ChooseServer() {
+
+var ChooseServer = function ChooseServer(_ref) {
+  var openModal = _ref.openModal;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "server-form choose"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "U HAF 2 CHOIWCES"));
-}; // will need openModal of createServer or joinServer
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "U HAF 2 CHOIWCES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cat-container-holder"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cat-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "cweate"
+  }, "cweate"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Cweate a newe server and inwite your fwends !! it's fwee ~"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "choose-opt-button cr",
+    onClick: function onClick() {
+      return openModal("createServer");
+    }
+  }, "LES DO DIS ^U^")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "cat-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "join"
+  }, "joiwin"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Entew an inwite and joiwin your fwend's server !!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "choose-opt-button jo",
+    onClick: function onClick() {
+      return openModal("joinServer");
+    }
+  }, "U HAS FWENDS ?"))));
+};
 
+var mdp = function mdp(dispatch) {
+  return {
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])(modal));
+    }
+  };
+};
 
-/* harmony default export */ __webpack_exports__["default"] = (ChooseServer);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, mdp)(ChooseServer)); // will need openModal of createServer or joinServer
 
 /***/ }),
 
@@ -495,7 +525,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   return {
-    formType: "reate",
+    formType: "Create",
     server: {
       name: ""
     }
@@ -511,7 +541,7 @@ var mdp = function mdp(dispatch) {
       return dispatch(Object(_util_server_api_util__WEBPACK_IMPORTED_MODULE_3__["createServer"])(server));
     },
     prevModal: function prevModal() {
-      return dispatch(openModal("chooseServer"));
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])("chooseServer"));
     }
   };
 };
@@ -616,7 +646,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ServerForm).call(this, props));
     _this.state = _this.props.server;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleBack = _this.handbleBack.bind(_assertThisInitialized(_this));
+    _this.handleBack = _this.handleBack.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -630,6 +660,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleBack",
     value: function handleBack() {
+      debugger;
       this.props.prevModal();
     }
   }, {
@@ -651,16 +682,22 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "server-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "IZ TIME TO CWEATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "server-form-text"
+      }, "bye cweating a servew, u will has access to fwee voice and text chwat !!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "servawr name:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleChange,
         value: this.state.name,
         placeholder: "what's it gonna be pal \xF2w\xF3"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, formType, " server !!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "server-form-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleBack
-      }, "gowo back ?")));
+      }, "gowo back ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, formType, " server !!"))));
     }
   }]);
 

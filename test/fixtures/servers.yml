@@ -6,9 +6,9 @@
 #  name       :string           not null
 #  invite     :string           not null
 #  owner_id   :integer          not null
-#  private    :boolean          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  private    :boolean          default("false"), not null
 #
 
 one:
