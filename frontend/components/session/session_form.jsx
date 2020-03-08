@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const DEMO_USER = {
+export const DEMO_USER = {
     email: "demo@uwu.com",
     password: "passwod"
 }

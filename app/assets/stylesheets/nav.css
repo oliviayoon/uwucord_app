@@ -5,19 +5,18 @@
    padding: 5px 17px 7px;
    border-radius: 20px;
    line-height: 24px;
-   margin-right: 18px;
 }
 
 nav.login-sigup {
     display: flex;
-    width: 100%;
-    height: auto;
+    width: 96%;
+    height: 52px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px 30px;
     color: white;
-    position: absolute;
+    position: relative;
 }
 
 .login-sigup ul {

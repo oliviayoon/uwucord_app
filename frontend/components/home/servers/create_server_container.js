@@ -1,14 +1,19 @@
 import {connect} from 'react-redux';
 import ServerForm from './server_form';
 import {closeModal, openModal} from '../../../actions/modal_actions'
-import { createServer } from '../../../util/server_api_util';
+import { createServer } from '../../../actions/server_actions';
 import {withRouter} from 'react-router-dom';
 
 const msp = state => ({
     formType: "Create",
     server: {
-        name: ""
-    }
+        name: "",
+        private: false,
+        owner_id: state.session.id,
+        profilePic: null,
+        picUrl: null
+    },
+    errors: state.errors.serverErrors
 })
 
 const mdp = dispatch => ({

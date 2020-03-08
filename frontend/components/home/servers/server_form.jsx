@@ -8,20 +8,41 @@ class ServerForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleBack = this.handleBack.bind(this);
+        this.handleChange = this.handleChange.bind(this)
+        this.handleImageChange = this.handleImageChange.bind(this);
     }
 
     handleChange(e){
         this.setState({ name: e.currentTarget.value })
     }
 
+    handleImageChange(e){
+        const file = e.currentTarget.files[0]
+        const fileReader = new FileReader(); 
+        fileReader.onloadend = () => {
+            this.setState({ profilePic: file, picUrl: fileReader.result })
+        }
+        if (file) {
+            fileReader.readAsDataURL(file)
+        }
+            
+    }
+
     handleBack(){
-        debugger
         this.props.prevModal();
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.processForm(this.state)
+
+        const formData = new FormData();
+
+        formData.append('server[name]', this.state.name)
+        if (this.state.profilePic) formData.append('server[profile_pic]', this.state.profilePic)
+        formData.append('server[private]', this.state.private)
+        formData.append('server[owner_id]', this.state.owner_id)
+        
+        this.props.processForm(formData) // formData
             .then(server => {
                 this.props.closeModal();
                 this.props.history.push(`/channels/${server.id}`)
@@ -29,14 +50,16 @@ class ServerForm extends React.Component {
     }
 
     render(){
-        const { formType } = this.props; // will need one for create and edit
+        const { formType, errors } = this.props; // will need one for create and edit
+        const preview = this.state.picUrl ? <img src={this.state.picUrl} width="100" /> : null
         return (
             <div className="server-form">
                 <div className="server-form-container">
                     <h1>IZ TIME TO CWEATE</h1>
                     <p className="server-form-text">bye cweating a servew, u will has access to fwee voice and text chwat !!</p>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
+                <form >
+                    <p>{errors}</p>
+                     <label>
                         servawr name:
                         <input 
                         type="text"
@@ -45,10 +68,19 @@ class ServerForm extends React.Component {
                         placeholder="what's it gonna be pal òwó"
                         />
                     </label>
+                    <label>
+                        make it pwivate?
+                        <input type="radio" />
+                    </label>
+                    <label>pwofile pic:
+                        <input type="file" onChange={this.handleImageChange}/>
+                        <p>pweview</p>
+                        {preview}
+                    </label>
                 </form>
                 <div className="server-form-footer">
                     <button onClick={this.handleBack}>gowo back ?</button>
-                    <button>{formType} server !!</button>
+                    <button onClick={this.handleSubmit}>{formType} server !!</button>
                 </div>
                 </div>
             </div>

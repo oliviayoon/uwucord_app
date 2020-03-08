@@ -22,15 +22,25 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token, :ensure_user_number
     after_create :generate_home_server
     
+    has_one_attached :profile_pic
+
     has_many :owned_servers,
     foreign_key: :owner_id,
     class_name: :Server,
     dependent: :destroy
 
-    has_many :server_memberships,
+    has_many :memberships,
     foreign_key: :user_id,
     class_name: :ServerUser,
     dependent: :destroy
+
+    has_many :joined_servers,
+    through: :memberships,
+    source: :server
+
+    def servers
+        self.joined_servers + self.owned_servers
+    end
 
 
     def self.find_by_creds(email, password)

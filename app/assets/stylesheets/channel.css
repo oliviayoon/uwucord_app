@@ -1,5 +1,6 @@
 .side-bar {
     display: flex;
+    height: 100vh;
 }
 
 .channel-info {
@@ -13,8 +14,4 @@
 
 .user-info p {
     margin: 0px 8px 0px 0px
-}
-
-.user-info {
-    
 }

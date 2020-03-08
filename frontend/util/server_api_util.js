@@ -9,9 +9,9 @@ export const createServer = server => (
     $.ajax({
         method: "POST",
         url: "api/servers",
-        data: {
-            server
-        }
+        data: server,
+        contentType: false,
+        processData: false
     })
 )
 
@@ -26,5 +26,12 @@ export const updateServer = server => (
     $.ajax({
         method: "PATCH",
         url: `api/servers/${server.id}`
+    })
+)
+
+export const joinServer = (serverInvite) => (
+    $.ajax({
+        method: "POST",
+        url: `api/servers/join/${serverInvite}`
     })
 )

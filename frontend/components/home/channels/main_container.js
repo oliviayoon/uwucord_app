@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import SideChannel from './side_channels'
+import Main from './main'
 import {logout} from '../../../actions/session_actions'
 
 const msp = state => ({
@@ -10,4 +10,4 @@ const mdp = dispatch => ({
     logout: () => dispatch(logout())
 })
 
-export default connect(msp, mdp)(SideChannel)
+export default connect(msp, mdp)(Main)

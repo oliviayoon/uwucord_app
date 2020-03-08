@@ -5,11 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <script src="https://kit.fontawesome.com/c7cf407a11.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', "https://fonts.googleapis.com/css?family=Catamaran&display=swap", media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
     <script type="text/javascript">
         window.pinkWogo = "<%= image_url('pink_wogo.png') %>";
         window.whiteWogo = "<%= image_url('white_wogo.png') %>";

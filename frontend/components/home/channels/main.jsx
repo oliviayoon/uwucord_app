@@ -1,7 +1,7 @@
 import React from 'react'
 import ServerIndexContainer from '../servers/server_index_container'
 
-class SideChannel extends React.Component {
+class Main extends React.Component {
 
     render(){
         const {currentUser, logout} = this.props
@@ -19,4 +19,4 @@ class SideChannel extends React.Component {
     }
 }
 
-export default SideChannel
+export default Main

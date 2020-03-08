@@ -13,13 +13,13 @@ const Nav = ({currentUser, logout}) => {
       
     // )
     return (
-        <>
+        <div className="home-container">
         <nav className="login-sigup">
             <ul>
                 <li><img src={window.whiteWogo} width={"180px"} /></li>
             </ul>
             <ul>
-                <li><a href="https://linkedin.com/in/yooneunsil"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://linkedin.com/in/yooneunsil"><i className="fab fa-linkedin"></i></a></li>
                 <li>
                     <a href="https://github.com/jigglycode/uwucord_app">
                         <i className="fab fa-github-alt"></i>
@@ -31,7 +31,7 @@ const Nav = ({currentUser, logout}) => {
             </ul>
         </nav>
         <SplashContainer />
-        </>
+        </div>
     )
 }
 

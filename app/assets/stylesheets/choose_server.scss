@@ -1,5 +1,4 @@
 .cat-container {
-    background-image: image_url('cat_container.png');
     background-repeat: no-repeat;
     // background-position: center;
     background-size: contain;
@@ -8,19 +7,25 @@
     display: flex;
     flex-direction: column;
     padding: 10px 20px;
+    position: relative;
+}
+
+.cat-container.create-contain {
+    background-image: image_url('cat_container.png');
+}
+
+.cat-container.join-contain {
+    background-image: image_url('cat_container_join.png');
 }
 
 
 .cat-container > h2 {
-    margin-top: 40px;
-    font-weight: lighter;
     font-size: 22px;
-    text-transform: uppercase;
 }
 
 .cat-container > p {
     // margin-top: 15px;
-    margin: 15px 10px;
+    margin: 125px 10px 0px;
     font-size: 14px;
     font-weight: bolder;
     line-height: 20px;
@@ -49,14 +54,52 @@
     color: white;
     border: 1px solid rgba(0,0,0,0.3);
     height: 44px;
-    margin-top: 85px;
+    margin-top: 30px;
     
 }
 
-.choose-opt-button.cr {
+.choose-opt-button.cr, .cweate.tooltiptext {
     background-color: #6c7fec;
+    
 }
 
-.choose-opt-button.jo {
+.cweate.tooltiptext::after {
+    border-color: #6c7fec transparent transparent transparent;
+}
+
+.join.tooltiptext::after {
+    border-color: #faaca8 transparent transparent transparent;
+}
+
+.choose-opt-button.jo, .join.tooltiptext {
     background-color: #faaca8;
 }
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.3);
+    align-self: center;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    
+  }

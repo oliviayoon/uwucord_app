@@ -13,6 +13,7 @@
 class Server < ApplicationRecord
     validates :name, :invite, :owner_id, presence: true
     validates :private, inclusion: { in: [true, false] }
+    validates :invite, uniqueness: true
 
     after_initialize :generate_invite
     after_create :default_channel
@@ -28,17 +29,22 @@ class Server < ApplicationRecord
     through: :channels,
     source: :messages
 
-    has_many :user_members,
+    has_many :memberships,
     foreign_key: :server_id,
     class_name: :ServerUser
 
-    
+    has_many :members,
+    through: :memberships,
+    source: :user
 
     has_one_attached :profile_pic
 
-
     def generate_invite
-        self.invite ||= SecureRandom.urlsafe_base64
+        return if self.invite
+        self.invite ||= SecureRandom.urlsafe_base64(4)
+        unless (Server.pluck(:invite).count(self.invite) == 1)
+            self.invite = SecureRandom.urlsafe_base64(4)
+        end
     end
 
     def default_channel
