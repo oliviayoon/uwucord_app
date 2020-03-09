@@ -3,6 +3,7 @@ class Api::ServersController < ApplicationController
     def create
         @server = Server.new(server_params)
         if @server.save
+            ServerUser.create!(user_id: current_user.id, server_id: @server.id)
             render :show
         else
             render json: @server.errors.full_messages, status: 422
@@ -20,22 +21,21 @@ class Api::ServersController < ApplicationController
 
     def update
         @server = Server.find_by(id: params[:id])
-        debugger
-        @server.update(server_params)
-        render :show
+        if @server.update(server_params)
+            render :show
+        else
+            render json: ["Could not update server details"], status: 422
+        end
     end
 
     def index
-        if current_user
-            @servers = current_user.servers
-        else
-            @servers = Server.all
-        end
+        @servers = current_user.servers
 
         @members = []
         @serverusers = []
 
         @servers.each do |server|
+            # debugger
             @members += server.members
             @serverusers += server.memberships
         end
@@ -56,8 +56,7 @@ class Api::ServersController < ApplicationController
     end
 
     def leave 
-        @server = current_user.joined_servers.find_by(id: params[:id])
-
+        @server = current_user.servers.find_by(id: params[:serverId])
         if @server && @server.owner_id != current_user.id
             @server.members.delete(current_user)
             render :show

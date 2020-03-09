@@ -1,10 +1,10 @@
 import * as UserApiUtil from '../util/user_api_util'
 export const RECEIVE_SERVER_USERS = "RECEIVE_SERVER_USERS";
 
-const receiveServerUsers = users => ({
+const receiveServerUsers = payload => ({
   type: RECEIVE_SERVER_USERS,
-  users
+  payload
 })
 
 export const fetchServerUsers = () => dispatch => UserApiUtil.fetchServerUsers()
-  .then(users => dispatch(receiveServerUsers(users)))
+  .then(res => dispatch(receiveServerUsers(res.entities)))

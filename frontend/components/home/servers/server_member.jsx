@@ -5,8 +5,13 @@ class ServerMember extends React.Component {
         super(props)
     }
 
+    componentDidUpdate(){
+
+    }
+
     render(){
         const {serverUsers} = this.props
+        // debugger
         return (
             <div>
                 <ul>

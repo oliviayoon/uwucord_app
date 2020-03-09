@@ -34,13 +34,17 @@ class User < ApplicationRecord
     class_name: :ServerUser,
     dependent: :destroy
 
-    has_many :joined_servers,
+    # has_many :joined_servers,
+    # through: :memberships,
+    # source: :server
+
+    # def servers
+    #     self.joined_servers + self.owned_servers
+    # end
+
+    has_many :servers,
     through: :memberships,
     source: :server
-
-    def servers
-        self.joined_servers + self.owned_servers
-    end
 
 
     def self.find_by_creds(email, password)
@@ -63,7 +67,9 @@ class User < ApplicationRecord
     end
 
     def generate_home_server
-        Server.create!(name: "Home", private: true, owner_id: self.id)
+        @server = Server.create!(name: "Home", private: true, owner_id: self.id)
+        ServerUser.create!(user_id: self.id, server_id: @server.id)
+
     end
 
     def ensure_session_token

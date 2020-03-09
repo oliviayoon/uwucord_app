@@ -119,7 +119,7 @@ var closeModal = function closeModal() {
 /*!********************************************!*\
   !*** ./frontend/actions/server_actions.js ***!
   \********************************************/
-/*! exports provided: RECEIVE_SERVERS, RECEIVE_SERVER, REMOVE_SERVER, RECEIVE_SERVER_ERRORS, CLEAR_SERVER_ERRORS, clearErrors, fetchAllServers, createServer, deleteServer, updateServer, joinServer */
+/*! exports provided: RECEIVE_SERVERS, RECEIVE_SERVER, REMOVE_SERVER, RECEIVE_SERVER_ERRORS, CLEAR_SERVER_ERRORS, clearErrors, fetchAllServers, createServer, deleteServer, updateServer, joinServer, leaveServer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -135,6 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteServer", function() { return deleteServer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateServer", function() { return updateServer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "joinServer", function() { return joinServer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "leaveServer", function() { return leaveServer; });
 /* harmony import */ var _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/server_api_util */ "./frontend/util/server_api_util.js");
 
 var RECEIVE_SERVERS = "RECEIVE_SERVERS";
@@ -150,17 +151,17 @@ var receiveServers = function receiveServers(payload) {
   };
 };
 
-var receiveServer = function receiveServer(server) {
+var receiveServer = function receiveServer(payload) {
   return {
     type: RECEIVE_SERVER,
-    server: server
+    payload: payload
   };
 };
 
-var removeServer = function removeServer(serverId) {
+var removeServer = function removeServer(server) {
   return {
     type: REMOVE_SERVER,
-    serverId: serverId
+    server: server
   };
 };
 
@@ -196,8 +197,8 @@ var createServer = function createServer(server) {
 };
 var deleteServer = function deleteServer(serverId) {
   return function (dispatch) {
-    return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteServer"](serverId).then(function () {
-      return dispatch(removeServer(serverId));
+    return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteServer"](serverId).then(function (server) {
+      return dispatch(removeServer(server.id));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -216,6 +217,15 @@ var joinServer = function joinServer(serverInvite) {
   return function (dispatch) {
     return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["joinServer"](serverInvite).then(function (server) {
       return dispatch(receiveServer(server));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
+    });
+  };
+};
+var leaveServer = function leaveServer(serverId) {
+  return function (dispatch) {
+    return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["leaveServer"](serverId).then(function (server) {
+      return dispatch(removeServer(server));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -403,7 +413,8 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
           logout = _this$props.logout,
           currentServer = _this$props.currentServer,
           openModal = _this$props.openModal;
-      var ownerId = currentServer ? currentServer.ownerId : ""; // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
+      var ownerId = currentServer ? currentServer.ownerId : "";
+      if (!currentUser) return null; // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
       // debugger
       // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
 
@@ -411,7 +422,11 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return openModal("editServer");
         }
-      }, currentServer.name) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.name) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Direct Messages");
+      }, currentServer.name) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        onClick: function onClick() {
+          return openModal("leaveServer");
+        }
+      }, currentServer.name) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Direct Messages");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -839,7 +854,7 @@ var msp = function msp(state, ownProps) {
   // debugger
   return {
     formType: "Edit",
-    server: state.entities.servers[Object.values(ownProps.history.location.pathname.split("/"))[2]],
+    server: state.entities.servers[Object.values(ownProps.location.pathname.split("/"))[2]],
     errors: state.errors.serverErrors
   };
 };
@@ -851,6 +866,9 @@ var mdp = function mdp(dispatch) {
     },
     processForm: function processForm(server) {
       return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_3__["updateServer"])(server));
+    },
+    deleteServer: function deleteServer(serverId) {
+      return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_3__["deleteServer"])(serverId));
     }
   };
 };
@@ -995,6 +1013,108 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/home/servers/leave_server.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/home/servers/leave_server.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_server_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/server_actions */ "./frontend/actions/server_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var LeaveServerForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(LeaveServerForm, _React$Component);
+
+  function LeaveServerForm(props) {
+    var _this;
+
+    _classCallCheck(this, LeaveServerForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LeaveServerForm).call(this, props));
+    _this.state = _this.props.currentServer;
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(LeaveServerForm, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      this.props.leaveServer(this.state.id).then(function (server) {
+        _this2.props.closeModal();
+
+        _this2.props.history.push("/channels/@me");
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "server-form"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "server-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "GEWDBYE 4EVA ? 4EVA EVA ? "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        onClick: this.handleClick
+      }, "byeeeee")));
+    }
+  }]);
+
+  return LeaveServerForm;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+var msp = function msp(state, ownProps) {
+  return {
+    currentServer: state.entities.servers[Object.values(ownProps.location.pathname.split("/"))[2]]
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    leaveServer: function leaveServer(serverId) {
+      return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_2__["leaveServer"])(serverId));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(LeaveServerForm)));
+
+/***/ }),
+
 /***/ "./frontend/components/home/servers/server_form.jsx":
 /*!**********************************************************!*\
   !*** ./frontend/components/home/servers/server_form.jsx ***!
@@ -1097,6 +1217,8 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var _this$props = this.props,
           formType = _this$props.formType,
           errors = _this$props.errors; // will need one for create and edit
@@ -1110,6 +1232,11 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       var back = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleBack
       }, "gowo back ?") : "";
+      var deleteButton = formType === "Edit" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.props.deleteServer(_this4.state);
+        }
+      }, "remove server ? ; w ;") : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1130,7 +1257,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
         className: "server-form-footer"
       }, back, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, formType, " server !!"))));
+      }, formType, " server !!"), deleteButton)));
     }
   }]);
 
@@ -1349,9 +1476,13 @@ var ServerMember = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(ServerMember, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {}
+  }, {
     key: "render",
     value: function render() {
-      var serverUsers = this.props.serverUsers;
+      var serverUsers = this.props.serverUsers; // debugger
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, serverUsers.map(function (serverUser) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: serverUser.id
@@ -1378,21 +1509,32 @@ var ServerMember = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _server_member__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server_member */ "./frontend/components/home/servers/server_member.jsx");
+/* harmony import */ var _actions_server_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/server_actions */ "./frontend/actions/server_actions.js");
+
 
 
 
 var msp = function msp(state, ownProps) {
+  var currentServerId = ownProps.match.params.id;
   return {
-    currentServer: state.entities.servers[ownProps.match.params.id],
+    currentServer: state.entities.servers[currentServerId],
     serverUsers: Object.values(state.entities.serverUsers).filter(function (serverUser) {
-      return serverUser.serverId = ownProps.match.params.id;
+      return serverUser.serverId === parseInt(currentServerId);
     }).map(function (serverUser) {
       return state.entities.users[serverUser.userId];
     })
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp)(_server_member__WEBPACK_IMPORTED_MODULE_1__["default"]));
+var mdp = function mdp(dispatch) {
+  return {
+    fetchAllServers: function fetchAllServers() {
+      return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllServers"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_server_member__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -1413,7 +1555,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_servers_edit_server_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home/servers/edit_server_container */ "./frontend/components/home/servers/edit_server_container.js");
 /* harmony import */ var _home_servers_join_server_form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home/servers/join_server_form */ "./frontend/components/home/servers/join_server_form.jsx");
 /* harmony import */ var _home_servers_choose_server__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/servers/choose_server */ "./frontend/components/home/servers/choose_server.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _home_servers_leave_server__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/servers/leave_server */ "./frontend/components/home/servers/leave_server.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -1448,6 +1592,10 @@ function Modal(_ref) {
 
     case 'editServer':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_servers_edit_server_container__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+      break;
+
+    case 'leaveServer':
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_servers_leave_server__WEBPACK_IMPORTED_MODULE_7__["default"], null);
       break;
 
     default:
@@ -2034,7 +2182,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/server_actions */ "./frontend/actions/server_actions.js");
-
+ // import { RECEIVE_SERVER_USERS } from '../actions/user_actions'
 
 var ServerUsersReducer = function ServerUsersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -2043,7 +2191,21 @@ var ServerUsersReducer = function ServerUsersReducer() {
 
   switch (action.type) {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVERS"]:
-      return action.payload.serverUsers;
+      var newState = Object.assign({}, state);
+      var serverUsers = Object.values(action.payload.serverUsers);
+      var user;
+
+      for (var i = 0; i < serverUsers.length; i++) {
+        user = serverUsers[i];
+        console.log(user.serverId);
+        newState[user.id] = {
+          id: user.id,
+          serverId: user.serverId,
+          userId: user.userId
+        };
+      }
+
+      return newState;
 
     default:
       return state;
@@ -2081,7 +2243,7 @@ var ServersReducer = function ServersReducer() {
       return newState;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SERVER"]:
-      delete newState[serverId];
+      delete newState[action.server.id];
       return newState;
 
     default:
@@ -2308,7 +2470,7 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 /*!******************************************!*\
   !*** ./frontend/util/server_api_util.js ***!
   \******************************************/
-/*! exports provided: fetchAllServers, createServer, deleteServer, updateServer, joinServer */
+/*! exports provided: fetchAllServers, createServer, deleteServer, updateServer, joinServer, leaveServer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2318,6 +2480,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteServer", function() { return deleteServer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateServer", function() { return updateServer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "joinServer", function() { return joinServer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "leaveServer", function() { return leaveServer; });
 var fetchAllServers = function fetchAllServers() {
   return $.ajax({
     method: "GET",
@@ -2352,6 +2515,12 @@ var joinServer = function joinServer(serverInvite) {
   return $.ajax({
     method: "POST",
     url: "api/servers/join/".concat(serverInvite)
+  });
+};
+var leaveServer = function leaveServer(serverId) {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/servers/leave/".concat(serverId)
   });
 };
 

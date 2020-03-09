@@ -48,8 +48,6 @@ class ServerForm extends React.Component {
                 this.props.closeModal();
                 this.props.history.push(`/channels/${server.id}`)
             })
-    
-
     }
 
     render(){
@@ -59,6 +57,7 @@ class ServerForm extends React.Component {
         const header = formType === "Create" ? ("IZ TIME TO CWEATE") : ("EDWIT UR SERVER ^U^")
         const text = formType === "Create" ? ("bye cweating a servew, u will has access to fwee voice and text chwat !!") : ("didn't wike ur sewver name, u b-baka ?! change it den !")
         const back = formType === "Create" ? (<button onClick={this.handleBack}>gowo back ?</button>) : ("")
+        const deleteButton = formType === "Edit" ? (<button onClick={() => this.props.deleteServer(this.state)}>remove server ? ; w ;</button>) : ("")
         return (
             <div className="server-form">
                 <div className="server-form-container">
@@ -88,6 +87,7 @@ class ServerForm extends React.Component {
                 <div className="server-form-footer">
                     {back}
                     <button onClick={this.handleSubmit}>{formType} server !!</button>
+                    {deleteButton}
                 </div>
                 </div>
             </div>

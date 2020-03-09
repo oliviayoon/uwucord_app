@@ -5,6 +5,7 @@ import CreateServerContainer from './home/servers/create_server_container'
 import EditServerContainer from './home/servers/edit_server_container'
 import JoinServerForm from './home/servers/join_server_form'
 import ChooseServer from './home/servers/choose_server';
+import LeaveServerForm from './home/servers/leave_server';
 import {Route} from 'react-router-dom'
 
 function Modal({modal, closeModal}) {
@@ -27,6 +28,9 @@ function Modal({modal, closeModal}) {
             break;
         case 'editServer':
             component = <EditServerContainer />
+            break;
+        case 'leaveServer':
+            component = <LeaveServerForm />
             break;
         default:
             return null;

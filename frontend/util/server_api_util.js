@@ -36,3 +36,10 @@ export const joinServer = (serverInvite) => (
         url: `api/servers/join/${serverInvite}`
     })
 )
+
+export const leaveServer = (serverId) => (
+    $.ajax({
+        method: "DELETE",
+        url: `api/servers/leave/${serverId}`
+    })
+)
