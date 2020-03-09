@@ -9,8 +9,30 @@ class Api::ServersController < ApplicationController
         end
     end
 
+    def show
+        @server = Server.find_by(id: params[:id])
+        if @server
+            render :show
+        else
+            render json: ["Cannot find server"], status: 404
+        end
+    end
+
     def index
-        @servers = current_user.servers
+        if current_user
+            @servers = current_user.servers
+        else
+            @servers = Server.all
+        end
+
+        @members = []
+        @serverusers = []
+
+        @servers.each do |server|
+            @members += server.members
+            @serverusers += server.memberships
+        end
+
         render :index
     end
 

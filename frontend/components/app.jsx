@@ -6,16 +6,17 @@ import SignUpContainer from "../components/session/signup_container"
 import Modal from './modal'
 
 import {AuthRoute, ProtectedRoute} from '../util/route_util'
-import MainContainer from "./home/channels/main_container";
+import MainContainer from "./home/content/main_container";
 
 const App = () => (
     <>
          <Modal />
          <Switch>
-        <ProtectedRoute path="/channels/@me" component={MainContainer} />
-        <AuthRoute path ="/login" component={LoginContainer} />
-        <AuthRoute path="/register" component={SignUpContainer} />
-        <AuthRoute  path="/" component={NavContainer}/>
+            <ProtectedRoute path="/channels/@me" component={MainContainer} />
+            <Route path="/channels/:id" component={MainContainer} />
+            <AuthRoute path ="/login" component={LoginContainer} />
+            <AuthRoute path="/register" component={SignUpContainer} />
+            <AuthRoute  path="/" component={NavContainer}/>
          </Switch>
     
     </>

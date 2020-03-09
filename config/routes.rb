@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
     resources :messages, only: [:update, :destroy]
+    resources :server_users, only: [:show]
   end
 
   root to: "static_pages#root"

@@ -5,7 +5,7 @@ const ServersReducer = (state = {}, action) => {
     let newState = Object.assign({}, state)
     switch (action.type) {
         case RECEIVE_SERVERS:
-            return action.servers
+            return action.payload.servers
         case RECEIVE_SERVER:
             newState[action.server.id] = action.server
             return newState

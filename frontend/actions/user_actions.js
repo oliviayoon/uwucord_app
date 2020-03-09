@@ -1,13 +1,10 @@
-import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
+import * as UserApiUtil from '../util/user_api_util'
+export const RECEIVE_SERVER_USERS = "RECEIVE_SERVER_USERS";
 
-const usersReducer = (state = {}, action) => {
-  Object.freeze(state)
-  switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      return Object.assign({}, state, { [action.user.id]: action.user }) // checks to see if action.user.id is there (updates it), if not, adds it
-    default:
-      return state; 
-  }
-}
+const receiveServerUsers = users => ({
+  type: RECEIVE_SERVER_USERS,
+  users
+})
 
-export default usersReducer;
+export const fetchServerUsers = () => dispatch => UserApiUtil.fetchServerUsers()
+  .then(users => dispatch(receiveServerUsers(users)))

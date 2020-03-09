@@ -6,9 +6,9 @@ export const REMOVE_SERVER = "REMOVE_SERVER"
 export const RECEIVE_SERVER_ERRORS = "RECEIVE_SERVER_ERRORS"
 export const CLEAR_SERVER_ERRORS = "CLEAR_SERVER_ERRORS"
 
-const receiveServers = servers => ({
+const receiveServers = payload => ({
     type: RECEIVE_SERVERS,
-    servers
+    payload
 })
 
 const receiveServer = server => ({
@@ -34,7 +34,8 @@ export const clearErrors = () => ({
 })
 
 export const fetchAllServers = () => dispatch => ServerAPIUtil.fetchAllServers()
-    .then(servers => dispatch(receiveServers(servers)), errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then(res => dispatch(receiveServers(res.entities)), errors => dispatch(receiveErrors(errors.responseJSON)))
+
 export const createServer = (server) => dispatch => ServerAPIUtil.createServer(server)
     .then(server => dispatch(receiveServer(server)), errors => dispatch(receiveErrors(errors.responseJSON)))
 export const deleteServer = (serverId) => dispatch => ServerAPIUtil.deleteServer(serverId)

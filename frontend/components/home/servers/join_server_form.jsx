@@ -26,8 +26,7 @@ class JoinServerForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        
-        this.props.processForm(this.state) // formData
+        this.props.processForm(this.state.invite) // formData
             .then(server => {
                 this.props.closeModal();
                 this.props.history.push(`/channels/${server.id}`)

@@ -9,7 +9,8 @@
 #  updated_at :datetime         not null
 #
 class ServerUser < ApplicationRecord
-    
+    validates :user_id, uniqueness: {scope: :server_id}
+
     belongs_to :user
     belongs_to :server
 
