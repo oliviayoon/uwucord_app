@@ -1,15 +1,21 @@
 import {connect} from 'react-redux'
 import ChannelIndex from './channel_index'
 import {logout} from '../../../actions/session_actions'
+import {openModal} from '../../../actions/modal_actions'
 
 
-const msp = state => ({
-    currentUser: state.entities.users[state.session.id]
-    // channels: state.entities.channels
-})
+const msp = (state,ownProps) => {
+    return ({
+            currentUser: state.entities.users[state.session.id],
+            // homeServer: Object.values(state.entities.servers).filter(server => server.name === "Home" && server.ownerId === state.entities.users[state.session.id].id),
+            currentServer: state.entities.servers[ownProps.match.params.id],
+        })
+}
+
 
 const mdp = dispatch => ({
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    openModal: modal => dispatch(openModal(modal))
 
 })
 

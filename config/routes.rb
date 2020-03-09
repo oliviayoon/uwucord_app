@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :show]
     resource :session, only: [:create, :destroy]
-    resources :servers, only: [:create, :show, :index, :destroy, :join] do
+    resources :servers, only: [:create, :show, :index, :destroy, :join, :update] do
       resources :channels, only: [:create]
     end
     post 'servers/join/:invite', to: 'servers#join'

@@ -4,13 +4,17 @@ import ChannelIndexItem from './channel_index_item'
 class ChannelIndex extends React.Component {
 
     render(){
-        const {currentUser, logout} = this.props
+        const {currentUser, logout, currentServer, openModal } = this.props
+        const ownerId = currentServer ? currentServer.ownerId : ""
         // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
+        // debugger
+        // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
+        const edit = currentServer ? (ownerId === currentUser.id ? <p onClick={() => openModal("editServer")}>{currentServer.name}</p> : <p>{currentServer.name}</p>) : (<p>Direct Messages</p>)
         return(
             <div className="channel-info">
                 <div className="server-header">
                     <div className="server-title">
-                    Server Name goes here
+                        {edit}
                     </div>
                 </div>
             <div className="channel-index-items">

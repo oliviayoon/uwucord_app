@@ -18,6 +18,13 @@ class Api::ServersController < ApplicationController
         end
     end
 
+    def update
+        @server = Server.find_by(id: params[:id])
+        debugger
+        @server.update(server_params)
+        render :show
+    end
+
     def index
         if current_user
             @servers = current_user.servers

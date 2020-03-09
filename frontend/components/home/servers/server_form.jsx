@@ -34,9 +34,10 @@ class ServerForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
+        // debugger
 
         const formData = new FormData();
-
+        if (this.state.id) formData.append('server[id]', this.state.id)
         formData.append('server[name]', this.state.name)
         if (this.state.profilePic) formData.append('server[profile_pic]', this.state.profilePic)
         formData.append('server[private]', this.state.private)
@@ -47,16 +48,22 @@ class ServerForm extends React.Component {
                 this.props.closeModal();
                 this.props.history.push(`/channels/${server.id}`)
             })
+    
+
     }
 
     render(){
         const { formType, errors } = this.props; // will need one for create and edit
         const preview = this.state.picUrl ? <img src={this.state.picUrl} width="100" /> : null
+
+        const header = formType === "Create" ? ("IZ TIME TO CWEATE") : ("EDWIT UR SERVER ^U^")
+        const text = formType === "Create" ? ("bye cweating a servew, u will has access to fwee voice and text chwat !!") : ("didn't wike ur sewver name, u b-baka ?! change it den !")
+        const back = formType === "Create" ? (<button onClick={this.handleBack}>gowo back ?</button>) : ("")
         return (
             <div className="server-form">
                 <div className="server-form-container">
-                    <h1>IZ TIME TO CWEATE</h1>
-                    <p className="server-form-text">bye cweating a servew, u will has access to fwee voice and text chwat !!</p>
+                    <h1>{header}</h1>
+                    <p className="server-form-text">{text}</p>
                 <form >
                     <p>{errors}</p>
                      <label>
@@ -79,7 +86,7 @@ class ServerForm extends React.Component {
                     </label>
                 </form>
                 <div className="server-form-footer">
-                    <button onClick={this.handleBack}>gowo back ?</button>
+                    {back}
                     <button onClick={this.handleSubmit}>{formType} server !!</button>
                 </div>
                 </div>
