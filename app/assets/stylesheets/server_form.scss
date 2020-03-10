@@ -27,11 +27,17 @@ background-image: linear-gradient(
     font-weight: bold;
 }
 
+.invite-string {
+    margin: 35px;
+    color: #6c7fec;
+}
+
 .server-form-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 0px 40px 0;
+    text-align: center;
 }
 
 .server-form-container > h1 {
@@ -112,6 +118,10 @@ background-image: linear-gradient(
     font-size: 17px;
 }
 
+.back-button {
+    color: #9d93a3
+}
+
 .back-button:hover {
     border-bottom: 1px solid #6c7fec;
 }
@@ -120,4 +130,28 @@ background-image: linear-gradient(
     background-color: #ff6259;
     color: white;
     height: 40px;
+}
+
+.server-form .join-header {
+    color: #faaca8;
+}
+
+.join-button {
+    background-color: #faaca8;
+    color: white;
+    height: 40px;
+}
+
+.join-text {
+    display: flex;
+    align-items: stretch;
+}
+
+.join-text input {
+    padding: 10px 4px;
+    margin-top: 12px;
+    border-bottom: 1px solid #faaca8;
+    font-size: 16px;
+    width: 300px;
+    text-align: center;
 }

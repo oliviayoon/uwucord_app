@@ -968,19 +968,28 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
         className: "server-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "JOIWN THE PAWTY >:3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "join-header"
+      }, "JOIWN THE PAWTY >:3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "server-form-text"
       }, "entew an invwite bewow to join an existwing sewver !! it looks someting like dis:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "invite-string"
-      }, "me0wuwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "invite cowode:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "me0wuwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "join-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.invite,
-        onChange: this.handleChange
+        onChange: this.handleChange,
+        placeholder: "entew an invite !!"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-footer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "back-button",
         onClick: this.handleBack
-      }, "gowo back ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-hand-point-left"
+      }), " gowo back ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "join-button",
         onClick: this.handleSubmit
       }, "joiwin server !!")));
     }

@@ -38,19 +38,19 @@ class JoinServerForm extends React.Component {
         return(
         <div className="server-form">
             <div className ="server-form-container" >
-            <h1>JOIWN THE PAWTY >:3</h1>
+            <h1 className="join-header">JOIWN THE PAWTY >:3</h1>
                 <p className="server-form-text">entew an invwite bewow to join an existwing sewver !! it looks someting like dis:</p>
                  <p className="invite-string">me0wuwu</p>
-                <form>
+                <form className="join-text">
                     <p>{errors}</p>
-                    <label>invite cowode:
-                        <input type="text" value={this.state.invite} onChange={this.handleChange}/>
+                    <label>
+                        <input type="text" value={this.state.invite} onChange={this.handleChange} placeholder="entew an invite !!"/>
                     </label>
                 </form>
              </div>
             <div className="server-form-footer">
-                <button onClick={this.handleBack}>gowo back ?</button>
-                <button onClick={this.handleSubmit}>joiwin server !!</button>
+                <button className="back-button" onClick={this.handleBack}><i className="far fa-hand-point-left"></i> gowo back ?</button>
+                <button className="join-button" onClick={this.handleSubmit}>joiwin server !!</button>
             </div>
         </div>
     )}
