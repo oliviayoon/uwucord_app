@@ -823,6 +823,9 @@ var mdp = function mdp(dispatch) {
     },
     prevModal: function prevModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])("chooseServer"));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -870,6 +873,9 @@ var mdp = function mdp(dispatch) {
     },
     deleteServer: function deleteServer(serverId) {
       return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_3__["deleteServer"])(serverId));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -917,6 +923,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var JoinServerForm = /*#__PURE__*/function (_React$Component) {
   _inherits(JoinServerForm, _React$Component);
 
@@ -936,6 +943,11 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(JoinServerForm, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(e) {
       this.setState({
@@ -974,7 +986,7 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
         className: "server-form-text"
       }, "entew an invwite bewow to join an existwing sewver !! it looks someting like dis:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "invite-string"
-      }, "me0wuwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "m30wuwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "join-text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -984,7 +996,7 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-footer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "back-button",
+        className: "back-button pink",
         onClick: this.handleBack
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-hand-point-left"
@@ -1015,6 +1027,9 @@ var mdp = function mdp(dispatch) {
     },
     prevModal: function prevModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])("chooseServer"));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_server_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -1223,6 +1238,11 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
 
         _this3.props.history.push("/channels/".concat(server.id));
       });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.props.clearErrors();
     }
   }, {
     key: "render",

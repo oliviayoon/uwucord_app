@@ -50,6 +50,10 @@ class ServerForm extends React.Component {
             })
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors()
+    }
+
     render(){
         const { formType, errors } = this.props; // will need one for create and edit
         const preview = this.state.picUrl ? <img src={this.state.picUrl} width="100" /> : null

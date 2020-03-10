@@ -25,8 +25,8 @@
 
 .cat-container > p {
     // margin-top: 15px;
-    margin: 125px 10px 0px;
-    font-size: 14px;
+    margin: 130px 10px 0px;
+    font-size: 18px;
     font-weight: bolder;
     line-height: 20px;
     color: #9d93a3;
@@ -47,6 +47,7 @@
     justify-content: space-around;
     padding: 5px;
     text-align: center;
+    margin-bottom: 25px;
 }
 
 .choose-opt-button {
@@ -58,20 +59,24 @@
     
 }
 
-.choose-opt-button.cr, .cweate.tooltiptext {
+.choose-opt-button.cr {
     background-color: #6c7fec;
     
 }
 
+.cweate.tooltiptext, .join.tooltiptext {
+    background-color: #00000028;
+}
+
 .cweate.tooltiptext::after {
-    border-color: #6c7fec transparent transparent transparent;
+    border-color: #00000028 transparent transparent transparent;
 }
 
 .join.tooltiptext::after {
-    border-color: #faaca8 transparent transparent transparent;
+    border-color: #00000028 transparent transparent transparent;
 }
 
-.choose-opt-button.jo, .join.tooltiptext {
+.choose-opt-button.jo {
     background-color: #faaca8;
 }
 
@@ -82,7 +87,7 @@
     text-align: center;
     padding: 5px 0;
     border-radius: 5px;
-    border: 1px solid rgba(0,0,0,0.3);
+    // border: 1px solid rgba(0,0,0,0.3);
     align-self: center;
     /* Position the tooltip text - see examples below! */
     position: absolute;
