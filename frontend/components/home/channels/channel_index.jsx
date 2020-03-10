@@ -2,6 +2,17 @@ import React from 'react';
 import ChannelIndexItem from './channel_index_item'
 
 class ChannelIndex extends React.Component {
+    constructor(props){
+        super(props)
+
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleLogout(){
+        this.props.logout()
+            .then(() =>
+            this.props.history.push("/"))
+    }
 
     render(){
         const {currentUser, logout, currentServer, openModal } = this.props
@@ -28,7 +39,7 @@ class ChannelIndex extends React.Component {
                     <p className="username">{currentUser.username}</p>
                     <p className="user-num">#{currentUser.userNumber}</p>
                 </div>
-            <button className="logout" onClick={logout}>w-wog out ? ;w;</button>
+            <button className="logout" onClick={this.handleLogout}>w-wog out ? ;w;</button>
             </div>
             </div>
         )

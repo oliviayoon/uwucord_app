@@ -29,6 +29,22 @@
     transition: border-radius .25s;
 }
 
+.server-image-icon {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    margin: 10px auto;
+    transition: border-radius .25s;
+    background-color: #2f3136;
+}
+
+.server-image-icon:hover {
+    border-radius: 16px;
+    background-image: linear-gradient(
+        to bottom, #faaca8 0%, #6c7fec 100%
+    ); 
+}
+
 li > p {
     position: relative;
     top: 50%;
@@ -41,6 +57,13 @@ li > p {
         to bottom, #faaca8 0%, #6c7fec 100%
     ); 
     border-radius: 16px;
+}
+
+.server-name-active img {
+    border-radius: 16px;
+    background-image: linear-gradient(
+        to bottom, #faaca8 0%, #6c7fec 100%
+    ); 
 }
 
 .add-server > li:hover {

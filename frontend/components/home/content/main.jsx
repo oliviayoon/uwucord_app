@@ -6,11 +6,15 @@ import {Route} from 'react-router-dom'
 
 class Main extends React.Component {
 
+    constructor(props){
+        super(props)
+    }
+
     render(){
         return (
             <div className="main-content">
             <ServerIndexContainer />
-            <Route to="/:id" component={ChannelIndexContainer} />
+            <ChannelIndexContainer currentServer={this.props.currentServer}/>
             <MessageIndexContainer />
             </div>
         )

@@ -15,7 +15,6 @@ class Channel < ApplicationRecord
     validates :is_dm?, inclusion: { in: [true, false]}
 
     belongs_to :server
-
     has_many :messages
 
 end

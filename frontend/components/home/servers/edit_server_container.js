@@ -5,11 +5,10 @@ import { updateServer, deleteServer, clearErrors } from '../../../actions/server
 import {withRouter} from 'react-router-dom';
 
 const msp = (state, ownProps) => {
-debugger
     return({
         formType: "Edit",
-        // server: state.entities.servers[Object.values(ownProps.location.pathname.split("/"))[2]],
-        server: state.entities.servers[ownProps.match.params.id],
+        server: state.entities.servers[Object.values(ownProps.location.pathname.split("/"))[2]],
+        // server: state.entities.servers[ownProps.match.params.id],
         errors: state.errors.serverErrors
     })
 }

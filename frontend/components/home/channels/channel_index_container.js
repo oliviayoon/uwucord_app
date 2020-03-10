@@ -8,7 +8,7 @@ const msp = (state,ownProps) => {
     return ({
             currentUser: state.entities.users[state.session.id],
             // homeServer: Object.values(state.entities.servers).filter(server => server.name === "Home" && server.ownerId === state.entities.users[state.session.id].id),
-            currentServer: state.entities.servers[ownProps.match.params.id],
+            currentServer: ownProps.currentServer
         })
 }
 
