@@ -83,13 +83,17 @@
     // transition: background-color 0.2s;
 }
 
-.session-errors {
+.session-errors, .server-errors {
     color: rebeccapurple;
     font-weight: bolder;
     size: 15px;
     // -webkit-animation: shake .8s 1s;
     animation: shake .8s 2;
     // text-shadow: -1px 1px rebeccapurple, 1px 1px rebeccapurple, 1px -1px rebeccapurple, -1px -1px rebeccapurple; 
+}
+
+.server-errors {
+    color: #ff6259;
 }
 
 @keyframes shake {

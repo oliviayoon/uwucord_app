@@ -209,7 +209,7 @@ var updateServer = function updateServer(server) {
     return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["updateServer"](server).then(function (server) {
       return dispatch(receiveServer(server));
     }, function (errors) {
-      return dispatch(receiveErrors(errors.responseJSON));
+      return console.log(errors);
     });
   };
 };
@@ -855,10 +855,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  // debugger
+  debugger;
   return {
     formType: "Edit",
-    server: state.entities.servers[Object.values(ownProps.location.pathname.split("/"))[2]],
+    // server: state.entities.servers[Object.values(ownProps.location.pathname.split("/"))[2]],
+    server: state.entities.servers[ownProps.match.params.id],
     errors: state.errors.serverErrors
   };
 };
@@ -966,10 +967,10 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.processForm(this.state.invite) // formData
-      .then(function (server) {
+      .then(function (res) {
         _this2.props.closeModal();
 
-        _this2.props.history.push("/channels/".concat(server.id));
+        _this2.props.history.push("/channels/".concat(res.server.id));
       });
     }
   }, {
@@ -988,12 +989,16 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
         className: "invite-string"
       }, "m30wuwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "join-text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "server-errors"
+      }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.invite,
         onChange: this.handleChange,
-        placeholder: "entew an invite !!"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        required: "required"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "invite-text"
+      }, "entew an invite !!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-footer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "back-button pink",
@@ -1110,7 +1115,12 @@ var LeaveServerForm = /*#__PURE__*/function (_React$Component) {
         className: "server-form"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "server-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "GEWDBYE 4EVA ? 4EVA EVA ? "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
+        className: "leave-header"
+      }, "GEWDBYE 4EVA ? 4EVA EVA ? "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+        className: "server-form-text"
+      }, "are yew sure ya wanna leave ?! ;-; there's no going back !"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        className: "leave-button",
         onClick: this.handleClick
       }, "byeeeee")));
     }
@@ -1186,6 +1196,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleImageChange = _this.handleImageChange.bind(_assertThisInitialized(_this));
     _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.handleImageClick = _this.handleImageClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1253,6 +1264,11 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "handleImageClick",
+    value: function handleImageClick() {
+      $("#image-upload").trigger('click');
+    }
+  }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       this.props.clearErrors();
@@ -1265,10 +1281,13 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
           errors = _this$props.errors; // will need one for create and edit
 
       var preview = this.state.picUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "preview-image",
         src: this.state.picUrl,
         width: "100"
       }) : null;
-      var header = formType === "Create" ? "IZ TIME TO CWEATE" : "EDWIT UR SERVER ^U^";
+      var header = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "IZ TIME TO CWEATE") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "edit-header"
+      }, "EDWIT UR SERVER ^U^");
       var text = formType === "Create" ? "bye cweating a servew, u will has access to fwee voice and text chwat !!" : "didn't wike ur sewver name, u b-baka ?! change it den !";
       var back = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "back-button",
@@ -1285,11 +1304,11 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
         className: "server-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, header), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, header, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "server-form-text"
       }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-inner"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "server-name-form-outer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "server-name-form"
@@ -1298,9 +1317,13 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleChange,
         value: this.state.name,
         placeholder: "what's it gonna be pal \xF2w\xF3"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "file-upload"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "server-errors"
+      }, errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "file-upload",
+        onClick: this.handleImageClick
+      }, preview, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "image-upload",
         type: "file",
         onChange: this.handleImageChange
       }), "upwoad a pwofile pic"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1476,8 +1499,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var ServerIndexItem = function ServerIndexItem(_ref) {
   var server = _ref.server;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id),
+    activeClassName: "server-name-active",
     className: "server-name"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0])));
 };
@@ -1497,6 +1521,7 @@ var ServerIndexItem = function ServerIndexItem(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _server_member_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./server_member_item */ "./frontend/components/home/servers/server_member_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1514,6 +1539,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1535,12 +1561,10 @@ var ServerMember = /*#__PURE__*/function (_React$Component) {
         className: "member-header"
       }, "memebwers (\u2445\u02D8\uA4B3\u02D8)") : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, header, serverUsers.map(function (serverUser) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_server_member_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: serverUser.id,
-          className: "member-list-item"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "user-profile"
-        }, serverUser.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, serverUser.username));
+          member: serverUser
+        });
       }));
     }
   }]);
@@ -1579,6 +1603,37 @@ var msp = function msp(state, ownProps) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp)(_server_member__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/home/servers/server_member_item.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/home/servers/server_member_item.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ServerMemberItem = function ServerMemberItem(_ref) {
+  var member = _ref.member;
+  var icon = member.imageUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "user-profile",
+    src: member.imageUrl,
+    height: "15"
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-profile"
+  }, member.username[0]);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "member-list-item"
+  }, icon, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, member.username)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ServerMemberItem);
 
 /***/ }),
 
@@ -2196,7 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
 var sessionErrorsReducer = function sessionErrorsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(state); // debugger
 
   switch (action.type) {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SERVER_ERRORS"]:
@@ -2205,6 +2260,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
       return [];
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER_ERRORS"]:
+      if (action.errors === undefined) return state;
       return action.errors;
 
     default:
@@ -2551,6 +2607,7 @@ var updateServer = function updateServer(server) {
   });
 };
 var joinServer = function joinServer(serverInvite) {
+  if (serverInvite === "") serverInvite = "blank";
   return $.ajax({
     method: "POST",
     url: "api/servers/join/".concat(serverInvite)

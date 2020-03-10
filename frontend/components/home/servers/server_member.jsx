@@ -1,4 +1,5 @@
 import React from 'react'
+import ServerMemberItem from './server_member_item'
 
 class ServerMember extends React.Component {
     constructor(props){
@@ -12,11 +13,7 @@ class ServerMember extends React.Component {
         return (
             <>
                 {header}
-                {serverUsers.map(serverUser => 
-                <div key={serverUser.id} className="member-list-item">
-                <div className="user-profile">{serverUser.username[0]}</div>
-                <div >{serverUser.username}</div>
-                </div>)}
+                {serverUsers.map(serverUser => <ServerMemberItem key={serverUser.id} member={serverUser} />)}
             </>
         )
     }

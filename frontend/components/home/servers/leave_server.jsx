@@ -21,14 +21,14 @@ class LeaveServerForm extends React.Component {
             })
     }
 
-
     render(){
     
         return(
         <div className="server-form">
             <div className ="server-form-container">
-            <h1>GEWDBYE 4EVA ? 4EVA EVA ? </h1>
-                <button onClick={this.handleClick}>byeeeee</button>
+                <h1 className="leave-header">GEWDBYE 4EVA ? 4EVA EVA ? </h1>
+                <p className="server-form-text">are yew sure ya wanna leave ?! ;-; there's no going back !</p>
+                <button className="leave-button" onClick={this.handleClick}>byeeeee</button>
             </div>
         </div>
 

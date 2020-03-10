@@ -36,7 +36,7 @@ li > p {
     font-size: 25px;
 }
 
-.server-name > li:hover, .server-name > li:active {
+.server-name > li:hover, .server-name-active li {
     background-image: linear-gradient(
         to bottom, #faaca8 0%, #6c7fec 100%
     ); 

@@ -11,6 +11,7 @@ class ServerForm extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleImageClick = this.handleImageClick.bind(this);
     }
 
     handleChange(e){
@@ -58,15 +59,19 @@ class ServerForm extends React.Component {
             this.props.history.push(`/channels/@me`)})
     }
 
+    handleImageClick(){
+        $("#image-upload").trigger('click')
+    }
+
     componentWillUnmount(){
         this.props.clearErrors()
     }
 
     render(){
         const { formType, errors } = this.props; // will need one for create and edit
-        const preview = this.state.picUrl ? <img src={this.state.picUrl} width="100" /> : null
+        const preview = this.state.picUrl ? <img className="preview-image" src={this.state.picUrl} width="100" /> : null
 
-        const header = formType === "Create" ? ("IZ TIME TO CWEATE") : ("EDWIT UR SERVER ^U^")
+        const header = formType === "Create" ? (<h1>IZ TIME TO CWEATE</h1>) : (<h1 className="edit-header">EDWIT UR SERVER ^U^</h1>)
         const text = formType === "Create" ? ("bye cweating a servew, u will has access to fwee voice and text chwat !!") : ("didn't wike ur sewver name, u b-baka ?! change it den !")
         const back = formType === "Create" ? (<button className="back-button" onClick={this.handleBack}> <i className="far fa-hand-point-left"></i> gowo back ?</button>) : ("")
         const deleteButton = formType === "Edit" ? (<button className="remove-button" onClick={this.handleDelete}>remove server ? ; w ;</button>) : ("")
@@ -74,11 +79,10 @@ class ServerForm extends React.Component {
         return (
             <div className="server-form">
                 <div className="server-form-container">
-                    <h1>{header}</h1>
+                    {header}
                     <p className="server-form-text">{text}</p>
                     <div className="server-form-inner">
                         <form>
-                            <p>{errors}</p>
                             <label className="server-name-form-outer">
                                 <p className="server-name-form">servawr name:</p>
                                 <input
@@ -88,9 +92,11 @@ class ServerForm extends React.Component {
                                 placeholder="what's it gonna be pal òwó"
                                 />
                             </label>
+                            <p className="server-errors">{errors}</p>
                         </form>
-                        <div className="file-upload">
-                            <input type="file" onChange={this.handleImageChange}/>
+                        <div className="file-upload" onClick={this.handleImageClick}>
+                            {preview}
+                            <input id="image-upload" type="file" onChange={this.handleImageChange} />
                             upwoad a pwofile pic
                         </div>
                     </div>

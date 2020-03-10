@@ -11,6 +11,8 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+require 'open-uri'
+
 class User < ApplicationRecord
     attr_reader :password
     validates :email, :password_digest, :session_token, presence: true
@@ -19,7 +21,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: { scope: :user_number }
     validates :password, length: {minimum: 6, allow_nil: true}
 
-    after_initialize :ensure_session_token, :ensure_user_number
+    after_initialize :ensure_session_token, :ensure_user_number, :ensure_image
     after_create :generate_home_server
     
     has_one_attached :profile_pic
@@ -46,6 +48,12 @@ class User < ApplicationRecord
     through: :memberships,
     source: :server
 
+    def ensure_image
+        unless self.profile_pic.attached?
+            file = open('https://uwucord-seed.s3-us-west-1.amazonaws.com/user-profile-pic.png')
+            self.profile_pic.attach(io: file, filename: 'user-profile-pic.png')
+        end
+    end
 
     def self.find_by_creds(email, password)
         user = User.find_by(email: email)

@@ -55,11 +55,12 @@ class Api::ServersController < ApplicationController
 
     def join
         @server = Server.find_by(invite: params[:invite])
-
+        # debugger
         if @server
             ServerUser.create!(user_id: current_user.id, server_id: @server.id)
             render :show
         else
+            
             render json: ["Cannot find server"], status: 404
         end
 

@@ -8,9 +8,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
     // background-image: linear-gradient(
     //     to bottom, #faaca8 0%, #6c7fec 100%
     // )
+    animation: form-slide 0.4s ease-out 0s 1 forwards;
+  }
+
+  @keyframes form-slide {
+      from { left: -100px}
+      to { left: 0px }
   }
 
 .server-form.choose {
@@ -108,8 +115,14 @@ background-image: linear-gradient(
     display: none;
 }
 
-.Create-button, .Edit-button {
+.Create-button {
     background-color: #6c7fec;
+    color: white;
+    height: 40px;
+}
+
+.Edit-button {
+    background-color: #80da56;
     color: white;
     height: 40px;
 }
@@ -159,3 +172,32 @@ background-image: linear-gradient(
     width: 300px;
     text-align: center;
 }
+
+.server-form-container > .leave-header {
+    color: #ff6259;
+}
+
+.leave-button {
+    background-color: #ff6259;
+    color: white;
+    height: 40px;
+    align-self: center;
+    margin: 35px;
+}
+
+.server-form-container > .edit-header {
+    color: #80da56;
+}
+
+.invite-text {
+    font-size: 11px;
+    color: #99aab5;
+    margin-top: 5px;
+}
+
+.preview-image {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+

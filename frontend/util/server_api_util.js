@@ -32,12 +32,14 @@ export const updateServer = server => (
     })
 )
 
-export const joinServer = (serverInvite) => (
+export const joinServer = (serverInvite) => {
+    if (serverInvite === "") serverInvite = "blank";
+    return(
     $.ajax({
         method: "POST",
         url: `api/servers/join/${serverInvite}`
     })
-)
+)}
 
 export const leaveServer = (serverId) => (
     $.ajax({

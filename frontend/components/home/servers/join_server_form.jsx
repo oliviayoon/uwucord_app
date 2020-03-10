@@ -30,11 +30,12 @@ class JoinServerForm extends React.Component {
     }
 
     handleSubmit(e){
+        
         e.preventDefault();
         this.props.processForm(this.state.invite) // formData
-            .then(server => {
+            .then(res => {
                 this.props.closeModal();
-                this.props.history.push(`/channels/${server.id}`)
+                this.props.history.push(`/channels/${res.server.id}`)
             })
     }
 
@@ -47,10 +48,11 @@ class JoinServerForm extends React.Component {
                 <p className="server-form-text">entew an invwite bewow to join an existwing sewver !! it looks someting like dis:</p>
                  <p className="invite-string">m30wuwu</p>
                 <form className="join-text">
-                    <p>{errors}</p>
+                    <p className="server-errors">{errors}</p>
                     <label>
-                        <input type="text" value={this.state.invite} onChange={this.handleChange} placeholder="entew an invite !!"/>
+                        <input type="text" value={this.state.invite} onChange={this.handleChange} required="required" />
                     </label>
+                        <span className="invite-text">entew an invite !!</span>
                 </form>
              </div>
             <div className="server-form-footer">
