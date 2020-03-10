@@ -2,10 +2,14 @@ import {connect} from 'react-redux'
 import Main from './main'
 import {logout} from '../../../actions/session_actions'
 
-const msp = (state, ownProps) => ({
+const msp = (state, ownProps) => {
+    const currentServer = ownProps.match.params.id === "@me" ? (Object.values(store.getState()["entities"]["servers"]).filter(server => server.name == "Home")[0]) : (state.entities.servers[ownProps.match.params.id])
+    debugger
+    return({
     currentUser: state.entities.users[state.session.id],
-    currentServer: state.entities.servers[ownProps.match.params.id]
+    currentServer: currentServer
 })
+}
 
 const mdp = dispatch => ({
     logout: () => dispatch(logout())

@@ -5,10 +5,12 @@ import {openModal} from '../../../actions/modal_actions'
 
 
 const msp = (state,ownProps) => {
+    const currentServer = ownProps.currentServer
+    // debugger
     return ({
             currentUser: state.entities.users[state.session.id],
-            // homeServer: Object.values(state.entities.servers).filter(server => server.name === "Home" && server.ownerId === state.entities.users[state.session.id].id),
-            currentServer: ownProps.currentServer
+            currentServer: currentServer,
+            channels: Object.values(state.entities.channels).filter(channel => channel.serverId == currentServer.id)
         })
 }
 

@@ -298,7 +298,7 @@ var updateServer = function updateServer(server) {
     return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["updateServer"](server).then(function (server) {
       return dispatch(receiveServer(server));
     }, function (errors) {
-      return console.log(errors);
+      return dispatch(reeiveErrors(errors));
     });
   };
 };
@@ -431,7 +431,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["ProtectedRoute"], {
-    path: "/channels/@me",
+    path: "/channels/:@me",
     component: _home_content_main_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/channels/:id",
@@ -512,21 +512,23 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
-          logout = _this$props.logout,
+          channels = _this$props.channels,
           currentServer = _this$props.currentServer,
           openModal = _this$props.openModal;
       var ownerId = currentServer ? currentServer.ownerId : "";
-      if (!currentUser) return null; // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
+      if (!currentUser) return null;
+      if (!currentServer) return null; // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
       // debugger
       // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
+      // debugger
 
       var modal = currentServer ? ownerId === currentUser.id ? "editServer" : "leaveServer" : "";
-      var edit = currentServer ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.name), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      var edit = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Direct Messages") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.name), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         onClick: function onClick() {
           return openModal(modal);
         },
         className: "fas fa-paw"
-      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Direct Messages");
+      }));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -535,7 +537,12 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         className: "server-title"
       }, edit)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-index-items"
-      }, "Channels would go here if they existed ; w;"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, channels.map(function (channel) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_channel_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: channel.id,
+          channel: channel
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-profile"
@@ -578,10 +585,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  var currentServer = ownProps.currentServer; // debugger
+
   return {
     currentUser: state.entities.users[state.session.id],
-    // homeServer: Object.values(state.entities.servers).filter(server => server.name === "Home" && server.ownerId === state.entities.users[state.session.id].id),
-    currentServer: ownProps.currentServer
+    currentServer: currentServer,
+    channels: Object.values(state.entities.channels).filter(function (channel) {
+      return channel.serverId == currentServer.id;
+    })
   };
 };
 
@@ -707,9 +718,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  var currentServer = ownProps.match.params.id === "@me" ? Object.values(store.getState()["entities"]["servers"]).filter(function (server) {
+    return server.name == "Home";
+  })[0] : state.entities.servers[ownProps.match.params.id];
+  debugger;
   return {
     currentUser: state.entities.users[state.session.id],
-    currentServer: state.entities.servers[ownProps.match.params.id]
+    currentServer: currentServer
   };
 };
 

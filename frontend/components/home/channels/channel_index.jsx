@@ -15,14 +15,16 @@ class ChannelIndex extends React.Component {
     }
 
     render(){
-        const {currentUser, logout, currentServer, openModal } = this.props
+        const {currentUser, channels, currentServer, openModal } = this.props
         const ownerId = currentServer ? currentServer.ownerId : ""
         if (!currentUser) return null;
+        if (!currentServer) return null;
         // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
         // debugger
         // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
+        // debugger
         const modal = currentServer ? (ownerId === currentUser.id ? "editServer" : "leaveServer") : ("")
-        const edit = currentServer ? (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)}className="fas fa-paw"/></>) : (<p>Direct Messages</p>)
+        const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)}className="fas fa-paw"/></>)
         return(
             <div className="channel-info">
                 <div className="server-header">
@@ -31,7 +33,7 @@ class ChannelIndex extends React.Component {
                     </div>
                 </div>
             <div className="channel-index-items">
-               Channels would go here if they existed ; w;
+               {channels.map(channel => <ChannelIndexItem key={channel.id} channel={channel} />)}
             </div>
             <div className="user-info">
                     <div className="user-profile">{currentUser.username[0]}</div>

@@ -12,7 +12,7 @@ const App = () => (
     <>
          <Modal />
          <Switch>
-            <ProtectedRoute path="/channels/@me" component={MainContainer} />
+            <ProtectedRoute path="/channels/:@me" component={MainContainer} />
             <Route path="/channels/:id" component={MainContainer} />
             <AuthRoute path ="/login" component={LoginContainer} />
             <AuthRoute path="/register" component={SignUpContainer} />
