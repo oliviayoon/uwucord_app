@@ -10,12 +10,12 @@ class ChannelIndex extends React.Component {
         // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
         // debugger
         // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
-        const edit = currentServer ? (<><p>{currentServer.name}</p> <i className="fas fa-paw"/></>) : (<p>Direct Messages</p>)
         const modal = currentServer ? (ownerId === currentUser.id ? "editServer" : "leaveServer") : ("")
+        const edit = currentServer ? (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)}className="fas fa-paw"/></>) : (<p>Direct Messages</p>)
         return(
             <div className="channel-info">
                 <div className="server-header">
-                    <div onClick={() => openModal(modal)} className="server-title">
+                    <div className="server-title">
                     {edit}
                     </div>
                 </div>

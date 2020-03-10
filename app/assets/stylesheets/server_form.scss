@@ -5,29 +5,33 @@
     box-sizing: border-box;
     padding-top: 15px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     // background-image: linear-gradient(
     //     to bottom, #faaca8 0%, #6c7fec 100%
     // )
   }
 
-  .server-form.choose {
-    background-image: linear-gradient(
-        to bottom, #faaca8 0%, #6c7fec 100%
-    );
-  }
+.server-form.choose {
+background-image: linear-gradient(
+    to bottom, #faaca8 0%, #6c7fec 100%
+);
+}
 
-  .server-form h1 {
-      text-align: center;
-      text-transform: uppercase;
-      color: white;
-      margin-top: 6px;
-      font-weight: bold;
-  }
+.server-form h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    margin-top: 6px;
+    font-weight: bold;
+}
 
 .server-form-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 0px 40px 0;
 }
 
 .server-form-container > h1 {
@@ -48,12 +52,72 @@
 }
 
 .server-form-footer {
-    background-image: linear-gradient(
-        to bottom, #faaca8 0%, #6c7fec 100%
-    );
     padding: 18px 40px;
     text-transform: uppercase;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.server-form-inner {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 14px;
+}
+
+.server-form-inner > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.server-name-form {
+    font-size: 15px;
+    color: #6c7fec;
+    font-weight: bold;
+}
+
+.server-name-form-outer input {
+    padding: 10px 4px;
+    margin-top: 12px;
+    width: 175px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 16px;
+    color: initial;
+}
+
+.file-upload {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    color: white;
+    background-color: #6c7fec;
+    text-align: center;
+    line-height: 120px;
+    font-size: 12px;
+    user-select: none;
+    
+}
+
+.file-upload > input {
+    display: none;
+}
+
+.Create-button, .Edit-button {
+    background-color: #6c7fec;
+    color: white;
+    height: 40px;
+}
+
+.far.fa-hand-point-left {
+    font-size: 17px;
+}
+
+.back-button:hover {
+    border-bottom: 1px solid #6c7fec;
+}
+
+.remove-button {
+    background-color: #ff6259;
+    color: white;
+    height: 40px;
 }

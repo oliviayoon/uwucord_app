@@ -418,18 +418,18 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       // debugger
       // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
 
+      var modal = currentServer ? ownerId === currentUser.id ? "editServer" : "leaveServer" : "";
       var edit = currentServer ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.name), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        onClick: function onClick() {
+          return openModal(modal);
+        },
         className: "fas fa-paw"
       })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Direct Messages");
-      var modal = currentServer ? ownerId === currentUser.id ? "editServer" : "leaveServer" : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: function onClick() {
-          return openModal(modal);
-        },
         className: "server-title"
       }, edit)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-index-items"
@@ -1231,34 +1231,46 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       var header = formType === "Create" ? "IZ TIME TO CWEATE" : "EDWIT UR SERVER ^U^";
       var text = formType === "Create" ? "bye cweating a servew, u will has access to fwee voice and text chwat !!" : "didn't wike ur sewver name, u b-baka ?! change it den !";
       var back = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "back-button",
         onClick: this.handleBack
-      }, "gowo back ?") : "";
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "far fa-hand-point-left"
+      }), " gowo back ?") : "";
       var deleteButton = formType === "Edit" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "remove-button",
         onClick: function onClick() {
           return _this4.props.deleteServer(_this4.state);
         }
       }, "remove server ? ; w ;") : "";
+      var buttonText = formType === "Create" ? "cweate" : "edwit";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, header), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "server-form-text"
-      }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "servawr name:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, text), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "server-form-inner"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "server-name-form-outer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "server-name-form"
+      }, "servawr name:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleChange,
         value: this.state.name,
         placeholder: "what's it gonna be pal \xF2w\xF3"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "make it pwivate?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "pwofile pic:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "file-upload"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "file",
         onChange: this.handleImageChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "pweview"), preview)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), "upwoad a pwofile pic"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-form-footer"
       }, back, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "".concat(formType, "-button"),
         onClick: this.handleSubmit
-      }, formType, " server !!"), deleteButton)));
+      }, buttonText, " server"), deleteButton));
     }
   }]);
 

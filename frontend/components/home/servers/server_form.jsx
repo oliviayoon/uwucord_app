@@ -56,39 +56,37 @@ class ServerForm extends React.Component {
 
         const header = formType === "Create" ? ("IZ TIME TO CWEATE") : ("EDWIT UR SERVER ^U^")
         const text = formType === "Create" ? ("bye cweating a servew, u will has access to fwee voice and text chwat !!") : ("didn't wike ur sewver name, u b-baka ?! change it den !")
-        const back = formType === "Create" ? (<button onClick={this.handleBack}>gowo back ?</button>) : ("")
-        const deleteButton = formType === "Edit" ? (<button onClick={() => this.props.deleteServer(this.state)}>remove server ? ; w ;</button>) : ("")
+        const back = formType === "Create" ? (<button className="back-button" onClick={this.handleBack}> <i className="far fa-hand-point-left"></i> gowo back ?</button>) : ("")
+        const deleteButton = formType === "Edit" ? (<button className="remove-button" onClick={() => this.props.deleteServer(this.state)}>remove server ? ; w ;</button>) : ("")
+        const buttonText = formType === "Create" ? ("cweate") : ("edwit")
         return (
             <div className="server-form">
                 <div className="server-form-container">
                     <h1>{header}</h1>
                     <p className="server-form-text">{text}</p>
-                <form >
-                    <p>{errors}</p>
-                     <label>
-                        servawr name:
-                        <input 
-                        type="text"
-                        onChange={this.handleChange}
-                        value={this.state.name}
-                        placeholder="what's it gonna be pal òwó"
-                        />
-                    </label>
-                    <label>
-                        make it pwivate?
-                        <input type="radio" />
-                    </label>
-                    <label>pwofile pic:
-                        <input type="file" onChange={this.handleImageChange}/>
-                        <p>pweview</p>
-                        {preview}
-                    </label>
-                </form>
+                    <div className="server-form-inner">
+                        <form>
+                            <p>{errors}</p>
+                            <label className="server-name-form-outer">
+                                <p className="server-name-form">servawr name:</p>
+                                <input
+                                type="text"
+                                onChange={this.handleChange}
+                                value={this.state.name}
+                                placeholder="what's it gonna be pal òwó"
+                                />
+                            </label>
+                        </form>
+                        <div className="file-upload">
+                            <input type="file" onChange={this.handleImageChange}/>
+                            upwoad a pwofile pic
+                        </div>
+                    </div>
+                </div>
                 <div className="server-form-footer">
                     {back}
-                    <button onClick={this.handleSubmit}>{formType} server !!</button>
+                    <button className={`${formType}-button`} onClick={this.handleSubmit}>{buttonText} server</button>
                     {deleteButton}
-                </div>
                 </div>
             </div>
         )

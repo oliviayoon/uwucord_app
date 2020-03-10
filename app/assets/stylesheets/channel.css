@@ -8,7 +8,6 @@
     background-color: #2f3136;
     color: white;
     box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-    cursor: pointer;
 }
 
 .server-title {
@@ -89,11 +88,15 @@
     font-size: 14px;
     padding: 5px 10px;
     width: auto;
-    background-color: #6c7fec;
+    background-color: #ff6259;
     color: white;
     font-weight: bold
 }
 
 .logout:hover {
-    background-color: #6274da; 
+    background-color: #fd493f; 
+}
+.fas.fa-paw:hover {
+    color: #faaca8;
+    cursor: pointer;
 }
