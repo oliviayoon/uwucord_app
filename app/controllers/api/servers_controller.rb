@@ -20,8 +20,9 @@ class Api::ServersController < ApplicationController
     end
 
     def update
-        @server = Server.find_by(id: params[:id])
-        if @server.update(server_params)
+        # debugger
+        @server = Server.find_by(id: params[:server][:id])
+        if @server.update(name: params[:server][:name])
             render :show
         else
             render json: ["Could not update server details"], status: 422
@@ -41,6 +42,15 @@ class Api::ServersController < ApplicationController
         end
 
         render :index
+    end
+
+    def destroy
+        @server = current_user.owned_servers.find_by(id: params[:id])
+        if @server.destroy
+            render :show
+        else
+            render json: ["Cannot destroy server"], status: 422
+        end
     end
 
     def join

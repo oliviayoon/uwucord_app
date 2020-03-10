@@ -10,6 +10,7 @@ class ServerForm extends React.Component {
         this.handleBack = this.handleBack.bind(this);
         this.handleChange = this.handleChange.bind(this)
         this.handleImageChange = this.handleImageChange.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleChange(e){
@@ -42,12 +43,19 @@ class ServerForm extends React.Component {
         if (this.state.profilePic) formData.append('server[profile_pic]', this.state.profilePic)
         formData.append('server[private]', this.state.private)
         formData.append('server[owner_id]', this.state.owner_id)
-        
         this.props.processForm(formData) // formData
-            .then(server => {
-                this.props.closeModal();
-                this.props.history.push(`/channels/${server.id}`)
-            })
+        .then(res => {
+            this.props.closeModal();
+            this.props.history.push(`/channels/${res.server.id}`)
+        })
+    }
+
+    handleDelete(e){
+        e.preventDefault()
+        this.props.deleteServer(this.state.id)
+        .then(() => {
+            this.props.closeModal();
+            this.props.history.push(`/channels/@me`)})
     }
 
     componentWillUnmount(){
@@ -61,7 +69,7 @@ class ServerForm extends React.Component {
         const header = formType === "Create" ? ("IZ TIME TO CWEATE") : ("EDWIT UR SERVER ^U^")
         const text = formType === "Create" ? ("bye cweating a servew, u will has access to fwee voice and text chwat !!") : ("didn't wike ur sewver name, u b-baka ?! change it den !")
         const back = formType === "Create" ? (<button className="back-button" onClick={this.handleBack}> <i className="far fa-hand-point-left"></i> gowo back ?</button>) : ("")
-        const deleteButton = formType === "Edit" ? (<button className="remove-button" onClick={() => this.props.deleteServer(this.state)}>remove server ? ; w ;</button>) : ("")
+        const deleteButton = formType === "Edit" ? (<button className="remove-button" onClick={this.handleDelete}>remove server ? ; w ;</button>) : ("")
         const buttonText = formType === "Create" ? ("cweate") : ("edwit")
         return (
             <div className="server-form">

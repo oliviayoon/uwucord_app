@@ -13,9 +13,9 @@ class ServerMember extends React.Component {
             <>
                 {header}
                 {serverUsers.map(serverUser => 
-                <div className="member-list-item">
+                <div key={serverUser.id} className="member-list-item">
                 <div className="user-profile">{serverUser.username[0]}</div>
-                <div key={serverUser.id}>{serverUser.username}</div>
+                <div >{serverUser.username}</div>
                 </div>)}
             </>
         )

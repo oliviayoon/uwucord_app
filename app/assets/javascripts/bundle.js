@@ -1185,6 +1185,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
     _this.handleBack = _this.handleBack.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleImageChange = _this.handleImageChange.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1233,10 +1234,22 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       formData.append('server[private]', this.state["private"]);
       formData.append('server[owner_id]', this.state.owner_id);
       this.props.processForm(formData) // formData
-      .then(function (server) {
+      .then(function (res) {
         _this3.props.closeModal();
 
-        _this3.props.history.push("/channels/".concat(server.id));
+        _this3.props.history.push("/channels/".concat(res.server.id));
+      });
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      this.props.deleteServer(this.state.id).then(function () {
+        _this4.props.closeModal();
+
+        _this4.props.history.push("/channels/@me");
       });
     }
   }, {
@@ -1247,8 +1260,6 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
-
       var _this$props = this.props,
           formType = _this$props.formType,
           errors = _this$props.errors; // will need one for create and edit
@@ -1267,9 +1278,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       }), " gowo back ?") : "";
       var deleteButton = formType === "Edit" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "remove-button",
-        onClick: function onClick() {
-          return _this4.props.deleteServer(_this4.state);
-        }
+        onClick: this.handleDelete
       }, "remove server ? ; w ;") : "";
       var buttonText = formType === "Create" ? "cweate" : "edwit";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1527,12 +1536,11 @@ var ServerMember = /*#__PURE__*/function (_React$Component) {
       }, "memebwers (\u2445\u02D8\uA4B3\u02D8)") : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, header, serverUsers.map(function (serverUser) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: serverUser.id,
           className: "member-list-item"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-profile"
-        }, serverUser.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: serverUser.id
-        }, serverUser.username));
+        }, serverUser.username[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, serverUser.username));
       }));
     }
   }]);
@@ -2537,9 +2545,9 @@ var updateServer = function updateServer(server) {
   return $.ajax({
     method: "PATCH",
     url: "api/servers/".concat(server.id),
-    data: {
-      server: server
-    }
+    data: server,
+    processData: false,
+    contentType: false
   });
 };
 var joinServer = function joinServer(serverInvite) {
