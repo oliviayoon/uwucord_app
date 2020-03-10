@@ -5,19 +5,19 @@ class ServerMember extends React.Component {
         super(props)
     }
 
-    componentDidUpdate(){
-
-    }
-
     render(){
         const {serverUsers} = this.props
         // debugger
+        const header = serverUsers.length ? (<h1 className="member-header">memebwers (⑅˘꒳˘)</h1>) : ("")
         return (
-            <div>
-                <ul>
-                    {serverUsers.map(serverUser => <li key={serverUser.id}>{serverUser.username}</li>)}
-                </ul>
-            </div>
+            <>
+                {header}
+                {serverUsers.map(serverUser => 
+                <div className="member-list-item">
+                <div className="user-profile">{serverUser.username[0]}</div>
+                <div key={serverUser.id}>{serverUser.username}</div>
+                </div>)}
+            </>
         )
     }
 }

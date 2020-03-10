@@ -1,6 +1,5 @@
 import {connect} from 'react-redux'
 import ServerMember from './server_member'
-import { fetchAllServers } from '../../../actions/server_actions'
 
 const msp = (state, ownProps) => {
     const currentServerId = ownProps.match.params.id
@@ -11,9 +10,5 @@ const msp = (state, ownProps) => {
     })
 }
 
-const mdp = dispatch => ({
-    fetchAllServers: () => dispatch(fetchAllServers())
-})
 
-
-export default connect(msp, mdp)(ServerMember)
+export default connect(msp)(ServerMember)

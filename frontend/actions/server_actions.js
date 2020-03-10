@@ -11,9 +11,9 @@ const receiveServers = payload => ({
     payload
 })
 
-const receiveServer = payload => ({
+const receiveServer = server => ({
     type: RECEIVE_SERVER,
-    payload
+    server
 })
 
 const removeServer = server => ({

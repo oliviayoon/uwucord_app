@@ -19,6 +19,7 @@ class MessageIndex extends React.Component {
                     </div>
                 <div className="members-list">
                     <Route to="/:id" component={ServerMemberContainer} />
+                    <div> invite fwends button goes here</div>
                 </div>
                 </div>
             </div>
