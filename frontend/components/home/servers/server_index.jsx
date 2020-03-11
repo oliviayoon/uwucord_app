@@ -8,11 +8,10 @@ class ServerIndex extends React.Component {
     }
 
     render(){
-        const {servers, currentUser } = this.props
+        const {servers, currentUser, channels } = this.props
         const publicServers = servers.filter(server => server.name !== "Home")
         // debugger
         const homeServer = servers.filter(server => (server.name === "Home" && server.ownerId === currentUser.id))
-        // debugger
         return (
             <div className="server-index">
             <ul className="server-home">
@@ -21,7 +20,7 @@ class ServerIndex extends React.Component {
             <div className="divider">
             </div>
             <ul className="server-membership">
-                {publicServers.map(server => <ServerIndexItem key={server.id} server={server} />)}
+                {publicServers.map(server => <ServerIndexItem key={server.id} server={server} channels={channels.filter(channel => channel.serverId === server.id)} />)}
                 <a className="add-server" onClick={() => this.props.openModal("chooseServer")}><li><p>+</p></li></a>
             </ul>
             </div>

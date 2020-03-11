@@ -8,7 +8,6 @@ const ChannelsReducer = (state = {}, action) => {
         case RECEIVE_SERVERS:
             return action.payload.channels
         case RECEIVE_CHANNEL:
-                debugger
             newState[action.channel.id] = action.channel
             return newState
         case REMOVE_CHANNEL:

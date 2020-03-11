@@ -1,0 +1,24 @@
+.channel-header {
+    color: black;
+}
+
+.channel-form-container {
+    background-color: white;
+    width: 450px;
+    height: 200px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.channel-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 40px 0;
+    text-align: center;
+}

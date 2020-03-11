@@ -3,10 +3,12 @@ import ServerIndex from './server_index'
 import {fetchAllServers, createServer} from '../../../actions/server_actions'
 import { openModal } from '../../../actions/modal_actions';
 
-const msp = (state) => ({
+const msp = (state) => {
+    return({
     servers: Object.values(state.entities.servers),
-    currentUser: state.entities.users[state.session.id]
-})
+    currentUser: state.entities.users[state.session.id],
+    channels: Object.values(state.entities.channels)
+})}
 
 const mdp = dispatch => ({
     fetchAllServers: () => dispatch(fetchAllServers()),

@@ -1,8 +1,8 @@
 class Api::ChannelsController < ApplicationController
 
     def create
-        debugger
-        @channel = Channel.new(channel_params)
+        # debugger
+        @channel = Channel.new(name: params[:channel][:name], server_id: params[:channel][:serverId])
         if @channel.save
             render :create
         else
@@ -20,6 +20,7 @@ class Api::ChannelsController < ApplicationController
     end
 
     def update
+        debugger
         @channel = Channel.find_by(id: params[:channel][:id])
         if @channel.update(name: params[:channel][:name])
             render :create

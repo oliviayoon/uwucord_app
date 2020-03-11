@@ -7,6 +7,8 @@ import JoinServerForm from './home/servers/join_server_form'
 import ChooseServer from './home/servers/choose_server';
 import LeaveServerForm from './home/servers/leave_server';
 import {Route} from 'react-router-dom'
+import AddChannelForm from './home/channels/add_channel_form';
+import EditChannelForm from './home/channels/edit_channel_form';
 
 function Modal({modal, closeModal}) {
     if (!modal) {
@@ -31,6 +33,12 @@ function Modal({modal, closeModal}) {
             break;
         case 'leaveServer':
             component = <LeaveServerForm />
+            break;
+        case 'addChannel':
+            component = <AddChannelForm />
+            break;
+        case 'editChannel':
+            component = <EditChannelForm />
             break;
         default:
             return null;

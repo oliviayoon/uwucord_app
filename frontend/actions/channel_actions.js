@@ -12,7 +12,7 @@ const receiveChannels = payload => ({
 })
 
 const receiveChannel = channel => ({
-    type: RECEIVE_CHANNELS,
+    type: RECEIVE_CHANNEL,
     channel
 })
 
@@ -31,11 +31,11 @@ export const clearChannelErrors = () => ({
 })
 
 export const createChannel = channel => dispatch => ChannelAPIUtil.createChannel(channel)
-    .then(res => dispatch(receiveChannel(res)), errors => dispatch(receiveErrors(errors)))
+    .then(res => dispatch(receiveChannel(res)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const updateChannel = channel => dispatch => ChannelAPIUtil.updateChannel(channel)
-.then(res => dispatch(receiveChannel(res)), errors => dispatch(receiveErrors(errors)))
+.then(res => dispatch(receiveChannel(res)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const destroyChannel = channel => dispatch => ChannelAPIUtil.destroyChannel(channel)
-    .then(() => dispatch(removeChannel(channel)), errors => dispatch(receiveErrors(errors)))
+    .then(() => dispatch(removeChannel(channel)), errors => dispatch(receiveErrors(errors.responseJSON)))
 

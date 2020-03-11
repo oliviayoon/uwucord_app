@@ -1,14 +1,15 @@
 export const createChannel = channel => (
     $.ajax({
         method: "POST",
-        url: "api/channels"
+        url: `api/servers/${channel.serverId}/channels`,
+        data: {channel}
     })
 )
 export const updateChannel = channel => (
     $.ajax({
         method: "PATCH",
-        url: `api/servers/${channel.serverId}/channels`,
-        data: channel
+        url: `api/channels/${channel.id}/`,
+        data: {channel}
     })
 )
 export const destroyChannel = channelId => (

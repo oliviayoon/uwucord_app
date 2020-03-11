@@ -47,6 +47,19 @@ background-image: linear-gradient(
     text-align: center;
 }
 
+.server-form-leave {
+    background-color: white;
+    width: 450px;
+    height: 200px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
 .server-form-container > h1 {
     color: #6c7fec;
 }
@@ -182,7 +195,7 @@ background-image: linear-gradient(
     color: white;
     height: 40px;
     align-self: center;
-    margin: 35px;
+    margin: 15px;
 }
 
 .server-form-container > .edit-header {
