@@ -12,7 +12,8 @@ class Api::ChannelsController < ApplicationController
 
     def destroy
         @channel = Channel.find_by(id: params[:id])
-        if @channel.destroy
+        if @channel.name != "general"
+            @channel.destroy
             render :create
         else
             render json: ["Unable to destroy channel"], status: 422
@@ -20,9 +21,9 @@ class Api::ChannelsController < ApplicationController
     end
 
     def update
-        debugger
         @channel = Channel.find_by(id: params[:channel][:id])
-        if @channel.update(name: params[:channel][:name])
+        if @channel.name != "general"
+            @channel.update(name: params[:channel][:name])
             render :create
         else
             render json: ["Could not update channel details"], status: 422

@@ -12,7 +12,8 @@ const msp = (state, ownProps) => {
         name: "",
         serverId: serverId
     },
-    formType: "Create"
+    formType: "Create",
+    errors: state.errors.channelErrors
 })}
 
 const mdp = dispatch => ({

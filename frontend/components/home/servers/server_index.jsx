@@ -10,7 +10,7 @@ class ServerIndex extends React.Component {
     render(){
         const {servers, currentUser, channels } = this.props
         const publicServers = servers.filter(server => server.name !== "Home")
-        // debugger
+
         const homeServer = servers.filter(server => (server.name === "Home" && server.ownerId === currentUser.id))
         return (
             <div className="server-index">

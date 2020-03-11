@@ -31,8 +31,8 @@ class ChannelForm extends React.Component{
     }
 
     render(){
-        const {formType} = this.props
-
+        const {formType, errors} = this.props
+        debugger
         const header = formType === "Create" ? (<h1 className="channel-header-add" color="black">add a channew :3</h1>) : (<h1 className="channel-header-edit" color="black">edit yew baka ? >:3</h1>)
 
         return(
@@ -44,6 +44,7 @@ class ChannelForm extends React.Component{
                         <label className="channel-form-name">channew name:
                             <input onChange={this.handleChange()} type="text" value={this.state.name} />
                         </label>
+                        <p className="channel-errors">{errors}</p>
                     </form>
                     <button onClick={this.handleClick}className="add-channel-button">wes dew dis</button>
                     <button onClick={this.handleDelete} >dewete channew ?</button>

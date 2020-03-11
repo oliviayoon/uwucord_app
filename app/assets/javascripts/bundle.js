@@ -480,7 +480,8 @@ var msp = function msp(state, ownProps) {
       name: "",
       serverId: serverId
     },
-    formType: "Create"
+    formType: "Create",
+    errors: state.errors.channelErrors
   };
 };
 
@@ -582,7 +583,10 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var formType = this.props.formType;
+      var _this$props = this.props,
+          formType = _this$props.formType,
+          errors = _this$props.errors;
+      debugger;
       var header = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "channel-header-add",
         color: "black"
@@ -602,7 +606,9 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleChange(),
         type: "text",
         value: this.state.name
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "channel-errors"
+      }, errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleClick,
         className: "add-channel-button"
       }, "wes dew dis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -870,6 +876,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _channel_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./channel_form */ "./frontend/components/home/channels/channel_form.jsx");
 /* harmony import */ var _actions_channel_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/channel_actions */ "./frontend/actions/channel_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -881,7 +889,8 @@ var msp = function msp(state, ownProps) {
   return {
     formType: "Edit",
     channel: state.entities.channels[ownProps.location.pathname.split("/")[3]],
-    currentServer: state.entities.servers[serverId]
+    currentServer: state.entities.servers[serverId],
+    errors: state.errors.channelErrors
   };
 };
 
@@ -892,6 +901,9 @@ var mdp = function mdp(dispatch) {
     },
     destroyChannel: function destroyChannel(channelId) {
       return dispatch(Object(_actions_channel_actions__WEBPACK_IMPORTED_MODULE_3__["destroyChannel"])(channelId));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
   };
 };
@@ -1781,8 +1793,7 @@ var ServerIndex = /*#__PURE__*/function (_React$Component) {
           channels = _this$props.channels;
       var publicServers = servers.filter(function (server) {
         return server.name !== "Home";
-      }); // debugger
-
+      });
       var homeServer = servers.filter(function (server) {
         return server.name === "Home" && server.ownerId === currentUser.id;
       });
@@ -1885,15 +1896,13 @@ __webpack_require__.r(__webpack_exports__);
 var ServerIndexItem = function ServerIndexItem(_ref) {
   var server = _ref.server,
       channels = _ref.channels;
+  // debugger
   var icon = server.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "server-image-icon",
     src: server.photoUrl
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0]));
-  var generalChannelId = server.name === "Home" ? null : channels.filter(function (channel) {
-    return channel.name === "general";
-  })[0].id;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-    to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id, "/").concat(generalChannelId),
+    to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id, "/").concat(channels[0].id),
     activeClassName: "server-name-active",
     className: "server-name"
   }, icon);
@@ -2546,7 +2555,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ChannelErrorsReducer = function ChannelErrorsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
