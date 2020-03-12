@@ -11,9 +11,9 @@ const receiveServers = payload => ({
     payload
 })
 
-const receiveServer = server => ({
+const receiveServer = payload => ({
     type: RECEIVE_SERVER,
-    server
+    payload
 })
 
 const removeServer = server => ({
@@ -40,7 +40,7 @@ export const createServer = (server) => dispatch => ServerAPIUtil.createServer(s
     .then(server => dispatch(receiveServer(server)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const deleteServer = (serverId) => dispatch => ServerAPIUtil.deleteServer(serverId)
-    .then((server) => dispatch(removeServer(server.id)), errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then((server) => dispatch(removeServer(serverId)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const updateServer = (server) => dispatch => ServerAPIUtil.updateServer(server)
     .then(server =>dispatch(receiveServer(server)),errors => dispatch(reeiveErrors(errors)))

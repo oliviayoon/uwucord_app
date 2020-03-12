@@ -1,4 +1,4 @@
-import { RECEIVE_SERVERS } from '../actions/server_actions'
+import { RECEIVE_SERVERS, RECEIVE_SERVER } from '../actions/server_actions'
 // import { RECEIVE_SERVER_USERS } from '../actions/user_actions'
 
 
@@ -15,7 +15,11 @@ const ServerUsersReducer =  (state = {}, action) => {
         //         newState[user.id] = {id: user.id, serverId: user.serverId, userId: user.userId}
         //     }
         //    return newState; 
-        return action.payload.serverUsers   
+        return action.payload.serverUsers        
+        case RECEIVE_SERVER:
+        let newState = Object.assign({}, state)
+        newState[action.payload.user.id] = action.payload.user
+        return newState
         default:
             return state;
     }

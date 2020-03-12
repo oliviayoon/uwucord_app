@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link } from 'react-router-dom'
 
 const ServerIndexItem = ({server, channels}) => {
     // debugger
@@ -8,11 +8,13 @@ const ServerIndexItem = ({server, channels}) => {
             {server.name[0]}
         </p>
     </li>)
-    
+    // debugger
     return (
-            <NavLink to={ server.name === "Home" ? ('/channels/@me') : (`/channels/${server.id}`)} activeClassName="server-name-active" className="server-name">
+        <NavLink to={ server.name === "Home" ? ('/channels/@me') : (`/channels/${server.id}`)} activeClassName="server-name-active" >
+            <Link to={ server.name=== "Home" ? ('/channels/@me') : (`/channels/${server.id}/${channels[0].id}`)} className="server-name">
                 {icon}
-            </NavLink> 
+            </Link>
+        </NavLink> 
     )
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import NavContainer from "../components/nav/nav_container"
-import {Route,Switch} from "react-router-dom"
+import {Route,Switch, Redirect} from "react-router-dom"
 import LoginContainer from "../components/session/login_container"
 import SignUpContainer from "../components/session/signup_container"
 import Modal from './modal'
@@ -13,7 +13,7 @@ const App = () => (
          <Modal />
          <Switch>
             <ProtectedRoute path="/channels/@me/" component={MainContainer} />
-            <ProtectedRoute path="/channels/:id/" component={MainContainer} />
+            <ProtectedRoute path="/channels/:id" component={MainContainer} />
             <AuthRoute path ="/login" component={LoginContainer} />
             <AuthRoute path="/register" component={SignUpContainer} />
             <AuthRoute  path="/" component={NavContainer}/>

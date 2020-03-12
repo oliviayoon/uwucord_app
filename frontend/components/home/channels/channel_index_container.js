@@ -6,6 +6,7 @@ import {openModal} from '../../../actions/modal_actions'
 
 const msp = (state,ownProps) => {
     const currentServer = ownProps.currentServer
+    if (!currentServer) return null;
     // debugger
     return ({
             currentUser: state.entities.users[state.session.id],

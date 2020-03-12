@@ -240,10 +240,10 @@ var receiveServers = function receiveServers(payload) {
   };
 };
 
-var receiveServer = function receiveServer(server) {
+var receiveServer = function receiveServer(payload) {
   return {
     type: RECEIVE_SERVER,
-    server: server
+    payload: payload
   };
 };
 
@@ -287,7 +287,7 @@ var createServer = function createServer(server) {
 var deleteServer = function deleteServer(serverId) {
   return function (dispatch) {
     return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteServer"](serverId).then(function (server) {
-      return dispatch(removeServer(server.id));
+      return dispatch(removeServer(serverId));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -434,7 +434,7 @@ var App = function App() {
     path: "/channels/@me/",
     component: _home_content_main_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["ProtectedRoute"], {
-    path: "/channels/:id/",
+    path: "/channels/:id",
     component: _home_content_main_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     path: "/login",
@@ -574,7 +574,7 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
 
         _this3.props.closeModal();
 
-        _this3.props.history.push("/channels/".concat(_this3.props.generalChannel.id));
+        _this3.props.history.push("/channels/".concat(_this3.props.currentServer.id, "/").concat(_this3.props.generalChannel.id));
       });
     }
   }, {
@@ -721,7 +721,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         },
         className: "fas fa-paw"
       }));
-      var channelItems = currentServer.name == "Home" ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var channelItems = currentServer.name == "Home" ? " " : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-options"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "text channews :3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-fish",
@@ -791,7 +791,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  var currentServer = ownProps.currentServer; // debugger
+  var currentServer = ownProps.currentServer;
+  if (!currentServer) return null; // debugger
 
   return {
     currentUser: state.entities.users[state.session.id],
@@ -1668,7 +1669,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       .then(function (res) {
         _this3.props.closeModal();
 
-        _this3.props.history.push("/channels/".concat(res.server.id));
+        _this3.props.history.push("/channels/".concat(res.payload.server.id, "/").concat(res.payload.channel.id));
       });
     }
   }, {
@@ -1927,12 +1928,15 @@ var ServerIndexItem = function ServerIndexItem(_ref) {
   var icon = server.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "server-image-icon",
     src: server.photoUrl
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0]));
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0])); // debugger
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id),
-    activeClassName: "server-name-active",
+    activeClassName: "server-name-active"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id, "/").concat(channels[0].id),
     className: "server-name"
-  }, icon);
+  }, icon));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ServerIndexItem);
@@ -2626,12 +2630,17 @@ var ChannelsReducer = function ChannelsReducer() {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVERS"]:
       return action.payload.channels;
 
+    case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVER"]:
+      newState[action.payload.channel.id] = action.payload.channel;
+      return newState;
+
     case _actions_channel_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CHANNEL"]:
       newState[action.channel.id] = action.channel;
       return newState;
 
     case _actions_channel_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_CHANNEL"]:
-      delete newState[action.channel.id];
+      // debugger
+      delete newState[action.channel];
       return newState;
 
     default:
@@ -2823,6 +2832,11 @@ var ServerUsersReducer = function ServerUsersReducer() {
       //    return newState; 
       return action.payload.serverUsers;
 
+    case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
+      var newState = Object.assign({}, state);
+      newState[action.payload.user.id] = action.payload.user;
+      return newState;
+
     default:
       return state;
   }
@@ -2855,11 +2869,12 @@ var ServersReducer = function ServersReducer() {
       return action.payload.servers;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
-      newState[action.server.id] = action.server;
+      // debugger
+      newState[action.payload.server.id] = action.payload.server;
       return newState;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SERVER"]:
-      delete newState[action.server.id];
+      delete newState[action.server];
       return newState;
 
     default:
@@ -2986,6 +3001,11 @@ var userReducer = function userReducer() {
   switch (action.type) {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVERS"]:
       return action.payload.users;
+    // case RECEIVE_SERVER:
+    //     let newState = Object.assign({}, state)
+    //     // debugger
+    //     newState[action.payload.user.id] = action.payload.user
+    //     return newState
 
     default:
       return state;

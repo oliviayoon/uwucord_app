@@ -22,7 +22,7 @@ class ChannelForm extends React.Component{
             .then((res) => {
                 debugger
                 this.props.closeModal()
-                this.props.history.push(`/channels/${this.props.generalChannel.id}`)
+                this.props.history.push(`/channels/${this.props.currentServer.id}/${this.props.generalChannel.id}`)
             })
     }
 

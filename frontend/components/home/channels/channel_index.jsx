@@ -26,7 +26,7 @@ class ChannelIndex extends React.Component {
         // debugger
         const modal = currentServer ? (ownerId === currentUser.id ? "editServer" : "leaveServer") : ("")
         const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)} className="fas fa-paw"/></>)
-        const channelItems = currentServer.name == "Home" ? ("") : (<div className="channel-options">
+        const channelItems = currentServer.name == "Home" ? (" ") : (<div className="channel-options">
         <h1>text channews :3</h1>
         <i className="fas fa-fish" onClick={() => this.props.openModal("addChannel")}></i>
         </div>)

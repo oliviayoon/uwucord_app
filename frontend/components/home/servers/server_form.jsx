@@ -47,7 +47,7 @@ class ServerForm extends React.Component {
         this.props.processForm(formData) // formData
         .then(res => {
             this.props.closeModal();
-            this.props.history.push(`/channels/${res.server.id}`)
+            this.props.history.push(`/channels/${res.payload.server.id}/${res.payload.channel.id}`)
         })
     }
 

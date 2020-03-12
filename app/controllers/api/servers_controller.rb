@@ -50,7 +50,9 @@ class Api::ServersController < ApplicationController
 
     def destroy
         @server = current_user.owned_servers.find_by(id: params[:id])
+        debugger
         if @server.destroy
+            debugger
             render :show
         else
             render json: ["Cannot destroy server"], status: 422
