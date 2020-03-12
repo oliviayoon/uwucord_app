@@ -12,9 +12,11 @@ export const updateChannel = channel => (
         data: {channel}
     })
 )
-export const destroyChannel = channelId => (
+export const destroyChannel = channelId => {
+    // debugger
+    return(
     $.ajax({
         method: "DELETE",
-        url: `api/servers/${channelId}`
+        url: `api/channels/${channelId}`
     })
-) 
+) }

@@ -17,23 +17,34 @@ class ChannelForm extends React.Component{
 
     handleDelete(e){
         e.preventDefault();
+        // debugger
         this.props.destroyChannel(this.state.id)
-            .then(() => this.props.closeModal())
+            .then((res) => {
+                debugger
+                this.props.closeModal()
+                this.props.history.push(`/channels/${this.props.generalChannel.id}`)
+            })
     }
 
     handleClick(e){
         e.preventDefault()
-        // debugger
         this.props.processChannel(this.state)
-            .then(()=> {
+            .then((res)=> {
                 this.props.closeModal()
+                this.props.history.push(`/channels/${this.props.currentServer.id}/${res.channel.id}`)
             })
+    }
+
+    componentWillUnmount(){
+        // debugger
+        this.props.clearChannelErrors()
     }
 
     render(){
         const {formType, errors} = this.props
-        debugger
+        // debugger
         const header = formType === "Create" ? (<h1 className="channel-header-add" color="black">add a channew :3</h1>) : (<h1 className="channel-header-edit" color="black">edit yew baka ? >:3</h1>)
+        const deleteButton = formType === "Edit" ? (<button onClick={this.handleDelete} >dewete channew ?</button>) : ""
 
         return(
             <div className="channel-form-container">
@@ -47,7 +58,7 @@ class ChannelForm extends React.Component{
                         <p className="channel-errors">{errors}</p>
                     </form>
                     <button onClick={this.handleClick}className="add-channel-button">wes dew dis</button>
-                    <button onClick={this.handleDelete} >dewete channew ?</button>
+                    {deleteButton}
                 </div>
             </div>
         )}

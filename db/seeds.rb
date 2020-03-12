@@ -25,6 +25,8 @@ s3 = Server.create(name: "boats and sails", private: false, owner_id: u4.id)
 ServerUser.create(server_id: s3.id, user_id: u4.id)
 s4 = Server.create(name: "animes & weeabaes", private: false, owner_id: u5.id)
 ServerUser.create(server_id: s4.id, user_id: u5.id)
+s5 = Server.create(name: "welcome dweebs !! uwu", private: false, owner_id: u4.id)
+ServerUser.create(server_id: s5.id, user_id: u4.id)
 
 su1 = ServerUser.create(server_id: s1.id, user_id: u3.id)
 su2 = ServerUser.create(server_id: s1.id, user_id: u4.id)

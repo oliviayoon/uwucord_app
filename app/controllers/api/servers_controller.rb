@@ -22,7 +22,7 @@ class Api::ServersController < ApplicationController
     def update
         # debugger
         @server = Server.find_by(id: params[:server][:id])
-    
+        
         if @server.update(name: params[:server][:name])
             @server.profile_pic.purge
             @server.profile_pic.attach(params[:server][:profile_pic])
@@ -38,7 +38,6 @@ class Api::ServersController < ApplicationController
         @members = []
         @serverusers = []
         @channels = []
-
         @servers.each do |server|
             # debugger
             @members += server.members

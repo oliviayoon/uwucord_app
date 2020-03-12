@@ -10,7 +10,7 @@ const ServerIndexItem = ({server, channels}) => {
     </li>)
     
     return (
-            <NavLink to={ server.name === "Home" ? ('/channels/@me') : (`/channels/${server.id}/${channels[0].id}`)} activeClassName="server-name-active" className="server-name">
+            <NavLink to={ server.name === "Home" ? ('/channels/@me') : (`/channels/${server.id}`)} activeClassName="server-name-active" className="server-name">
                 {icon}
             </NavLink> 
     )

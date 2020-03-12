@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import ChannelForm from './channel_form'
-import { updateChannel, destroyChannel } from '../../../actions/channel_actions';
+import { updateChannel, destroyChannel, clearChannelErrors } from '../../../actions/channel_actions';
 import { closeModal } from '../../../actions/modal_actions';
 
 
@@ -12,14 +12,16 @@ const msp = (state, ownProps )=> {
     formType: "Edit",
     channel: state.entities.channels[ownProps.location.pathname.split("/")[3]],
     currentServer: state.entities.servers[serverId],
-    errors: state.errors.channelErrors
+    errors: state.errors.channelErrors,
+    generalChannel: Object.values(state.entities.channels).filter(channel => channel.serverId === serverId && channel.name === "general")[0]
 
 })}
 
 const mdp = dispatch => ({
     processChannel: channel => dispatch(updateChannel(channel)),
     destroyChannel: channelId => dispatch(destroyChannel(channelId)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    clearChannelErrors: () => dispatch(clearChannelErrors())
 
 })
 
