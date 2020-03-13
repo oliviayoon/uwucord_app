@@ -12,7 +12,7 @@ class Api::ChannelsController < ApplicationController
 
     def destroy
         @channel = Channel.find_by(id: params[:id])
-        if @channel.name != "general"
+        if @channel.name != "genewal"
             @channel.destroy
             render :create
         else

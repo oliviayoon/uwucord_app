@@ -79,7 +79,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: flex-end;
 
 }
@@ -118,4 +118,33 @@
 
 .message-form input:focus {
     color: white;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 35px;
+}
+
+.message-body-text {
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    color: white;
+}
+
+.message-items {
+    display: flex;
+    align-items: center;
+}
+
+.message-username {
+    font-weight: bolder;
+    color: 
+}
+
+.message-body-detail {
+    line-height: 22px;
+    font-size: 13px;
 }

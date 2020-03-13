@@ -6,8 +6,11 @@ import { createMessage } from '../../../actions/message_actions'
 
 const msp = (state, ownProps) => {
     // debugger
+    const channelId = ownProps.location.pathname.split("/")[3]
     return({
-        channel: state.entities.channels[ownProps.location.pathname.split("/")[3]]
+        channel: state.entities.channels[channelId],
+        currentUser: state.entities.users[state.session.id],
+        messages: Object.values(state.entities.messages).filter(message => message.channelId == channelId)
 
 })}
 

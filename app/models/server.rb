@@ -49,6 +49,6 @@ class Server < ApplicationRecord
     end
 
     def default_channel
-        Channel.create!(name:"general", is_dm?: false, server_id: self.id) unless self.name === "Home"
+        Channel.create!(name:"genewal", is_dm?: false, server_id: self.id) unless self.name === "Home"
     end
 end

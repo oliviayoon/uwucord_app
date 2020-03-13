@@ -964,7 +964,7 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return openModal("editChannel");
         },
-        "class": "fas fa-star"
+        className: "fas fa-star"
       }) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-item-info"
@@ -1156,6 +1156,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _servers_server_member_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../servers/server_member_container */ "./frontend/components/home/servers/server_member_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _message_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./message_index_item */ "./frontend/components/home/messages/message_index_item.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1173,6 +1174,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1211,21 +1213,29 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
+      if (this.state.body === "") return;
       var message = {
         body: this.state.body,
         channelId: this.props.channel.id
       };
+      this.setState({
+        body: ""
+      });
       this.props.createMessage(message);
     }
   }, {
     key: "render",
     value: function render() {
-      var channel = this.props.channel;
-      if (!channel) return null;
+      var _this$props = this.props,
+          channel = _this$props.channel,
+          messages = _this$props.messages,
+          currentUser = _this$props.currentUser;
       var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "message-text",
         onChange: this.handleChange(),
         type: "text",
-        placeholder: "tywpepe ur message hewe ^w^"
+        placeholder: "tywpepe ur message hewe ^w^",
+        value: this.state.body
       });
       var channelHeader = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-hashtag"
@@ -1236,6 +1246,15 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         to: "/:id",
         component: _servers_server_member_container__WEBPACK_IMPORTED_MODULE_1__["default"]
       }));
+      var messageItems = !messages ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat-messages"
+      }, " ", messages.map(function (message) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: message.id,
+          message: message,
+          currentUser: currentUser
+        });
+      }));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messages-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1244,7 +1263,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         className: "messages-members-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messages-text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, messageItems, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-text-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "message-form",
@@ -1280,8 +1299,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state, ownProps) {
   // debugger
+  var channelId = ownProps.location.pathname.split("/")[3];
   return {
-    channel: state.entities.channels[ownProps.location.pathname.split("/")[3]]
+    channel: state.entities.channels[channelId],
+    currentUser: state.entities.users[state.session.id],
+    messages: Object.values(state.entities.messages).filter(function (message) {
+      return message.channelId == channelId;
+    })
   };
 };
 
@@ -1294,6 +1318,41 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_message_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/home/messages/message_index_item.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/home/messages/message_index_item.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var MessageIndexItem = function MessageIndexItem(_ref) {
+  var message = _ref.message,
+      currentUser = _ref.currentUser;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "message-items"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "user-profile",
+    height: "15",
+    src: currentUser.imageUrl
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "message-body-text"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "message-username"
+  }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "message-body-detail"
+  }, message.body)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MessageIndexItem);
 
 /***/ }),
 
@@ -1538,12 +1597,10 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault();
-      debugger;
+      e.preventDefault(); // debugger
+
       this.props.processForm(this.state.invite) // formData
       .then(function (res) {
-        debugger;
-
         _this2.props.closeModal();
 
         _this2.props.history.push("/channels/".concat(res.payload.server.id, "/").concat(res.payload.channel.id));
@@ -3304,7 +3361,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMessage", function() { return updateMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyMessage", function() { return destroyMessage; });
 var createMessage = function createMessage(message) {
-  debugger;
+  // debugger
   return $.ajax({
     method: "POST",
     url: "api/channels/".concat(message.channelId, "/messages"),

@@ -1,5 +1,5 @@
 export const createMessage = message => {
-    debugger
+    // debugger
     return(
     $.ajax({
         method: "POST",

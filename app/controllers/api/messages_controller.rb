@@ -1,7 +1,6 @@
 class Api::MessagesController < ApplicationController
 
     def create
-        debugger
         @message = Message.new(body: params[:message][:body], channel_id: params[:message][:channelId], author_id: current_user.id)
         if @message.save
             render :create
