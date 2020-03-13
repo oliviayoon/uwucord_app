@@ -1,24 +1,18 @@
-# README
+![](app/assets/images/pink_wogo.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# uwucord
 
-Things you may want to cover:
+uwucord is a fun parody of Discord. This app allows users communicate with others through servers. Users can create their own or join an existing one with a unique invite token. Each server comes equipped with a general channel and users are able to freely create additional chat channels.
 
-* Ruby version
+## live site
 
-* System dependencies
+https://uwucord.herokuapp.com
 
-* Configuration
+## technologies used
 
-* Database creation
+* React/Redux
+* Ruby on Rails
+* Postgresql
+* Heroku
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## features
