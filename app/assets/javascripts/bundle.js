@@ -1101,23 +1101,29 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(MessageIndex, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "messages-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "channel-header"
-      }, "channel header"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "messages-members-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "messages-text"
-      }, "messages go here", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      var channel = this.props.channel;
+      var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "messages go here", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "tywpepe ur message hewe ^w^"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }));
+      var channelHeader = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-hashtag"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, channel.name));
+      var serverMembers = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "members-list"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         to: "/:id",
         component: _servers_server_member_container__WEBPACK_IMPORTED_MODULE_1__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " invite fwends button goes here"))));
+      }));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "messages-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "channel-header"
+      }, channelHeader), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "messages-members-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "messages-text"
+      }, messagesContainer), serverMembers));
     }
   }]);
 
@@ -1139,18 +1145,22 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _message_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./message_index */ "./frontend/components/home/messages/message_index.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
-var msp = function msp(state) {
-  return {};
+
+var msp = function msp(state, ownProps) {
+  return {
+    channel: state.entities.channels[ownProps.location.pathname.split("/")[3]]
+  };
 };
 
 var mdp = function mdp(dispatch) {
   return {};
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_message_index__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_message_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
 
 /***/ }),
 
@@ -1829,6 +1839,7 @@ var ServerIndex = /*#__PURE__*/function (_React$Component) {
           currentUser = _this$props.currentUser,
           channels = _this$props.channels;
       if (!servers) return null;
+      if (!channels) return null;
       var publicServers = servers.filter(function (server) {
         return server.name !== "Home";
       });

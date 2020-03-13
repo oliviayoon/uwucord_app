@@ -10,6 +10,7 @@ class ServerIndex extends React.Component {
     render(){
         const {servers, currentUser, channels } = this.props
         if (!servers) return null;
+        if (!channels) return null;
         const publicServers = servers.filter(server => server.name !== "Home")
 
         const homeServer = servers.filter(server => (server.name === "Home" && server.ownerId === currentUser.id))
