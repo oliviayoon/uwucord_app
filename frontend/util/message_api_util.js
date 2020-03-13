@@ -1,10 +1,12 @@
-export const createMessage = message => (
+export const createMessage = message => {
+    debugger
+    return(
     $.ajax({
         method: "POST",
         url: `api/channels/${message.channelId}/messages`,
         data: {message}
     })
-)
+)}
 export const updateMessage = message => (
     $.ajax({
         method: "PATCH",

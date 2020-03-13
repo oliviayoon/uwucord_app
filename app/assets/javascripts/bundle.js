@@ -1166,9 +1166,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1182,19 +1182,51 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(MessageIndex, _React$Component);
 
   function MessageIndex(props) {
+    var _this;
+
     _classCallCheck(this, MessageIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MessageIndex).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MessageIndex).call(this, props)); // debugger
+
+    _this.state = {
+      body: ""
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(MessageIndex, [{
+    key: "handleChange",
+    value: function handleChange() {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState({
+          body: e.currentTarget.value
+        });
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var message = {
+        body: this.state.body,
+        channelId: this.props.channel.id
+      };
+      this.props.createMessage(message);
+    }
+  }, {
     key: "render",
     value: function render() {
       var channel = this.props.channel;
-      var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "messages go here", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      if (!channel) return null;
+      var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.handleChange(),
         type: "text",
         placeholder: "tywpepe ur message hewe ^w^"
-      }));
+      });
       var channelHeader = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-hashtag"
       }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, channel.name));
@@ -1212,7 +1244,12 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         className: "messages-members-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messages-text"
-      }, messagesContainer), serverMembers));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-text-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "message-form",
+        onSubmit: this.handleSubmit
+      }, messagesContainer))), serverMembers));
     }
   }]);
 
@@ -1235,18 +1272,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _message_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./message_index */ "./frontend/components/home/messages/message_index.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_message_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/message_actions */ "./frontend/actions/message_actions.js");
+
 
 
 
 
 var msp = function msp(state, ownProps) {
+  // debugger
   return {
     channel: state.entities.channels[ownProps.location.pathname.split("/")[3]]
   };
 };
 
 var mdp = function mdp(dispatch) {
-  return {};
+  return {
+    createMessage: function createMessage(message) {
+      return dispatch(Object(_actions_message_actions__WEBPACK_IMPORTED_MODULE_3__["createMessage"])(message));
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_message_index__WEBPACK_IMPORTED_MODULE_1__["default"])));
@@ -3260,6 +3304,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMessage", function() { return updateMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyMessage", function() { return destroyMessage; });
 var createMessage = function createMessage(message) {
+  debugger;
   return $.ajax({
     method: "POST",
     url: "api/channels/".concat(message.channelId, "/messages"),
