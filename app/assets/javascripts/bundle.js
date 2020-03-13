@@ -811,7 +811,12 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         className: "home-channels"
       }, "DMs are under constwuction ! uwu") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
-      }, "server invite thing will go here if I CAN GET THE IMAGE TONIE", currentServer.invite), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "server invite thing will go here if I CAN GET THE IMAGE TONIE", currentServer.invite, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "invite-friends",
+        onClick: function onClick() {
+          return openModal("inviteFriends");
+        }
+      }, "invite fwends")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-list-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-options"
@@ -1263,12 +1268,14 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         className: "messages-members-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messages-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "messages-text-inner"
       }, messageItems, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-text-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "message-form",
         onSubmit: this.handleSubmit
-      }, messagesContainer))), serverMembers));
+      }, messagesContainer)))), serverMembers));
     }
   }]);
 

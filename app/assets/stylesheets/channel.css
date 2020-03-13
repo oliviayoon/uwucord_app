@@ -102,3 +102,17 @@
     font-size: 18px;
 }
 
+.invite-friends {
+    background-color: #faaca8;
+    color: white;
+    height: 40px;
+    align-self: center;
+    margin: 15px;
+}
+
+.server-invite form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+}

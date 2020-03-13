@@ -39,11 +39,13 @@ class MessageIndex extends React.Component {
                 </div>
                 <div className="messages-members-container">
                     <div className="messages-text">
-                    {messageItems}
-                    <div className="message-text-container">
-                        <form className="message-form" onSubmit={this.handleSubmit}>
-                        {messagesContainer}
-                        </form>
+                    <div className="messages-text-inner">
+                        {messageItems}
+                        <div className="message-text-container">
+                            <form className="message-form" onSubmit={this.handleSubmit}>
+                            {messagesContainer}
+                            </form>
+                        </div>
                     </div>
                     </div>
                 {serverMembers}
