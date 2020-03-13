@@ -1270,7 +1270,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           channel = _this$props.channel,
           messages = _this$props.messages,
-          currentUser = _this$props.currentUser;
+          users = _this$props.users;
       var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "message-text",
         onChange: this.handleChange(),
@@ -1293,7 +1293,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: message.id,
           message: message,
-          currentUser: currentUser
+          users: users
         });
       }));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1345,7 +1345,7 @@ var msp = function msp(state, ownProps) {
   var channelId = ownProps.location.pathname.split("/")[3];
   return {
     channel: state.entities.channels[channelId],
-    currentUser: state.entities.users[state.session.id],
+    users: Object.values(state.entities.users),
     messages: Object.values(state.entities.messages).filter(function (message) {
       return message.channelId == channelId;
     })
@@ -1379,7 +1379,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var MessageIndexItem = function MessageIndexItem(_ref) {
   var message = _ref.message,
-      currentUser = _ref.currentUser;
+      users = _ref.users;
+  var currentUser = users.filter(function (user) {
+    return user.id == message.authorId;
+  })[0];
+  debugger;
+  if (!currentUser) return null;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-items"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

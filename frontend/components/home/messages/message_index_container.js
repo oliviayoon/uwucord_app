@@ -9,7 +9,7 @@ const msp = (state, ownProps) => {
     const channelId = ownProps.location.pathname.split("/")[3]
     return({
         channel: state.entities.channels[channelId],
-        currentUser: state.entities.users[state.session.id],
+        users: Object.values(state.entities.users),
         messages: Object.values(state.entities.messages).filter(message => message.channelId == channelId)
 
 })}

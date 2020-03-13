@@ -123,3 +123,7 @@
     padding: 20px;
     
 }
+
+.server-header {
+    min-height: 48px;
+}

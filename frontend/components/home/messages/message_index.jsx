@@ -25,13 +25,13 @@ class MessageIndex extends React.Component {
     }
 
     render(){
-        const {channel, messages, currentUser} = this.props
+        const {channel, messages, users} = this.props
         const messagesContainer = !channel ? ("") :  (<input id="message-text" onChange={this.handleChange()} type="text" placeholder="tywpepe ur message hewe ^w^" value={this.state.body}/>)
         const channelHeader = !channel ? ("") : (<><i class="fas fa-hashtag"></i> <p>{channel.name}</p></>)
         const serverMembers = !channel ? ("") : (<div className="members-list">
             <Route to="/:id" component={ServerMemberContainer} />
             </div>)
-        const messageItems = !messages ? ("") : (<div className="chat-messages"> {messages.map(message => <MessageIndexItem key={message.id} message={message} currentUser={currentUser}/>)}</div>)
+        const messageItems = !messages ? ("") : (<div className="chat-messages"> {messages.map(message => <MessageIndexItem key={message.id} message={message} users={users}/>)}</div>)
         return(
             <div className="messages-content">
                 <div className="channel-header">
