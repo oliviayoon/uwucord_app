@@ -23,6 +23,14 @@
     padding: 0px 40px 0;
 }
 
+.channel-title-text {
+    display: flex;
+    align-content: center;
+}
+
+.channel-title-text p {
+    margin-left: 5px;
+}
 .channel-form-header {
   color: white;
   align-self: center;
@@ -75,6 +83,10 @@
     font-weight: bolder;
     size: 15px;
     animation: shake .8s 2;
+}
+
+.channel-name-text {
+    margin-left: 5px;
 }
 
 @keyframes shake {

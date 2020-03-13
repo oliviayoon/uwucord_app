@@ -10,7 +10,9 @@ class ChannelIndexItem extends React.Component{
         const edit = ownerId === currentUser.id ? (<i onClick={() => openModal("editChannel")} class="fas fa-star"></i>) : null
         return(
         <div className="channel-item-info">
-            <strong> <i class="fas fa-hashtag"></i>{channel.name} </strong>
+            <div className="channel-title-text">
+        <i class="fas fa-hashtag"></i> <p>{channel.name}</p>
+            </div>
             <div>
                 {edit}
             </div>

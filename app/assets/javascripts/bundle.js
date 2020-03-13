@@ -879,9 +879,11 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
       }) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-item-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "channel-title-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-hashtag"
-      }), channel.name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, edit));
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, channel.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, edit));
     }
   }]);
 
