@@ -29,8 +29,6 @@ class ChannelIndex extends React.Component {
         const homeItems = currentServer.name == "Home" ? (<div className="home-channels">DMs are under constwuction ! uwu</div>)
         : (<>
         <div className="server-invite-form">
-            server invite thing will go here if I CAN GET THE IMAGE TONIE
-            {currentServer.invite}
             <button className="invite-friends" onClick={() => openModal("inviteFriends")}>invite fwends</button>
         </div>
         <div className="channel-list-container">

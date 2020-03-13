@@ -811,7 +811,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         className: "home-channels"
       }, "DMs are under constwuction ! uwu") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
-      }, "server invite thing will go here if I CAN GET THE IMAGE TONIE", currentServer.invite, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "invite-friends",
         onClick: function onClick() {
           return openModal("inviteFriends");
@@ -1040,6 +1040,42 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_channel_form__WEBPACK_IMPORTED_MODULE_2__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/home/channels/invite_friends.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/home/channels/invite_friends.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+var InviteFriendsForm = function InviteFriendsForm(_ref) {
+  var currentServer = _ref.currentServer;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invite-friends-form"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invite-friends-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "invwite ur fwends with dis invite tokwen!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.invite)));
+};
+
+var msp = function msp(state, ownProps) {
+  return {
+    currentServer: state.entities.servers[ownProps.location.pathname.split("/")[2]]
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp)(InviteFriendsForm)));
 
 /***/ }),
 
@@ -2312,6 +2348,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _home_channels_add_channel_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/channels/add_channel_form */ "./frontend/components/home/channels/add_channel_form.js");
 /* harmony import */ var _home_channels_edit_channel_form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/channels/edit_channel_form */ "./frontend/components/home/channels/edit_channel_form.js");
+/* harmony import */ var _home_channels_invite_friends__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/channels/invite_friends */ "./frontend/components/home/channels/invite_friends.jsx");
+
 
 
 
@@ -2361,6 +2399,10 @@ function Modal(_ref) {
 
     case 'editChannel':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_channels_edit_channel_form__WEBPACK_IMPORTED_MODULE_10__["default"], null);
+      break;
+
+    case 'inviteFriends':
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_channels_invite_friends__WEBPACK_IMPORTED_MODULE_11__["default"], null);
       break;
 
     default:

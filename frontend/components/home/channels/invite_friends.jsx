@@ -6,8 +6,8 @@ const InviteFriendsForm = ({currentServer}) => {
 
     return(
         <div className="invite-friends-form">
-            <div>
-            <p>invwite ur fwends with dis invite tokwen!</p>
+            <div className="invite-friends-container">
+            <h1>invwite ur fwends with dis invite tokwen!</h1>
             <p>{currentServer.invite}</p>
             </div>
         </div>

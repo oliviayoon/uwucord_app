@@ -36,7 +36,7 @@
 
 .channel-index-items {
     flex-grow: 1;
-    padding: 16px 0px;
+    /* padding: 16px 0px; */
 }
 
 .user-info {
@@ -110,9 +110,16 @@
     margin: 15px;
 }
 
-.server-invite form {
+.server-invite-form {
     display: flex;
     flex-direction: column;
     padding: 10px;
     justify-content: center;
+}
+
+.home-channels {
+    color: white;
+    font-size: 14px;
+    padding: 20px;
+    
 }

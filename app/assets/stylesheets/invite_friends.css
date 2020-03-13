@@ -1,0 +1,30 @@
+.invite-friends-form {
+    background-color: white;
+    width: 450px;
+    height: 200px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative
+}
+
+.invite-friends-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 40px 0;
+    text-align: center;
+}
+
+.invite-friends-container > h1 {
+    color: #faaca8;
+}
+
+.invite-friends-container p {
+    color: #9d93a3;
+    margin-top: 20px;
+    font-size: 40px;
+}
