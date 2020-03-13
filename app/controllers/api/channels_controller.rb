@@ -28,7 +28,6 @@ class Api::ChannelsController < ApplicationController
         else
             render json: ["Could not update channel details"], status: 422
         end
-
     end
 
     def channel_params

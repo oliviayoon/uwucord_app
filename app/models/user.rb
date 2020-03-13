@@ -31,6 +31,10 @@ class User < ApplicationRecord
     class_name: :Server,
     dependent: :destroy
 
+    has_many :messages,
+    foreign_key: :author_id,
+    class_name: :Message
+
     has_many :memberships,
     foreign_key: :user_id,
     class_name: :ServerUser,

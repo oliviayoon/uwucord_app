@@ -38,11 +38,17 @@ class Api::ServersController < ApplicationController
         @members = []
         @serverusers = []
         @channels = []
+        @messages = []
         @servers.each do |server|
             # debugger
             @members += server.members
             @serverusers += server.memberships
             @channels += server.channels
+        end
+        @channels.each do |channel|
+            if channel.messages.exists?
+                @messages += channel.messages
+            end
         end
 
         render :index
