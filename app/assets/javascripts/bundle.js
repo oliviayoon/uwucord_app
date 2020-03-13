@@ -1406,11 +1406,14 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault();
+      debugger;
       this.props.processForm(this.state.invite) // formData
       .then(function (res) {
+        debugger;
+
         _this2.props.closeModal();
 
-        _this2.props.history.push("/channels/".concat(res.server.id));
+        _this2.props.history.push("/channels/".concat(res.payload.server.id, "/").concat(res.payload.channel.id));
       });
     }
   }, {
