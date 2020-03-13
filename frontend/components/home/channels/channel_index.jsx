@@ -26,10 +26,26 @@ class ChannelIndex extends React.Component {
         // debugger
         const modal = currentServer ? (ownerId === currentUser.id ? "editServer" : "leaveServer") : ("")
         const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)} className="fas fa-paw"/></>)
-        const channelItems = currentServer.name == "Home" ? (" ") : (<div className="channel-options">
-        <h1>text channews :3</h1>
-        <i className="fas fa-fish" onClick={() => this.props.openModal("addChannel")}></i>
-        </div>)
+        const homeItems = currentServer.name == "Home" ? (<div className="home-channels">DMs are under constwuction ! uwu</div>)
+        : (<>
+        <div className="server-invite-form">
+            server invite thing will go here if I CAN GET THE IMAGE TONIE
+            {currentServer.invite}
+        </div>
+        <div className="channel-list-container">
+            <div className="channel-options">
+            <h1>text channews :3</h1>
+            <i className="fas fa-fish" onClick={() => this.props.openModal("addChannel")}></i>
+        </div>
+        <div className="channel-items">
+        {channels.map(channel =>
+            <NavLink key={channel.id} to={`/channels/${currentServer.id}/${channel.id}`} activeClassName="channel-name-active">
+                <ChannelIndexItem  channel={channel} ownerId={currentServer.ownerId} openModal={openModal} currentUser={currentUser} />
+            </NavLink>
+        )}
+        </div>
+        </div>
+         </>)
         return(
             <div className="channel-info">
                 <div className="server-header">
@@ -38,12 +54,7 @@ class ChannelIndex extends React.Component {
                     </div>
                 </div>
             <div className="channel-index-items">
-                {channelItems}
-                {channels.map(channel =>
-                <NavLink key={channel.id} to={`/channels/${currentServer.id}/${channel.id}`} activeClassName="channel-name-active">
-                    <ChannelIndexItem  channel={channel} ownerId={currentServer.ownerId} openModal={openModal} currentUser={currentUser} />
-                </NavLink>
-                )}
+                {homeItems}
             </div>
             <div className="user-info">
                     <div className="user-profile">{currentUser.username[0]}</div>

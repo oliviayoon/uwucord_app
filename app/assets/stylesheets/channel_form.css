@@ -1,13 +1,14 @@
-.channel-header {
-    color: black;
-}
+
 
 .channel-form-container {
-    background-color: white;
+    background-image: linear-gradient(
+        to bottom, #faaca8 0%, #6c7fec 100%
+    );
     width: 450px;
-    height: 200px;
+    /* height: 210px; */
     box-sizing: border-box;
-    padding-top: 15px;
+    /* padding-top: 15px; */
+    padding: 15px 40px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -20,5 +21,73 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0px 40px 0;
-    text-align: center;
+}
+
+.channel-form-header {
+  color: white;
+  align-self: center;
+}
+
+.channel-form-input{
+    margin-top: 20px;
+}
+
+.channel-form-name {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.channel-form-name input {
+    box-sizing: border-box;
+    padding: 10px;
+    height: 40px;
+    margin-top: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: lighter;
+    width: 100%;
+    border-style: inset;
+}
+
+.channel-form button {
+    box-sizing: border-box;
+    color: white;
+    background-color: #988DD7;
+    /* border: 1px solid white; */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin-top: 24px;
+    font-size: 16px;
+    height: 44px;
+}
+
+.channel-form .delete-channel-button {
+    background-color: #ff6259;
+}
+
+.channel-errors {
+    color: rebeccapurple;
+    font-weight: bolder;
+    size: 15px;
+    animation: shake .8s 2;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+
 }

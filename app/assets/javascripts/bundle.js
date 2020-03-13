@@ -570,8 +570,6 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault(); // debugger
 
       this.props.destroyChannel(this.state.id).then(function (res) {
-        debugger;
-
         _this3.props.closeModal();
 
         _this3.props.history.push("/channels/".concat(_this3.props.currentServer.id, "/").concat(_this3.props.generalChannel.id));
@@ -603,30 +601,29 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
           errors = _this$props.errors; // debugger
 
       var header = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "channel-header-add",
-        color: "black"
+        className: "channel-form-header"
       }, "add a channew :3") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "channel-header-edit",
-        color: "black"
+        className: "channel-form-header"
       }, "edit yew baka ? >:3");
       var deleteButton = formType === "Edit" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "delete-channel-button",
         onClick: this.handleDelete
       }, "dewete channew ?") : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-form"
-      }, header, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "meowmeowmeow meow meow"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "channel-form"
+      }, header, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "channel-form-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "channel-form-name"
-      }, "channew name:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "channew name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "channel-errors"
+      }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onChange: this.handleChange(),
         type: "text",
         value: this.state.name
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "channel-errors"
-      }, errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleClick,
         className: "add-channel-button"
       }, "wes dew dis"), deleteButton));
@@ -721,23 +718,22 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         },
         className: "fas fa-paw"
       }));
-      var channelItems = currentServer.name == "Home" ? " " : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var homeItems = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-channels"
+      }, "DMs are under constwuction ! uwu") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "server-invite-form"
+      }, "server invite thing will go here if I CAN GET THE IMAGE TONIE", currentServer.invite), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "channel-list-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-options"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "text channews :3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-fish",
         onClick: function onClick() {
           return _this3.props.openModal("addChannel");
         }
-      }));
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "channel-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "server-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "server-title"
-      }, edit)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "channel-index-items"
-      }, channelItems, channels.map(function (channel) {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "channel-items"
+      }, channels.map(function (channel) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
           key: channel.id,
           to: "/channels/".concat(currentServer.id, "/").concat(channel.id),
@@ -748,7 +744,16 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
           openModal: openModal,
           currentUser: currentUser
         }));
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "channel-info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "server-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "server-title"
+      }, edit)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "channel-index-items"
+      }, homeItems), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-profile"
@@ -792,7 +797,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state, ownProps) {
   var currentServer = ownProps.currentServer;
-  if (!currentServer) return null; // debugger
+  if (!currentServer) return {}; // debugger
 
   return {
     currentUser: state.entities.users[state.session.id],
@@ -866,15 +871,17 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
           openModal = _this$props.openModal,
           ownerId = _this$props.ownerId,
           currentUser = _this$props.currentUser;
-      var edit = ownerId === currentUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      var edit = ownerId === currentUser.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         onClick: function onClick() {
           return openModal("editChannel");
         },
-        className: "edit-channel-button"
-      }, "edit") : null;
+        "class": "fas fa-star"
+      }) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-item-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, " #", channel.name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, edit));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-hashtag"
+      }), channel.name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, edit));
     }
   }]);
 
@@ -1819,6 +1826,7 @@ var ServerIndex = /*#__PURE__*/function (_React$Component) {
           servers = _this$props.servers,
           currentUser = _this$props.currentUser,
           channels = _this$props.channels;
+      if (!servers) return null;
       var publicServers = servers.filter(function (server) {
         return server.name !== "Home";
       });
