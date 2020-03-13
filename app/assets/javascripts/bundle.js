@@ -1382,8 +1382,8 @@ var MessageIndexItem = function MessageIndexItem(_ref) {
       users = _ref.users;
   var currentUser = users.filter(function (user) {
     return user.id == message.authorId;
-  })[0];
-  debugger;
+  })[0]; // debugger
+
   if (!currentUser) return null;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-items"
