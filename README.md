@@ -14,5 +14,3 @@ https://uwucord.herokuapp.com
 * Ruby on Rails - backend
 * Postgresql - backend
 * Heroku - hosting
-
-## Features
