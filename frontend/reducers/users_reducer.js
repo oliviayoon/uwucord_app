@@ -6,11 +6,6 @@ const userReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_SERVERS:
             return action.payload.users
-        // case RECEIVE_SERVER:
-        //     let newState = Object.assign({}, state)
-        //     // debugger
-        //     newState[action.payload.user.id] = action.payload.user
-        //     return newState
         default:
             return state;
     }

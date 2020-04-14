@@ -2473,11 +2473,13 @@ var Nav = function Nav(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-    className: "login-sigup"
+    className: "login-signup"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: window.whiteWogo,
     width: "180px"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "nav-links"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://linkedin.com/in/yooneunsil"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fab fa-linkedin"
@@ -2799,13 +2801,14 @@ var Splash = function Splash(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/channels/@me"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "splash-button demo",
     onClick: function onClick() {
       return login(_session_session_form__WEBPACK_IMPORTED_MODULE_2__["DEMO_USER"]);
     }
   }, "twy da demowo !")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/register"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "register-button"
+    className: "splash-button"
   }, "go wegister"))));
 };
 
@@ -3319,11 +3322,6 @@ var userReducer = function userReducer() {
   switch (action.type) {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVERS"]:
       return action.payload.users;
-    // case RECEIVE_SERVER:
-    //     let newState = Object.assign({}, state)
-    //     // debugger
-    //     newState[action.payload.user.id] = action.payload.user
-    //     return newState
 
     default:
       return state;

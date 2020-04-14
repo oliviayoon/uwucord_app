@@ -1,13 +1,18 @@
 .btn-login {
-    color: white;
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
-    border: 2px solid hsla(0,0%,100%,.8);
+    border: 2px solid rgba(255,255,255,0.8);
    padding: 5px 17px 7px;
    border-radius: 20px;
    line-height: 24px;
 }
 
-nav.login-sigup {
+.btn-login:hover {
+    color:white;
+    border: 2px solid white;
+}
+
+nav.login-signup {
     display: flex;
     width: 96%;
     height: 52px;
@@ -19,13 +24,17 @@ nav.login-sigup {
     position: relative;
 }
 
-.login-sigup ul {
+.login-signup ul {
     display: flex;
     align-items: center;
 }
 
 .fab {
-    color: white;
+    color: rgba(255,255,255,0.8);
     font-size: 35px;
     margin: 5px
+}
+
+.nav-links .fab:hover {
+    color: white;
 }

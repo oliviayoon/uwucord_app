@@ -14,11 +14,11 @@ const Nav = ({currentUser, logout}) => {
     // )
     return (
         <div className="home-container">
-        <nav className="login-sigup">
+        <nav className="login-signup">
             <ul>
                 <li><img src={window.whiteWogo} width={"180px"} /></li>
             </ul>
-            <ul>
+            <ul className="nav-links">
                 <li><a href="https://linkedin.com/in/yooneunsil"><i className="fab fa-linkedin"></i></a></li>
                 <li>
                     <a href="https://github.com/jigglycode/uwucord_app">
