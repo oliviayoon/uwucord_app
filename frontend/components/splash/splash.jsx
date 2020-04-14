@@ -10,6 +10,9 @@ const Splash = ({login}) => (
             <Link to="/channels/@me"><button className="splash-button demo" onClick={() => login(DEMO_USER)}>twy da demowo !</button></Link>
             <Link to="/register"><button className="splash-button">go wegister</button></Link>
         </div>
+        <div className="splash-images-container">
+            
+        </div>
     </div>
 )
 

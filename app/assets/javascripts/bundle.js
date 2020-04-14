@@ -2809,7 +2809,9 @@ var Splash = function Splash(_ref) {
     to: "/register"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "splash-button"
-  }, "go wegister"))));
+  }, "go wegister"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-images-container"
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);
