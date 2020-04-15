@@ -72,3 +72,240 @@
     -webkit-transform: translateY(-8px);
     transform: translateY(-8px);
   }
+
+  .splash-images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    position: relative;
+    /* z-index: 1000; */
+    height: 650px;
+    width: 100vw;
+  }
+
+  .splash-image {
+    position: absolute;
+    left: 50%;
+    user-select: none;
+  }
+  
+  .splash-shape {
+    position: absolute;
+    left: 50%;
+    opacity: 0.3;
+    user-select: none;
+  }
+  
+  #splash-images-monitor {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    user-select: none;
+  }
+  
+  #splash-images-laptop {
+    z-index: 2;
+    margin-left: -4px;
+    bottom: 10px
+  }
+  
+  #splash-images-controller {
+    z-index: 2;
+    margin-left: -255px;
+    bottom: 10px
+  }
+  
+  #splash-images-mobile1 {
+    z-index: 2;
+    margin-left: -548px;
+    bottom: 10px
+  }
+  
+  #splash-images-mobile2 {
+    z-index: 2;
+    margin-left: -402px;
+    bottom: 10px
+  }
+  
+  #splash-images-potion {
+    z-index: 1;
+    margin-left: -609px;
+    bottom: 10px
+  }
+  
+  #splash-images-cd {
+    z-index: 1;
+    margin-left: 423px;
+    bottom: 10px
+  }
+  
+  #splash-images-headset {
+    z-index: 3;
+    margin-left: 270px;
+    bottom: 142px;
+    transform: scale(0.75);
+  }
+  
+  #splash-images-coinbox {
+    z-index: 0;
+    margin-left: -239px;
+    bottom: 462px;
+  }
+  
+  #splash-shapes-dot1 {
+    z-index: 0;
+    margin-left: -599px;
+    bottom: 200px;
+  }
+  
+  #splash-shapes-dot2 {
+    z-index: 0;
+    margin-left: -319px;
+    bottom: 600px;
+  }
+  
+  #splash-shapes-dot3 {
+    z-index: 0;
+    margin-left: 181px;
+    bottom: 500px;
+  }
+  
+  #splash-shapes-dot4 {
+    z-index: 0;
+    margin-left: 531px;
+    bottom: 600px;
+  }
+  
+  #splash-shapes-dot5 {
+    z-index: 0;
+    margin-left: 621px;
+    bottom: 140px;
+  }
+  
+  #splash-shapes-triangle1 {
+    z-index: 0;
+    margin-left: -579px;
+    bottom: 300px;
+  }
+  
+  #splash-shapes-triangle2 {
+    z-index: 0;
+    margin-left: 31px;
+    bottom: 550px;
+  }
+  
+  #splash-shapes-triangle3 {
+    z-index: 0;
+    margin-left: -289px;
+    bottom: 448px;
+  }
+  
+  #splash-shapes-circle1 {
+    z-index: 0;
+    margin-left: -359px;
+    bottom: 530px;
+  }
+  
+  #splash-shapes-circle2 {
+    z-index: 0;
+    margin-left: 576px;
+    bottom: 280px;
+  }
+  
+  #splash-shapes-circle3 {
+    z-index: 0;
+    margin-left: -199px;
+    bottom: 88px;
+  }
+  
+  #splash-shapes-cross1 {
+    z-index: 0;
+    margin-left: -579px;
+    bottom: 510px;
+  }
+  
+  #splash-shapes-cross2 {
+    z-index: 0;
+    margin-left: 541px;
+    bottom: 220px;
+  }
+  
+  #splash-shapes-square1 {
+    z-index: 0;
+    margin-left: 331px;
+    bottom: 600px;
+  }
+  
+  #splash-shapes-square2 {
+    z-index: 0;
+    margin-left: 431px;
+    bottom: 400px;
+  }
+  
+  #splash-shapes-square3 {
+    z-index: 0;
+    margin-left: 17px;
+    bottom: 92px;
+  }
+  
+  $splash-bomb-bottom: 335px;
+  $splash-coin1-bottom: 300px;
+  $splash-coin2-bottom: 530px;
+  $splash-disk-bottom: 392px;
+  $distance: 10px;
+  
+  #splash-shapes-square3 {
+    z-index: 0;
+    margin-left: 17px;
+    bottom: 92px;
+  }
+  
+  #splash-float-bomb {
+    z-index: 0;
+    margin-left: -481px;
+    bottom: 335px;
+    animation: bomb-anim 1.5s ease-in-out 0.4s infinite alternate;
+  }
+  
+  @keyframes bomb-anim {
+    from { bottom:$splash-bomb-bottom }
+    to { bottom:$splash-bomb-bottom + $distance }
+  }
+  
+  #splash-float-disk {
+    z-index: 0;
+    margin-left: 250px;
+    bottom: 392px;
+    animation: disk-anim 1.5s ease-in-out 0s infinite alternate;
+  }
+  
+  @keyframes disk-anim {
+    from { bottom:$splash-disk-bottom }
+    to { bottom:$splash-disk-bottom + $distance }
+  }
+  
+  #splash-float-coin1 {
+    z-index: 1;
+    margin-left: -428px;
+    bottom: 300px;
+    animation: coin1-anim 1.5s ease-in-out 0s infinite alternate;
+  }
+  
+  @keyframes coin1-anim {
+    from { bottom:$splash-coin1-bottom }
+    to { bottom:$splash-coin1-bottom + $distance }
+  }
+  
+  #splash-float-coin2 {
+    z-index: 1;
+    margin-left: 80px;
+    bottom: 530px;
+    animation: coin2-anim 1.5s ease-in-out 0s infinite alternate;
+  }
+  
+  @keyframes coin2-anim {
+    from { bottom:$splash-coin2-bottom }
+    to { bottom:$splash-coin2-bottom + $distance }
+  }

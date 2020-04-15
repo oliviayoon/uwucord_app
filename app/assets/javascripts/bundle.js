@@ -2792,7 +2792,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Splash = function Splash(_ref) {
   var login = _ref.login;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "splish-splash"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "is tiem 2 dwitch skwypwe and tweamspeak \xF9w\xFA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "splish-splash-text"
@@ -2809,9 +2809,126 @@ var Splash = function Splash(_ref) {
     to: "/register"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "splash-button"
-  }, "go wegister"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "go wegister")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "splash-images-container"
-  }));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesMonitor,
+    id: "splash-images-monitor"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesLaptop,
+    className: "splash-image",
+    id: "splash-images-laptop"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesController,
+    className: "splash-image",
+    id: "splash-images-controller"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesMobile1,
+    className: "splash-image",
+    id: "splash-images-mobile1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesMobile2,
+    className: "splash-image",
+    id: "splash-images-mobile2"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesPotion,
+    className: "splash-image",
+    id: "splash-images-potion"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesCd,
+    className: "splash-image",
+    id: "splash-images-cd"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesHeadset,
+    className: "splash-image",
+    id: "splash-images-headset"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashImagesCoinbox,
+    className: "splash-image",
+    id: "splash-images-coinbox"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesDot,
+    className: "splash-shape",
+    id: "splash-shapes-dot1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesDot,
+    className: "splash-shape",
+    id: "splash-shapes-dot2"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesDot,
+    className: "splash-shape",
+    id: "splash-shapes-dot3"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesDot,
+    className: "splash-shape",
+    id: "splash-shapes-dot4"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesDot,
+    className: "splash-shape",
+    id: "splash-shapes-dot5"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesTriangle,
+    className: "splash-shape",
+    id: "splash-shapes-triangle1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesTriangle,
+    className: "splash-shape",
+    id: "splash-shapes-triangle2"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesTriangle,
+    className: "splash-shape",
+    id: "splash-shapes-triangle3"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesCircle,
+    className: "splash-shape",
+    id: "splash-shapes-circle1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesCircle,
+    className: "splash-shape",
+    id: "splash-shapes-circle2"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesCircle,
+    className: "splash-shape",
+    id: "splash-shapes-circle3"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesCross,
+    className: "splash-shape",
+    id: "splash-shapes-cross1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesCross,
+    className: "splash-shape",
+    id: "splash-shapes-cross2"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesSquare,
+    className: "splash-shape",
+    id: "splash-shapes-square1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesSquare,
+    className: "splash-shape",
+    id: "splash-shapes-square2"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashShapesSquare,
+    className: "splash-shape",
+    id: "splash-shapes-square3"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashFloatBomb,
+    className: "splash-image",
+    id: "splash-float-bomb"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashFloatDisk,
+    className: "splash-image",
+    id: "splash-float-disk"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashFloatCoin,
+    className: "splash-image",
+    id: "splash-float-coin1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.splashFloatCoin,
+    className: "splash-image",
+    id: "splash-float-coin2"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-footer"
+  }, "foot"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);
