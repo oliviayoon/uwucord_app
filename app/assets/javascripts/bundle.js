@@ -2926,9 +2926,7 @@ var Splash = function Splash(_ref) {
     src: window.splashFloatCoin,
     className: "splash-image",
     id: "splash-float-coin2"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "splash-footer"
-  }, "foot"));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);

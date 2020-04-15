@@ -43,9 +43,9 @@ const Splash = ({login}) => (
       <img src={window.splashFloatCoin} className="splash-image"  id="splash-float-coin1"></img>
       <img src={window.splashFloatCoin} className="splash-image"  id="splash-float-coin2"></img>
     </div>
-    <div className="splash-footer">
+    {/* <div className="splash-footer">
         foot
-    </div>
+    </div> */}
     </>
 )
 

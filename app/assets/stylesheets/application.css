@@ -18,12 +18,13 @@
 
 
  html {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
     font-family: 'Catamaran', sans-serif;
     background-color: #26262B;
+    background: linear-gradient(to bottom, #faaca8 0%, #6c7fec 100%);
     /* background-color: #faaca8; */
     /* background-size: cover; */
     /* overflow: hidden; */
@@ -32,7 +33,7 @@ body {
   
 main {
 /* display: flex; */
-height: 100vh;
+/* height: 100vh; */
 }
 
 a {
