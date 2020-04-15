@@ -32,7 +32,7 @@ class JoinServerForm extends React.Component {
     handleSubmit(e){
         
         e.preventDefault();
-        // debugger
+         
         this.props.processForm(this.state.invite) // formData
             .then(res => {
                 this.props.closeModal();

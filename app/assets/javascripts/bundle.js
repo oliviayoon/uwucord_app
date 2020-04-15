@@ -635,8 +635,7 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
     _this.state = _this.props.channel;
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this)); // debugger
-
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -656,8 +655,7 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
     value: function handleDelete(e) {
       var _this3 = this;
 
-      e.preventDefault(); // debugger
-
+      e.preventDefault();
       this.props.destroyChannel(this.state.id).then(function (res) {
         _this3.props.closeModal();
 
@@ -679,7 +677,6 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      // debugger
       this.props.clearChannelErrors();
     }
   }, {
@@ -687,8 +684,7 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           formType = _this$props.formType,
-          errors = _this$props.errors; // debugger
-
+          errors = _this$props.errors;
       var header = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "channel-form-header"
       }, "add a channew :3") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -796,9 +792,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       var ownerId = currentServer ? currentServer.ownerId : "";
       if (!currentUser) return null;
       if (!currentServer) return null; // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
-      // debugger
       // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
-      // debugger
 
       var modal = currentServer ? ownerId === currentUser.id ? "editServer" : "leaveServer" : "";
       var edit = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Direct Messages") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.name), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -891,8 +885,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state, ownProps) {
   var currentServer = ownProps.currentServer;
-  if (!currentServer) return {}; // debugger
-
+  if (!currentServer) return {};
   return {
     currentUser: state.entities.users[state.session.id],
     currentServer: currentServer,
@@ -1009,8 +1002,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  var serverId = parseInt(ownProps.location.pathname.split("/")[2]); // debugger
-
+  var serverId = parseInt(ownProps.location.pathname.split("/")[2]);
   return {
     formType: "Edit",
     channel: state.entities.channels[ownProps.location.pathname.split("/")[3]],
@@ -1164,8 +1156,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   var currentServer = ownProps.location.pathname.split("/")[2] === "@me" ? Object.values(store.getState()["entities"]["servers"]).filter(function (server) {
     return server.name == "Home";
-  })[0] : state.entities.servers[ownProps.match.params.id]; // debugger
-
+  })[0] : state.entities.servers[ownProps.match.params.id];
   return {
     currentUser: state.entities.users[state.session.id],
     currentServer: currentServer
@@ -1229,8 +1220,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, MessageIndex);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MessageIndex).call(this, props)); // debugger
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MessageIndex).call(this, props));
     _this.state = {
       body: ""
     };
@@ -1341,7 +1331,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  // debugger
   var channelId = ownProps.location.pathname.split("/")[3];
   return {
     channel: state.entities.channels[channelId],
@@ -1382,8 +1371,7 @@ var MessageIndexItem = function MessageIndexItem(_ref) {
       users = _ref.users;
   var currentUser = users.filter(function (user) {
     return user.id == message.authorId;
-  })[0]; // debugger
-
+  })[0];
   if (!currentUser) return null;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-items"
@@ -1645,8 +1633,7 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault(); // debugger
-
+      e.preventDefault();
       this.props.processForm(this.state.invite) // formData
       .then(function (res) {
         _this2.props.closeModal();
@@ -1917,8 +1904,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      e.preventDefault(); // debugger
-
+      e.preventDefault();
       var formData = new FormData();
       if (this.state.id) formData.append('server[id]', this.state.id);
       formData.append('server[name]', this.state.name);
@@ -2186,12 +2172,10 @@ __webpack_require__.r(__webpack_exports__);
 var ServerIndexItem = function ServerIndexItem(_ref) {
   var server = _ref.server,
       channels = _ref.channels;
-  // debugger
   var icon = server.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "server-image-icon",
     src: server.photoUrl
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0])); // debugger
-
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0]));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id),
     activeClassName: "server-name-active"
@@ -2250,8 +2234,7 @@ var ServerMember = /*#__PURE__*/function (_React$Component) {
   _createClass(ServerMember, [{
     key: "render",
     value: function render() {
-      var serverUsers = this.props.serverUsers; // debugger
-
+      var serverUsers = this.props.serverUsers;
       var header = serverUsers.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "member-header"
       }, "memebwers (\u2445\u02D8\uA4B3\u02D8)") : "";
@@ -2332,6 +2315,31 @@ var ServerMemberItem = function ServerMemberItem(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/components/home/tutorial.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/home/tutorial.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Tutorial = function Tutorial() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tutorial-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tutorial-text"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "w-wewcome to uwucord !! here are some hawt tips"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "get stawted ! ^w^")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Tutorial);
+
+/***/ }),
+
 /***/ "./frontend/components/modal.jsx":
 /*!***************************************!*\
   !*** ./frontend/components/modal.jsx ***!
@@ -2354,6 +2362,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_channels_add_channel_form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./home/channels/add_channel_form */ "./frontend/components/home/channels/add_channel_form.js");
 /* harmony import */ var _home_channels_edit_channel_form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/channels/edit_channel_form */ "./frontend/components/home/channels/edit_channel_form.js");
 /* harmony import */ var _home_channels_invite_friends__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./home/channels/invite_friends */ "./frontend/components/home/channels/invite_friends.jsx");
+/* harmony import */ var _home_tutorial__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./home/tutorial */ "./frontend/components/home/tutorial.jsx");
+
 
 
 
@@ -2408,6 +2418,10 @@ function Modal(_ref) {
 
     case 'inviteFriends':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_channels_invite_friends__WEBPACK_IMPORTED_MODULE_11__["default"], null);
+      break;
+
+    case 'userTutorial':
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_tutorial__WEBPACK_IMPORTED_MODULE_12__["default"], null);
       break;
 
     default:
@@ -2565,6 +2579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _session_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_form */ "./frontend/components/session/session_form.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -2583,6 +2599,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     clearErrors: function clearErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["clearErrors"])());
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
     }
   };
 };
@@ -2696,7 +2715,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
       var login = function login() {
         _this3.props.processForm(_this3.state).then(function () {
-          return _this3.props.history.push('/channels/@me');
+          _this3.props.history.push('/channels/@me');
+
+          _this3.props.openModal('userTutorial');
         });
 
         _this3.setState({
@@ -2719,7 +2740,11 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
-        return _this4.props.history.push('/channels/@me');
+        debugger;
+
+        _this4.props.history.push('/channels/@me');
+
+        _this4.props.openModal('userTutorial');
       });
     }
   }, {
@@ -2787,6 +2812,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _session_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_form */ "./frontend/components/session/session_form.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -2805,6 +2832,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     clearErrors: function clearErrors() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["clearErrors"])());
+    },
+    openModal: function openModal(modal) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
     }
   };
 };
@@ -3067,7 +3097,6 @@ var ChannelsReducer = function ChannelsReducer() {
       return newState;
 
     case _actions_channel_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_CHANNEL"]:
-      // debugger
       delete newState[action.channel];
       return newState;
 
@@ -3160,7 +3189,6 @@ var MessagesReducer = function MessagesReducer() {
 
   switch (action.type) {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVERS"]:
-      // debugger
       if (typeof action.payload.messages === "undefined") return {};
       return action.payload.messages;
     // case RECEIVE_SERVER:
@@ -3172,7 +3200,6 @@ var MessagesReducer = function MessagesReducer() {
       return newState;
 
     case _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_MESSAGE"]:
-      // debugger
       delete newState[action.message];
       return newState;
 
@@ -3259,7 +3286,7 @@ __webpack_require__.r(__webpack_exports__);
 var sessionErrorsReducer = function sessionErrorsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // debugger
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SERVER_ERRORS"]:
@@ -3347,7 +3374,6 @@ var ServersReducer = function ServersReducer() {
       return action.payload.servers;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
-      // debugger
       newState[action.payload.server.id] = action.payload.server;
       return newState;
 
@@ -3477,6 +3503,11 @@ var userReducer = function userReducer() {
   Object.freeze(state);
 
   switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      var newState = Object.assign({}, state);
+      newState[action.user.id] = action.user;
+      return newState;
+
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVERS"]:
       return action.payload.users;
 
@@ -3548,7 +3579,6 @@ var updateChannel = function updateChannel(channel) {
   });
 };
 var destroyChannel = function destroyChannel(channelId) {
-  // debugger
   return $.ajax({
     method: "DELETE",
     url: "api/channels/".concat(channelId)
@@ -3570,7 +3600,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateMessage", function() { return updateMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyMessage", function() { return destroyMessage; });
 var createMessage = function createMessage(message) {
-  // debugger
   return $.ajax({
     method: "POST",
     url: "api/channels/".concat(message.channelId, "/messages"),
@@ -3589,7 +3618,6 @@ var updateMessage = function updateMessage(message) {
   });
 };
 var destroyMessage = function destroyMessage(messageId) {
-  // debugger
   return $.ajax({
     method: "DELETE",
     url: "api/messages/".concat(messageId)

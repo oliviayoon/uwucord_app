@@ -13,7 +13,7 @@ export const updateChannel = channel => (
     })
 )
 export const destroyChannel = channelId => {
-    // debugger
+     
     return(
     $.ajax({
         method: "DELETE",

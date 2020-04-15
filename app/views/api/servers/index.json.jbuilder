@@ -1,5 +1,4 @@
 json.entities do
-
     json.servers do
         @servers.each do |server|
             json.set! server.id do
@@ -20,7 +19,6 @@ json.entities do
             end
         end
     end
-
 
     json.serverUsers do
         @serverusers.each do |serveruser|

@@ -27,7 +27,6 @@ class SessionForm extends React.Component {
 
     animateLogin(speed = 100) {
 
-
         let {email, password} = DEMO_USER;
 
         if (this.state.email !== email) {
@@ -49,7 +48,10 @@ class SessionForm extends React.Component {
 
         const login = () => {
             this.props.processForm(this.state)
-                .then(() => this.props.history.push('/channels/@me'))
+                .then(() => {
+                    this.props.history.push('/channels/@me');
+                    this.props.openModal('userTutorial');
+                })
             this.setState({email: "", password: ""});
         }
     }
@@ -65,7 +67,11 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state)
         this.props.processForm(user)
-            .then(() => this.props.history.push('/channels/@me'))
+            .then(() => {
+                debugger
+                this.props.history.push('/channels/@me');
+                this.props.openModal('userTutorial');
+            })
     }
 
     componentWillUnmount(){

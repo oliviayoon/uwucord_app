@@ -9,7 +9,9 @@ import LeaveServerForm from './home/servers/leave_server';
 import {Route} from 'react-router-dom'
 import AddChannelForm from './home/channels/add_channel_form';
 import EditChannelForm from './home/channels/edit_channel_form';
-import InviteFriendsform from './home/channels/invite_friends'
+import InviteFriendsform from './home/channels/invite_friends';
+import Tutorial from './home/tutorial';
+
 
 function Modal({modal, closeModal}) {
     if (!modal) {
@@ -43,6 +45,9 @@ function Modal({modal, closeModal}) {
             break;
         case 'inviteFriends':
             component = <InviteFriendsform />
+            break;
+        case 'userTutorial':
+            component = <Tutorial />
             break;
         default:
             return null;

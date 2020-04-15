@@ -1,5 +1,5 @@
 export const createMessage = message => {
-    // debugger
+     
     return(
     $.ajax({
         method: "POST",
@@ -15,7 +15,7 @@ export const updateMessage = message => (
     })
 )
 export const destroyMessage = messageId => {
-    // debugger
+     
     return(
     $.ajax({
         method: "DELETE",

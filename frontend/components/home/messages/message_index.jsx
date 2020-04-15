@@ -5,7 +5,7 @@ import MessageIndexItem from './message_index_item'
 class MessageIndex extends React.Component {
     constructor(props){
         super(props)
-        // debugger
+         
         this.state = {body: ""}
         
         this.handleSubmit = this.handleSubmit.bind(this);

@@ -20,7 +20,7 @@ class Api::ServersController < ApplicationController
     end
 
     def update
-        # debugger
+         
         @server = Server.find_by(id: params[:server][:id])
         
         if @server.update(name: params[:server][:name])
@@ -33,14 +33,14 @@ class Api::ServersController < ApplicationController
     end
 
     def index
-        @servers = current_user.servers
 
+        @servers = current_user.servers
         @members = []
         @serverusers = []
         @channels = []
         @messages = []
         @servers.each do |server|
-            # debugger
+             
             @members += server.members
             @serverusers += server.memberships
             @channels += server.channels
@@ -56,9 +56,9 @@ class Api::ServersController < ApplicationController
 
     def destroy
         @server = current_user.owned_servers.find_by(id: params[:id])
-        # debugger
+         
         if @server.destroy
-            # debugger
+             
             render :show
         else
             render json: ["Cannot destroy server"], status: 422
@@ -67,7 +67,7 @@ class Api::ServersController < ApplicationController
 
     def join
         @server = Server.find_by(invite: params[:invite])
-        # debugger
+         
         if @server
             ServerUser.create!(user_id: current_user.id, server_id: @server.id)
             render :show

@@ -8,7 +8,7 @@ class ChannelForm extends React.Component{
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
-        // debugger
+         
     }
 
     handleChange(e){
@@ -17,7 +17,7 @@ class ChannelForm extends React.Component{
 
     handleDelete(e){
         e.preventDefault();
-        // debugger
+         
         this.props.destroyChannel(this.state.id)
             .then((res) => {
                 this.props.closeModal()
@@ -35,13 +35,13 @@ class ChannelForm extends React.Component{
     }
 
     componentWillUnmount(){
-        // debugger
+         
         this.props.clearChannelErrors()
     }
 
     render(){
         const {formType, errors} = this.props
-        // debugger
+         
         const header = formType === "Create" ? (<h1 className="channel-form-header" >add a channew :3</h1>) : (<h1 className="channel-form-header">edit yew baka ? >:3</h1>)
         const deleteButton = formType === "Edit" ? (<button className="delete-channel-button" onClick={this.handleDelete} >dewete channew ?</button>) : ""
 

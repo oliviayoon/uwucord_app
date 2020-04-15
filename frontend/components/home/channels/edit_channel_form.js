@@ -7,7 +7,7 @@ import { closeModal } from '../../../actions/modal_actions';
 
 const msp = (state, ownProps )=> {
     const serverId =  parseInt(ownProps.location.pathname.split("/")[2])
-    // debugger
+     
     return({
     formType: "Edit",
     channel: state.entities.channels[ownProps.location.pathname.split("/")[3]],

@@ -95,7 +95,7 @@ class User < ApplicationRecord
         other_users = User.select(username: self.username);
         # get their user_numbers
         other_nums = other_users.pluck(:user_number)
-        # debugger
+         
         if other_users # if they are found keep generating until not
             while other_nums.include?(self.user_number)
                 self.user_number = rand(0000..9999)

@@ -36,7 +36,7 @@ class ServerForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        // debugger
+         
 
         const formData = new FormData();
         if (this.state.id) formData.append('server[id]', this.state.id)

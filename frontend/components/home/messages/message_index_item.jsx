@@ -2,7 +2,7 @@ import React from 'react';
 
 const MessageIndexItem = ({message, users}) => {
     const currentUser = users.filter(user => user.id == message.authorId)[0]
-    // debugger
+     
     if (!currentUser) return null;
     return(
         <div className="message-items">
