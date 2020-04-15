@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleDemoLogin = this.handleDemoLogin.bind(this)
+        this.animateLogin = this.animateLogin.bind(this)
     }
 
     handleInput(type) {
@@ -24,11 +25,40 @@ class SessionForm extends React.Component {
         }
     }
 
+    animateLogin(speed = 100) {
+
+
+        let {email, password} = DEMO_USER;
+
+        if (this.state.email !== email) {
+            const inputUser = setInterval(() => {
+                if (this.state.email !== email) {
+                    const temp = email.slice(0, this.state.email.length + 1);
+                    this.setState({email: temp});
+                } else { clearInterval(inputUser); animatePassword(); }
+            }, speed);
+        }
+
+        const animatePassword = () => {
+            const inputPassword = setInterval(() => {
+                if (this.state.password !== password)
+                    this.setState({password: password.slice(0, this.state.password.length + 1)})
+                else { clearInterval(inputPassword); login(); }
+            }, speed);
+        }
+
+        const login = () => {
+            this.props.processForm(this.state)
+                .then(() => this.props.history.push('/channels/@me'))
+            this.setState({email: "", password: ""});
+        }
+    }
+
+    
+
     handleDemoLogin(e) {
         e.preventDefault();
-        this.setState(DEMO_USER)
-        setTimeout(() => this.props.processForm(DEMO_USER)
-            .then(() => this.props.history.push('/channels/@me')), 1000)
+        this.animateLogin();
     }
 
     handleSubmit(e) {

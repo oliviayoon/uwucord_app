@@ -2646,6 +2646,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDemoLogin = _this.handleDemoLogin.bind(_assertThisInitialized(_this));
+    _this.animateLogin = _this.animateLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2659,17 +2660,56 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "handleDemoLogin",
-    value: function handleDemoLogin(e) {
+    key: "animateLogin",
+    value: function animateLogin() {
       var _this3 = this;
 
-      e.preventDefault();
-      this.setState(DEMO_USER);
-      setTimeout(function () {
-        return _this3.props.processForm(DEMO_USER).then(function () {
+      var speed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
+      var email = DEMO_USER.email,
+          password = DEMO_USER.password;
+
+      if (this.state.email !== email) {
+        var inputUser = setInterval(function () {
+          if (_this3.state.email !== email) {
+            var temp = email.slice(0, _this3.state.email.length + 1);
+
+            _this3.setState({
+              email: temp
+            });
+          } else {
+            clearInterval(inputUser);
+            animatePassword();
+          }
+        }, speed);
+      }
+
+      var animatePassword = function animatePassword() {
+        var inputPassword = setInterval(function () {
+          if (_this3.state.password !== password) _this3.setState({
+            password: password.slice(0, _this3.state.password.length + 1)
+          });else {
+            clearInterval(inputPassword);
+            login();
+          }
+        }, speed);
+      };
+
+      var login = function login() {
+        _this3.props.processForm(_this3.state).then(function () {
           return _this3.props.history.push('/channels/@me');
         });
-      }, 1000);
+
+        _this3.setState({
+          email: "",
+          password: ""
+        });
+      };
+    }
+  }, {
+    key: "handleDemoLogin",
+    value: function handleDemoLogin(e) {
+      e.preventDefault();
+      this.animateLogin();
     }
   }, {
     key: "handleSubmit",
