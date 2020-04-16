@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
     currentServer: currentServer
 })
 }
-
+ 
 const mdp = dispatch => ({
     logout: () => dispatch(logout())
 })

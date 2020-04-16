@@ -8,7 +8,6 @@
     padding: 5px;
     box-sizing: border-box;
     background-color: #36393F;
-    overflow: hidden;
 }
 
 .server-home > a, .server-membership > a {
@@ -16,7 +15,7 @@
     position: relative;
 }
 
-.server-name > li, .add-server > li {
+.server-name > li, .add-server > li, .search-server > li {
     display: block;
     background-color: #2f3136;
     color: white;
@@ -59,6 +58,14 @@ li > p {
     ); 
     border-radius: 16px;
 }
+.server-home > a:hover .server-name-hover {
+    visibility: visible;
+}
+
+.server-hover:hover .server-name-hover {
+    visibility: visible;
+}
+
 
 .server-name-active img {
     border-radius: 16px;
@@ -67,7 +74,7 @@ li > p {
     ); 
 }
 
-.add-server > li:hover {
+.add-server > li:hover, .search-server > li:hover {
     background-color: #6c7fec;
     border-radius: 16px;
 }
@@ -77,3 +84,31 @@ li > p {
     margin: 0 auto;
     border-bottom: 1px solid #988DD7;
 }
+
+.server-name-hover {
+    visibility: hidden;
+    width: max-content;
+    min-width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    height: 15px;
+    line-height: 16px;
+    position: absolute;
+    z-index: 1;
+    top: 17px;
+    left: 80px;
+}
+
+.server-name-hover::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }

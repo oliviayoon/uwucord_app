@@ -26,7 +26,18 @@ class ChannelIndex extends React.Component {
          
         const modal = currentServer ? (ownerId === currentUser.id ? "editServer" : "leaveServer") : ("")
         const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)} className="fas fa-paw"/></>)
-        const homeItems = currentServer.name == "Home" ? (<div className="home-channels">DMs are under constwuction ! uwu</div>)
+        const homeItems = currentServer.name == "Home" ? (<div className="home-channels">
+            
+            <div>
+            DMs are under constwuction ! uwu
+            </div>
+            <div>
+                Check out a server instead !
+            </div>
+            <div onClick={() => openModal("userTutorial")}>
+                Open tutorial
+            </div>
+            </div>)
         : (<>
         <div className="server-invite-form">
             <button className="invite-friends" onClick={() => openModal("inviteFriends")}>invite fwends</button>

@@ -24,13 +24,13 @@ const Splash = ({login}) => (
       <img src={window.splashImagesCoinbox} className="splash-image"  id="splash-images-coinbox"></img>
       <img src={window.splashShapesDot} className="splash-shape"  id="splash-shapes-dot1"></img>
       <img src={window.splashShapesDot} className="splash-shape"  id="splash-shapes-dot2"></img>
-      <img src={window.splashShapesDot} className="splash-shape"  id="splash-shapes-dot3"></img>
+      <img src={window.splashUwu} className="splash-shape"  id="splash-shapes-dot3"></img>
       <img src={window.splashShapesDot} className="splash-shape"  id="splash-shapes-dot4"></img>
       <img src={window.splashShapesDot} className="splash-shape"  id="splash-shapes-dot5"></img>
       <img src={window.splashShapesTriangle} className="splash-shape"  id="splash-shapes-triangle1"></img>
       <img src={window.splashShapesTriangle} className="splash-shape"  id="splash-shapes-triangle2"></img>
       <img src={window.splashShapesTriangle} className="splash-shape"  id="splash-shapes-triangle3"></img>
-      <img src={window.splashShapesCircle} className="splash-shape"  id="splash-shapes-circle1"></img>
+      <img src={window.splashOwo} className="splash-shape"  id="splash-shapes-circle1"></img>
       <img src={window.splashShapesCircle} className="splash-shape"  id="splash-shapes-circle2"></img>
       <img src={window.splashShapesCircle} className="splash-shape"  id="splash-shapes-circle3"></img>
       <img src={window.splashShapesCross} className="splash-shape"  id="splash-shapes-cross1"></img>

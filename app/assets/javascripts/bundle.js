@@ -803,7 +803,11 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       }));
       var homeItems = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-channels"
-      }, "DMs are under constwuction ! uwu") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "DMs are under constwuction ! uwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Check out a server instead !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: function onClick() {
+          return openModal("userTutorial");
+        }
+      }, "Open tutorial")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "invite-friends",
@@ -2099,7 +2103,12 @@ var ServerIndex = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this.props.openModal("chooseServer");
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "+")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "+"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "search-server",
+        onClick: function onClick() {
+          return _this.props.openModal("searchServers");
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "\uD83D\uDD75\uD83C\uDFFB\u200D\u2640\uFE0F"))));
     }
   }]);
 
@@ -2178,11 +2187,14 @@ var ServerIndexItem = function ServerIndexItem(_ref) {
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0]));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id),
-    activeClassName: "server-name-active"
+    activeClassName: "server-name-active",
+    className: "server-hover"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id, "/").concat(channels[0].id),
     className: "server-name"
-  }, icon));
+  }, icon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "server-name-hover"
+  }, server.name));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ServerIndexItem);
@@ -2326,17 +2338,45 @@ var ServerMemberItem = function ServerMemberItem(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 
 
-var Tutorial = function Tutorial() {
+
+
+var Tutorial = function Tutorial(_ref) {
+  var closeModal = _ref.closeModal;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tutorial-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tutorial-text"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "w-wewcome to uwucord !! here are some hawt tips"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "get stawted ! ^w^")));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "w-wewcome to uwucord !!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "do yew need a tutorial ? :3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tutorial-options"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    onClick: function onClick() {
+      return closeModal();
+    },
+    className: "tut-image",
+    src: window.tutEnd
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "tut-image",
+    src: window.tutStart
+  }))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Tutorial);
+var msp = function msp(state) {
+  return {};
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Tutorial));
 
 /***/ }),
 
@@ -2925,7 +2965,7 @@ var Splash = function Splash(_ref) {
     className: "splash-shape",
     id: "splash-shapes-dot2"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesDot,
+    src: window.splashUwu,
     className: "splash-shape",
     id: "splash-shapes-dot3"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2949,7 +2989,7 @@ var Splash = function Splash(_ref) {
     className: "splash-shape",
     id: "splash-shapes-triangle3"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesCircle,
+    src: window.splashOwo,
     className: "splash-shape",
     id: "splash-shapes-circle1"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
