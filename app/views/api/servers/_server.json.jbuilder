@@ -10,4 +10,3 @@ json.set! server.id do
       json.photoUrl url_for(server.profile_pic)
     end
 end
-

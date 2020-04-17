@@ -819,7 +819,9 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
           return openModal(modal);
         },
         className: "fas fa-paw"
-      }));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tooltippaw"
+      }, "edit dis sewvew")));
       var homeItems = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-channels"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "DMs are under constwuction ! uwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Check out some servers instead !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -849,7 +851,9 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.props.openModal("addChannel");
         }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tooltiparrow"
+      }, "add a channew"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-items"
       }, channels.map(function (channel) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
@@ -1011,7 +1015,9 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
           return openModal("editChannel");
         },
         className: "fas fa-star"
-      }) : null;
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tooltiparrow"
+      }, "edit dis channew")) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-item-info",
         onClick: this.handleClickChannel
@@ -1019,7 +1025,7 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "channel-title-text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-hashtag"
-      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, channel.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, edit));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, channel.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, edit));
     }
   }]);
 
@@ -1058,7 +1064,7 @@ var msp = function msp(state, ownProps) {
     currentServer: state.entities.servers[serverId],
     errors: state.errors.channelErrors,
     generalChannel: Object.values(state.entities.channels).filter(function (channel) {
-      return channel.serverId === serverId && channel.name === "general";
+      return channel.serverId === serverId && channel.name === "genewal";
     })[0]
   };
 };
@@ -1107,7 +1113,9 @@ var InviteFriendsForm = function InviteFriendsForm(_ref) {
     className: "invite-friends-form"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "invite-friends-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "invwite ur fwends with dis invite tokwen!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.invite)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: window.serverKeyInvite
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "invwite ur fwends with dis invite tokwen!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.invite)));
 };
 
 var msp = function msp(state, ownProps) {
@@ -2823,8 +2831,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
-        debugger;
-
         _this4.props.history.push('/channels/@me');
 
         _this4.props.openModal('userTutorial');

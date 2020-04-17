@@ -7,6 +7,7 @@ const InviteFriendsForm = ({currentServer}) => {
     return(
         <div className="invite-friends-form">
             <div className="invite-friends-container">
+            <img src={window.serverKeyInvite}/>
             <h1>invwite ur fwends with dis invite tokwen!</h1>
             <p>{currentServer.invite}</p>
             </div>

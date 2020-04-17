@@ -22,7 +22,7 @@ class Api::ChannelsController < ApplicationController
 
     def update
         @channel = Channel.find_by(id: params[:channel][:id])
-        if @channel.name != "general"
+        if @channel.name != "genewal"
             @channel.update(name: params[:channel][:name])
             render :create
         else

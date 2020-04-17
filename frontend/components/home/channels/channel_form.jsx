@@ -17,7 +17,6 @@ class ChannelForm extends React.Component{
 
     handleDelete(e){
         e.preventDefault();
-         
         this.props.destroyChannel(this.state.id)
             .then((res) => {
                 this.props.closeModal()

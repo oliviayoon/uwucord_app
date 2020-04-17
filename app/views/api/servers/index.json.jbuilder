@@ -1,7 +1,7 @@
 json.entities do
     json.servers do
         @servers.each do |server|
-                json.partial! "api/servers/server", server: server, active_channels: @active_channels
+            json.partial! "api/servers/server", server: server, active_channels: @active_channels
         end
     end
 

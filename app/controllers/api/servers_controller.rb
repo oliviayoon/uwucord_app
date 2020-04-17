@@ -42,7 +42,6 @@ class Api::ServersController < ApplicationController
         @messages = []
         @active_channels = {}
         @servers.each do |server|
-            # debugger
             @active_channels[server.id] = server.channels.first.id if !server.channels.empty?
             @members += server.members
             @serverusers += server.memberships

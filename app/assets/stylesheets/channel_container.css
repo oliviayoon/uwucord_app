@@ -6,7 +6,7 @@
 
 .channel-options > h1, .fas.fa-fish {
     color: #b9bbbe;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: bolder;
     text-transform: uppercase;
     margin: 20px 0px;
@@ -24,6 +24,48 @@
     font-size: 16px;
 }
 
+.fas.fa-fish:hover .tooltiparrow {
+    display: block;
+    
+}
+
+.tooltiparrow, .tooltippaw {
+    width: max-content;
+    padding: 5px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    text-align: center;
+    line-height: 18px;
+    font-size: 15px;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: bold;
+    text-transform: lowercase;
+    border-radius: 5px;
+    margin-left: -41px;
+    margin-top: -53px;
+    z-index: 100;
+    display: none;
+    /* animation: tooltiparrow-fade 0.15s ease-out 0s 1 forwards; */
+  }
+
+  .tooltiparrow::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltiparrow */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:rgba(0,0,0,0.7) transparent transparent transparent;
+    /* animation: tooltiparrow-fade 0.15s ease-out 0s 1 forwards; */
+  }
+  
+  @keyframes tooltiparrow-fade {
+    from { background-color: rgba(0,0,0,0.0); color: rgba(255,255,255,0) }
+    to { background-color: rgba(0,0,0,0.7); color: rgba(255, 255, 255,1) }
+  }
+  
 
 .channel-item-info {
     display: flex;
@@ -36,6 +78,12 @@
 
 .fas.fa-star {
     visibility: hidden;
+}
+
+.fas.fa-star:hover .tooltiparrow {
+    display: block;
+    margin-left: -48px;
+    margin-top: -53px;
 }
 
 .channel-item-info:hover {
