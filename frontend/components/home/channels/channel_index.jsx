@@ -42,6 +42,9 @@ class ChannelIndex extends React.Component {
             </div>)
         : (<>
         <div className="server-invite-form">
+            <img className="server-invite-image" src={window.serverChannelBarInvite} />
+            <p>an adventuwe begwins.</p>
+            <p>wet's add sum fwends !</p>
             <button className="invite-friends" onClick={() => openModal("inviteFriends")}>invite fwends</button>
         </div>
         <div className="channel-list-container">

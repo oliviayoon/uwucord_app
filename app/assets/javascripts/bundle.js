@@ -586,6 +586,9 @@ var msp = function msp(state, ownProps) {
 
 var mdp = function mdp(dispatch) {
   return {
+    changeActiveChannel: function changeActiveChannel(data) {
+      return dispatch(Object(_actions_channel_actions__WEBPACK_IMPORTED_MODULE_2__["changeActiveChannel"])(data));
+    },
     processChannel: function processChannel(channel) {
       return dispatch(Object(_actions_channel_actions__WEBPACK_IMPORTED_MODULE_2__["createChannel"])(channel));
     },
@@ -680,6 +683,11 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.processChannel(this.state).then(function (res) {
         _this4.props.closeModal();
+
+        _this4.props.changeActiveChannel({
+          serverId: res.channel.serverId,
+          channelId: res.channel.id
+        });
 
         _this4.props.history.push("/channels/".concat(_this4.props.currentServer.id, "/").concat(res.channel.id));
       });
@@ -824,7 +832,10 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Need some halp ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check out the tuwutowial~"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "server-invite-image",
+        src: window.serverChannelBarInvite
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "an adventuwe begwins."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "wet's add sum fwends !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "invite-friends",
         onClick: function onClick() {
           return openModal("inviteFriends");
@@ -1676,7 +1687,7 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
       .then(function (res) {
         _this2.props.closeModal();
 
-        _this2.props.history.push("/channels/".concat(res.payload.server.id, "/").concat(res.payload.channel.id));
+        _this2.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(res.payload.channel.id));
       });
     }
   }, {
@@ -1953,7 +1964,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       .then(function (res) {
         _this3.props.closeModal();
 
-        _this3.props.history.push("/channels/".concat(res.payload.server.id, "/").concat(res.payload.channel.id));
+        _this3.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(res.payload.channel.id));
       });
     }
   }, {
@@ -3448,10 +3459,10 @@ var ServersReducer = function ServersReducer() {
       return action.payload.servers;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
-      newState[action.payload.server.id] = action.payload.server;
-      return newState;
+      return Object.assign(newState, action.payload.server);
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SERVER"]:
+      debugger;
       delete newState[action.server];
       return newState;
 

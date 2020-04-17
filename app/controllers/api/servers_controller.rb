@@ -21,8 +21,7 @@ class Api::ServersController < ApplicationController
         end
     end
 
-    def update
-         
+    def update 
         @server = Server.find_by(id: params[:server][:id])
         
         if @server.update(name: params[:server][:name])
@@ -63,8 +62,7 @@ class Api::ServersController < ApplicationController
         @server = current_user.owned_servers.find_by(id: params[:id])
          
         if @server.destroy
-             
-            render :show
+            render :destroy
         else
             render json: ["Cannot destroy server"], status: 422
         end

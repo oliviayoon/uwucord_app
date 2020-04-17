@@ -8,9 +8,9 @@ const ServersReducer = (state = {}, action) => {
         case RECEIVE_SERVERS:
             return action.payload.servers;
         case RECEIVE_SERVER:
-            newState[action.payload.server.id] = action.payload.server;
-            return newState;
+            return Object.assign(newState, action.payload.server)
         case REMOVE_SERVER:
+            debugger
             delete newState[action.server]
             return newState;
         case CHANGE_ACTIVE_CHANNEL: 
