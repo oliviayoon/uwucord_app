@@ -25,7 +25,7 @@ class ChannelIndex extends React.Component {
         // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
          
         const modal = currentServer ? (ownerId === currentUser.id ? "editServer" : "leaveServer") : ("")
-        const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)} className="fas fa-paw"><div className="tooltippaw">edit dis sewvew</div></i>
+        const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)} className="fas fa-paw"><div className="tooltippaw">{ownerId === currentUser.id ? "edit dis sewvew" : "leave dis sewvew"}</div></i>
         </>)
         const homeItems = currentServer.name == "Home" ? (<div className="home-channels">
             

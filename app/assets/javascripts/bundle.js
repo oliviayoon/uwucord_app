@@ -821,7 +821,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         className: "fas fa-paw"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tooltippaw"
-      }, "edit dis sewvew")));
+      }, ownerId === currentUser.id ? "edit dis sewvew" : "leave dis sewvew")));
       var homeItems = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-channels"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "DMs are under constwuction ! uwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Check out some servers instead !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
