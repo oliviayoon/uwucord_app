@@ -1,5 +1,5 @@
 json.server do 
-json.partial! "/api/servers/server", server: @server
+    json.partial! "/api/servers/server", server: @server, active_channels: @active_channels
 end
 json.channel do
     if @server.channels.exists?

@@ -121,9 +121,20 @@
     color: white;
     font-size: 14px;
     padding: 20px;
-    
+}
+
+.home-channels > div {
+    margin-bottom: 15px;
 }
 
 .server-header {
     min-height: 48px;
+}
+
+.left-arrow {
+    width: 100px;
+}
+
+.help-text {
+    cursor: pointer;
 }

@@ -52,13 +52,17 @@ li > p {
     font-size: 25px;
 }
 
+.server-home {
+    width: 79px;
+}
+
 .server-name > li:hover, .server-name-active li {
     background-image: linear-gradient(
         to bottom, #faaca8 0%, #6c7fec 100%
     ); 
     border-radius: 16px;
 }
-.server-home > a:hover .server-name-hover {
+.server-home:hover .server-name-hover {
     visibility: visible;
 }
 
@@ -88,7 +92,7 @@ li > p {
 .server-name-hover {
     visibility: hidden;
     width: max-content;
-    min-width: 120px;
+    // min-width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
@@ -98,7 +102,7 @@ li > p {
     line-height: 16px;
     position: absolute;
     z-index: 1;
-    top: 17px;
+    top: 25px;
     left: 80px;
 }
 

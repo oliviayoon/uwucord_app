@@ -4,6 +4,8 @@ class Api::ServersController < ApplicationController
         @server = Server.new(server_params)
         if @server.save
             ServerUser.create!(user_id: current_user.id, server_id: @server.id)
+            @active_channels = {}
+            @active_channels[@server.id] = @server.channels.first.id
             render :show
         else
             render json: @server.errors.full_messages, status: 422
@@ -39,12 +41,15 @@ class Api::ServersController < ApplicationController
         @serverusers = []
         @channels = []
         @messages = []
+        @active_channels = {}
         @servers.each do |server|
-             
+            # debugger
+            @active_channels[server.id] = server.channels.first.id if !server.channels.empty?
             @members += server.members
             @serverusers += server.memberships
             @channels += server.channels
         end
+
         @channels.each do |channel|
             if channel.messages.exists?
                 @messages += channel.messages

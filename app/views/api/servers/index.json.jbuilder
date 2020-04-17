@@ -1,14 +1,7 @@
 json.entities do
     json.servers do
         @servers.each do |server|
-            json.set! server.id do
-                json.partial! "api/servers/server", server: server
-            if server.profile_pic.attached?
-                json.photoUrl url_for(server.profile_pic) 
-            else
-                json.photoUrl ""
-            end
-        end
+                json.partial! "api/servers/server", server: server, active_channels: @active_channels
         end
     end
 

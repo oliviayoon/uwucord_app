@@ -23,8 +23,20 @@ class ServerIndex extends React.Component {
             </div>
             <ul className="server-membership">
                 {publicServers.map(server => <ServerIndexItem key={server.id} server={server} channels={channels.filter(channel => channel.serverId === server.id)} />)}
-                <a className="add-server" onClick={() => this.props.openModal("chooseServer")}><li><p>+</p></li></a>
-                <a className="search-server" onClick={() => this.props.openModal("searchServers")}><li>🕵🏻‍♀️</li></a>
+
+                <div className="divider">
+                </div>
+                <a className=" server-hover add-server" onClick={() => this.props.openModal("chooseServer")}>
+                        <li><p>+</p></li>
+                    <div className="server-name-hover">add a server !</div>
+                </a>
+                {/* <a className="server-hover search-server" onClick={() => this.props.openModal("searchServers")}>
+                    <div className="server-name">
+                        <li><p>P</p></li>
+                    </div>
+                    <div className="server-name-hover">Search Servers</div>
+                </a>
+     */}
             </ul>
             </div>
         )

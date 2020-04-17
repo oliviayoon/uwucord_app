@@ -5,6 +5,7 @@ export const RECEIVE_CHANNEL = "RECEIVE_CHANNEL"
 export const REMOVE_CHANNEL = "REMOVE_CHANNEL"
 export const RECEIVE_CHANNEL_ERRORS = "RECEIVE_CHANNEL_ERRORS"
 export const CLEAR_CHANNEL_ERRORS = "CLEAR_CHANNEL_ERRORS"
+export const CHANGE_ACTIVE_CHANNEL = "CHANGE_ACTIVE_CHANNEL"
 
 const receiveChannels = payload => ({
     type: RECEIVE_CHANNELS,
@@ -19,6 +20,11 @@ const receiveChannel = channel => ({
 const removeChannel = channel => ({
     type: REMOVE_CHANNEL,
     channel
+})
+
+export const changeActiveChannel = (data) => ({
+    type: CHANGE_ACTIVE_CHANNEL,
+    data
 })
 
 const receiveErrors = errors => ({

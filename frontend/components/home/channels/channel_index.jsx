@@ -16,7 +16,7 @@ class ChannelIndex extends React.Component {
     }
 
     render(){
-        const {currentUser, channels, currentServer, openModal } = this.props
+        const {currentUser, channels, currentServer, openModal, changeActiveChannel } = this.props
         const ownerId = currentServer ? currentServer.ownerId : ""
         if (!currentUser) return null;
         if (!currentServer) return null;
@@ -32,10 +32,12 @@ class ChannelIndex extends React.Component {
             DMs are under constwuction ! uwu
             </div>
             <div>
-                Check out a server instead !
+                Check out some servers instead !
+            <img className="left-arrow" src={ window.leftArrow }/>
             </div>
-            <div onClick={() => openModal("userTutorial")}>
-                Open tutorial
+            <div className="help-text" onClick={() => openModal("userTutorial")}>
+                <p>Need some halp ?</p>
+                <p>Check out the tuwutowial~</p>
             </div>
             </div>)
         : (<>
@@ -50,7 +52,7 @@ class ChannelIndex extends React.Component {
         <div className="channel-items">
         {channels.map(channel =>
             <NavLink key={channel.id} to={`/channels/${currentServer.id}/${channel.id}`} activeClassName="channel-name-active">
-                <ChannelIndexItem  channel={channel} ownerId={currentServer.ownerId} openModal={openModal} currentUser={currentUser} />
+                <ChannelIndexItem  channel={channel} ownerId={currentServer.ownerId} openModal={openModal} currentUser={currentUser} changeActiveChannel={changeActiveChannel} />
             </NavLink>
         )}
         </div>

@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/channel_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CHANNELS, RECEIVE_CHANNEL, REMOVE_CHANNEL, RECEIVE_CHANNEL_ERRORS, CLEAR_CHANNEL_ERRORS, clearChannelErrors, createChannel, updateChannel, destroyChannel */
+/*! exports provided: RECEIVE_CHANNELS, RECEIVE_CHANNEL, REMOVE_CHANNEL, RECEIVE_CHANNEL_ERRORS, CLEAR_CHANNEL_ERRORS, CHANGE_ACTIVE_CHANNEL, changeActiveChannel, clearChannelErrors, createChannel, updateChannel, destroyChannel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_CHANNEL", function() { return REMOVE_CHANNEL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CHANNEL_ERRORS", function() { return RECEIVE_CHANNEL_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_CHANNEL_ERRORS", function() { return CLEAR_CHANNEL_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHANGE_ACTIVE_CHANNEL", function() { return CHANGE_ACTIVE_CHANNEL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeActiveChannel", function() { return changeActiveChannel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearChannelErrors", function() { return clearChannelErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createChannel", function() { return createChannel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateChannel", function() { return updateChannel; });
@@ -111,6 +113,7 @@ var RECEIVE_CHANNEL = "RECEIVE_CHANNEL";
 var REMOVE_CHANNEL = "REMOVE_CHANNEL";
 var RECEIVE_CHANNEL_ERRORS = "RECEIVE_CHANNEL_ERRORS";
 var CLEAR_CHANNEL_ERRORS = "CLEAR_CHANNEL_ERRORS";
+var CHANGE_ACTIVE_CHANNEL = "CHANGE_ACTIVE_CHANNEL";
 
 var receiveChannels = function receiveChannels(payload) {
   return {
@@ -130,6 +133,13 @@ var removeChannel = function removeChannel(channel) {
   return {
     type: REMOVE_CHANNEL,
     channel: channel
+  };
+};
+
+var changeActiveChannel = function changeActiveChannel(data) {
+  return {
+    type: CHANGE_ACTIVE_CHANNEL,
+    data: data
   };
 };
 
@@ -788,7 +798,8 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
           currentUser = _this$props.currentUser,
           channels = _this$props.channels,
           currentServer = _this$props.currentServer,
-          openModal = _this$props.openModal;
+          openModal = _this$props.openModal,
+          changeActiveChannel = _this$props.changeActiveChannel;
       var ownerId = currentServer ? currentServer.ownerId : "";
       if (!currentUser) return null;
       if (!currentServer) return null; // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
@@ -803,11 +814,15 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       }));
       var homeItems = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home-channels"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "DMs are under constwuction ! uwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Check out a server instead !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "DMs are under constwuction ! uwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Check out some servers instead !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "left-arrow",
+        src: window.leftArrow
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-text",
         onClick: function onClick() {
           return openModal("userTutorial");
         }
-      }, "Open tutorial")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Need some halp ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check out the tuwutowial~"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "invite-friends",
@@ -834,7 +849,8 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
           channel: channel,
           ownerId: currentServer.ownerId,
           openModal: openModal,
-          currentUser: currentUser
+          currentUser: currentUser,
+          changeActiveChannel: changeActiveChannel
         }));
       }))));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -882,6 +898,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _channel_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./channel_index */ "./frontend/components/home/channels/channel_index.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_channel_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/channel_actions */ "./frontend/actions/channel_actions.js");
+
 
 
 
@@ -906,6 +924,9 @@ var mdp = function mdp(dispatch) {
     },
     openModal: function openModal(modal) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])(modal));
+    },
+    changeActiveChannel: function changeActiveChannel(data) {
+      return dispatch(Object(_actions_channel_actions__WEBPACK_IMPORTED_MODULE_4__["changeActiveChannel"])(data));
     }
   };
 };
@@ -935,9 +956,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -949,12 +970,24 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(ChannelIndexItem, _React$Component);
 
   function ChannelIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, ChannelIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ChannelIndexItem).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChannelIndexItem).call(this, props));
+    _this.handleClickChannel = _this.handleClickChannel.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ChannelIndexItem, [{
+    key: "handleClickChannel",
+    value: function handleClickChannel() {
+      this.props.changeActiveChannel({
+        serverId: this.props.channel.serverId,
+        channelId: this.props.channel.id
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -969,11 +1002,12 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "fas fa-star"
       }) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "channel-item-info"
+        className: "channel-item-info",
+        onClick: this.handleClickChannel
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-title-text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-hashtag"
+        className: "fas fa-hashtag"
       }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, channel.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, edit));
     }
   }]);
@@ -2098,17 +2132,16 @@ var ServerIndex = /*#__PURE__*/function (_React$Component) {
             return channel.serverId === server.id;
           })
         });
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "divider"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "add-server",
+        className: " server-hover add-server",
         onClick: function onClick() {
           return _this.props.openModal("chooseServer");
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "+"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "search-server",
-        onClick: function onClick() {
-          return _this.props.openModal("searchServers");
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "\uD83D\uDD75\uD83C\uDFFB\u200D\u2640\uFE0F"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "+")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "server-name-hover"
+      }, "add a server !"))));
     }
   }]);
 
@@ -2186,11 +2219,10 @@ var ServerIndexItem = function ServerIndexItem(_ref) {
     src: server.photoUrl
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, server.name[0]));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-    to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id),
+    to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id, "/").concat(server.activeChannel),
     activeClassName: "server-name-active",
     className: "server-hover"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: server.name === "Home" ? '/channels/@me' : "/channels/".concat(server.id, "/").concat(channels[0].id),
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "server-name"
   }, icon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "server-name-hover"
@@ -3401,6 +3433,8 @@ var ServerUsersReducer = function ServerUsersReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/server_actions */ "./frontend/actions/server_actions.js");
+/* harmony import */ var _actions_channel_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/channel_actions */ "./frontend/actions/channel_actions.js");
+
 
 
 var ServersReducer = function ServersReducer() {
@@ -3419,6 +3453,10 @@ var ServersReducer = function ServersReducer() {
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SERVER"]:
       delete newState[action.server];
+      return newState;
+
+    case _actions_channel_actions__WEBPACK_IMPORTED_MODULE_1__["CHANGE_ACTIVE_CHANNEL"]:
+      newState[action.data.serverId].activeChannel = action.data.channelId;
       return newState;
 
     default:

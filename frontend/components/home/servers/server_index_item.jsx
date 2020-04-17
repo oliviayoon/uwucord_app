@@ -10,10 +10,10 @@ const ServerIndexItem = ({server, channels}) => {
     </li>)
      
     return (
-        <NavLink to={ server.name === "Home" ? ('/channels/@me') : (`/channels/${server.id}`)} activeClassName="server-name-active" className="server-hover">
-            <Link to={ server.name=== "Home" ? ('/channels/@me') : (`/channels/${server.id}/${channels[0].id}`)} className="server-name" >
+        <NavLink to={ server.name === "Home" ? ('/channels/@me') : (`/channels/${server.id}/${server.activeChannel}`)} activeClassName="server-name-active" className="server-hover">
+            <div className="server-name" >
                 {icon}
-            </Link>
+            </div>
             <div className="server-name-hover">{server.name}</div>
         </NavLink> 
     )
