@@ -8,5 +8,7 @@ json.set! server.id do
     json.activeChannel active_channels[server.id] || 0
     if server.profile_pic.attached?
       json.photoUrl url_for(server.profile_pic)
+      else
+      json.photoUrl ""
     end
 end

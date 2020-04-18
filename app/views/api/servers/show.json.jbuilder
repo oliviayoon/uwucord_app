@@ -11,3 +11,10 @@ json.user do
     json.partial! "/api/server_users/serveruser", serveruser: @server.memberships.first
     end
 end
+json.users do
+    @server.members.each do |member|
+        json.set! member.id do
+            json.partial! "/api/users/user", user: member
+        end
+    end
+end

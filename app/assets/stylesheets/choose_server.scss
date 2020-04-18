@@ -53,15 +53,19 @@
 .choose-opt-button {
     box-sizing: border-box;
     color: white;
-    border: 1px solid rgba(0,0,0,0.3);
+    // border: 1px solid rgba(0,0,0,0.3);
     height: 44px;
-    margin-top: 30px;
-    
+    margin-top: 15px;
 }
 
 .choose-opt-button.cr {
     background-color: #6c7fec;
-    
+    box-shadow: 0 9px #5364c9
+}
+
+.choose-opt-button.cr:active {
+    box-shadow: 0 5px #5364c9;
+    transform: translateY(4px);
 }
 
 .cweate.tooltiptext, .join.tooltiptext {
@@ -78,7 +82,15 @@
 
 .choose-opt-button.jo {
     background-color: #faaca8;
+    box-shadow: 0 9px #e08681;
 }
+
+
+.choose-opt-button.jo:active {
+    box-shadow: 0 5px #e08681;
+    transform: translateY(4px);
+}
+
 
 .tooltip .tooltiptext {
     visibility: hidden;

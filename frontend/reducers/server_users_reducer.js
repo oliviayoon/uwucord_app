@@ -17,6 +17,7 @@ const ServerUsersReducer =  (state = {}, action) => {
         //    return newState; 
         return action.payload.serverUsers        
         case RECEIVE_SERVER:
+        debugger
         let newState = Object.assign({}, state)
         newState[action.payload.user.id] = action.payload.user
         return newState

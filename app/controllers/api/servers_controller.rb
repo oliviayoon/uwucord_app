@@ -27,6 +27,8 @@ class Api::ServersController < ApplicationController
         if @server.update(name: params[:server][:name])
             @server.profile_pic.purge
             @server.profile_pic.attach(params[:server][:profile_pic])
+            @active_channels = {}
+            @active_channels[@server.id] = @server.channels.first.id
             render :show
         else
             render json: ["Could not update server details"], status: 422
@@ -72,6 +74,8 @@ class Api::ServersController < ApplicationController
          
         if @server
             ServerUser.create!(user_id: current_user.id, server_id: @server.id)
+            @active_channels = {}
+            @active_channels[@server.id] = @server.channels.first.id
             render :show
         else
             
@@ -84,7 +88,7 @@ class Api::ServersController < ApplicationController
         @server = current_user.servers.find_by(id: params[:serverId])
         if @server && @server.owner_id != current_user.id
             @server.members.delete(current_user)
-            render :show
+            render :destroy
         else
             render json: ['Unable to leave server, please remove server instead!'], status: 400
         end

@@ -3,6 +3,7 @@ import ServerMember from './server_member'
 
 const msp = (state, ownProps) => {
     const currentServerId = ownProps.match.params.id
+    // debugger
     return ({
         currentServer: state.entities.servers[currentServerId],
         serverUsers: Object.values(state.entities.serverUsers).filter(serverUser => serverUser.serverId === parseInt(currentServerId))

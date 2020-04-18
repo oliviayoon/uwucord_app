@@ -10,6 +10,8 @@ const userReducer = (state = {}, action) => {
             return newState
         case RECEIVE_SERVERS:
             return action.payload.users
+        case RECEIVE_SERVER:
+            return Object.assign({}, newState, action.payload.users)
         default:
             return state;
     }

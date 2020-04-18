@@ -397,7 +397,7 @@ var updateServer = function updateServer(server) {
     return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["updateServer"](server).then(function (server) {
       return dispatch(receiveServer(server));
     }, function (errors) {
-      return dispatch(reeiveErrors(errors));
+      return dispatch(receiveErrors(errors));
     });
   };
 };
@@ -413,7 +413,7 @@ var joinServer = function joinServer(serverInvite) {
 var leaveServer = function leaveServer(serverId) {
   return function (dispatch) {
     return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["leaveServer"](serverId).then(function (server) {
-      return dispatch(removeServer(server));
+      return dispatch(removeServer(serverId));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
     });
@@ -2332,7 +2332,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  var currentServerId = ownProps.match.params.id;
+  var currentServerId = ownProps.match.params.id; // debugger
+
   return {
     currentServer: state.entities.servers[currentServerId],
     serverUsers: Object.values(state.entities.serverUsers).filter(function (serverUser) {
@@ -3427,6 +3428,7 @@ var ServerUsersReducer = function ServerUsersReducer() {
       return action.payload.serverUsers;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
+      debugger;
       var newState = Object.assign({}, state);
       newState[action.payload.user.id] = action.payload.user;
       return newState;
@@ -3465,10 +3467,10 @@ var ServersReducer = function ServersReducer() {
       return action.payload.servers;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
+      debugger;
       return Object.assign(newState, action.payload.server);
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SERVER"]:
-      debugger;
       delete newState[action.server];
       return newState;
 
@@ -3605,6 +3607,9 @@ var userReducer = function userReducer() {
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVERS"]:
       return action.payload.users;
+
+    case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVER"]:
+      return Object.assign({}, newState, action.payload.users);
 
     default:
       return state;

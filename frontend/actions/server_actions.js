@@ -43,10 +43,10 @@ export const deleteServer = (serverId) => dispatch => ServerAPIUtil.deleteServer
     .then((server) => dispatch(removeServer(serverId)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const updateServer = (server) => dispatch => ServerAPIUtil.updateServer(server)
-    .then(server =>dispatch(receiveServer(server)),errors => dispatch(reeiveErrors(errors)))
+    .then(server =>dispatch(receiveServer(server)),errors => dispatch(receiveErrors(errors)))
 
 export const joinServer = (serverInvite) => dispatch => ServerAPIUtil.joinServer(serverInvite)
     .then(server => dispatch(receiveServer(server)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const leaveServer = serverId => dispatch => ServerAPIUtil.leaveServer(serverId)
-    .then(server => dispatch(removeServer(server)), errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then(server => dispatch(removeServer(serverId)), errors => dispatch(receiveErrors(errors.responseJSON)))

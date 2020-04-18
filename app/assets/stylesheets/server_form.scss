@@ -134,10 +134,18 @@ background-image: linear-gradient(
     height: 40px;
 }
 
+.Create-button:hover {
+    background-color: #5364c9;
+}
+
 .Edit-button {
     background-color: #80da56;
     color: white;
     height: 40px;
+}
+
+.Edit-button:hover {
+    background-color: #6ccc40;
 }
 
 .far.fa-hand-point-left {
@@ -170,6 +178,10 @@ background-image: linear-gradient(
     background-color: #faaca8;
     color: white;
     height: 40px;
+}
+
+.join-button:hover {
+    background-color: #e08681;
 }
 
 .join-text {
