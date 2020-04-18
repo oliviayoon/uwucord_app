@@ -8,10 +8,10 @@ const ServersReducer = (state = {}, action) => {
         case RECEIVE_SERVERS:
             return action.payload.servers;
         case RECEIVE_SERVER:
-            debugger
+
             return Object.assign(newState, action.payload.server)
         case REMOVE_SERVER:
-            debugger
+
             let server = Object.values(action.data.server)[0]
             delete newState[server.id]
             return newState;

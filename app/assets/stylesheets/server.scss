@@ -10,6 +10,12 @@
     background-color: #36393F;
 }
 
+.server-membership {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
 .server-home > a, .server-membership > a {
     /* padding: 15px; */
     position: relative;
@@ -54,6 +60,10 @@ li > p {
 
 .server-home {
     width: 79px;
+}
+
+.server-name {
+    // height: 55px;
 }
 
 .server-name > li:hover, .server-name-active li {

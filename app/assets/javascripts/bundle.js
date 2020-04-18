@@ -2242,7 +2242,7 @@ var ServerIndexItem = function ServerIndexItem(_ref) {
     activeClassName: "server-name-active",
     className: "server-hover"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "server-name"
+    className: server.photoUrl ? "server-name without" : "server-name"
   }, icon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "server-name-hover"
   }, server.name));
@@ -2298,7 +2298,6 @@ var ServerMember = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var serverUsers = this.props.serverUsers;
-      debugger;
       var header = serverUsers.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "member-header"
       }, "memebwers (\u2445\u02D8\uA4B3\u02D8)") : "";
@@ -2334,7 +2333,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state, ownProps) {
   var currentServerId = ownProps.match.params.id;
-  debugger;
   return {
     currentServer: state.entities.servers[currentServerId],
     serverUsers: Object.values(state.entities.serverUsers).filter(function (serverUser) {
@@ -3420,14 +3418,9 @@ var ServerUsersReducer = function ServerUsersReducer() {
       return action.payload.serverUsers;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
-      // debugger
-      // let newState = Object.assign({}, state)
-      // newState[action.payload.user.id] = action.payload.user
-      // debugger
       return Object.assign({}, state, action.payload.serverMembers);
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SERVER"]:
-      debugger;
       var newState = Object.assign({}, state);
       var serverMember = Object.values(action.data.serverMember)[0];
       delete newState[serverMember.id];
@@ -3467,11 +3460,9 @@ var ServersReducer = function ServersReducer() {
       return action.payload.servers;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SERVER"]:
-      debugger;
       return Object.assign(newState, action.payload.server);
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_SERVER"]:
-      debugger;
       var server = Object.values(action.data.server)[0];
       delete newState[server.id];
       return newState;
@@ -3611,7 +3602,6 @@ var userReducer = function userReducer() {
       return action.payload.users;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVER"]:
-      debugger;
       return Object.assign({}, state, action.payload.users);
 
     default:
