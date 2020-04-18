@@ -1,7 +1,7 @@
 .invite-friends-form {
-    background-color: white;
+    background: linear-gradient(to bottom, #faaca8 0%, #6c7fec 100%);
     width: 450px;
-    height: 200px;
+    height: 350px;
     box-sizing: border-box;
     padding-top: 15px;
     border-radius: 10px;
@@ -15,16 +15,57 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0px 40px 0;
-    text-align: center;
+    padding: 0px 10px 0;
+    text-align: left;
+}
+ 
+.invite-friends-container > img {
+    height: 200px;
 }
 
 .invite-friends-container > h1 {
-    color: #faaca8;
+    color: white;
 }
 
-.invite-friends-container p {
+/* .invite-friends-container p {
     color: #9d93a3;
     margin-top: 20px;
     font-size: 40px;
+    text-align: center;
+} */
+
+.invite-token {
+    box-sizing: border-box;
+    padding: 15px;
+    /* margin-top: 20px; */
+    height: 50px;
+    margin-top: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 20px;
+    align-self: center;
+    font-weight: lighter;
+    border-style: inset;
+    text-align: center;
+    width: 69%;
+    cursor: pointer;
+}
+
+.invite-token-container {
+    display: flex;
+    justify-content: center;
+}
+
+.invite-token-container:hover .tooltiparrow {
+    display: block;
+    margin-left: 0px;
+    margin-top: -20px;
+}
+
+.invite-flavor {
+    align-self: center;
+    margin-top: 10px;
+    color: white;
 }

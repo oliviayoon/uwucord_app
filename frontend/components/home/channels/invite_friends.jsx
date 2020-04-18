@@ -2,18 +2,41 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom'
 
-const InviteFriendsForm = ({currentServer}) => {
+class InviteFriendsForm extends React.Component{
 
-    return(
-        <div className="invite-friends-form">
-            <div className="invite-friends-container">
-            <img src={window.serverKeyInvite}/>
-            <h1>invwite ur fwends with dis invite tokwen!</h1>
-            <p>{currentServer.invite}</p>
-            </div>
-        </div>
-    )
-}
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e){
+        e.preventDefault();
+        const invite = document.getElementById("server-invite-token");
+        invite.select();
+        document.execCommand('copy');
+        const copy = document.getElementById("copy-text")
+        copy.textContent = "copwied ! òwó"
+        
+    }
+
+    render(){
+        const {currentServer} = this.props
+            return(
+                <div className="invite-friends-form">
+                    <div className="invite-friends-container">
+                    <h1>invwite fwends to {currentServer.name}</h1>
+                    <img src={window.serverKeyInvite}/>
+                        <p className="invite-flavor" >shware wif ne1 u want to gwant accwess to yer server ~</p>
+                    <div className="invite-token-container">
+                        <input onClick={this.handleClick} readOnly id="server-invite-token" className="invite-token" value={currentServer.invite}/>
+                        <div id="copy-text" className="tooltiparrow">click 2 copeh</div>
+                    </div>
+                    </div>
+                </div>
+            )
+    }
+} 
+
 
 const msp = (state, ownProps) => ({
     currentServer: state.entities.servers[ownProps.location.pathname.split("/")[2]]

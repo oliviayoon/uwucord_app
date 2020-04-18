@@ -4,7 +4,7 @@ end
 json.channel do
     if @server.channels.exists?
     json.partial! "/api/channels/channel", channel: @server.channels.first
-end
+    end
 end
 
 json.serverMembers do

@@ -791,16 +791,12 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(ChannelIndex, [{
     key: "handleLogout",
     value: function handleLogout() {
-      var _this2 = this;
-
-      this.props.logout().then(function () {
-        return _this2.props.history.push("/");
-      });
+      this.props.logout();
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
@@ -849,7 +845,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "text channews :3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-fish",
         onClick: function onClick() {
-          return _this3.props.openModal("addChannel");
+          return _this2.props.openModal("addChannel");
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tooltiparrow"
@@ -1103,20 +1099,80 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
 
-var InviteFriendsForm = function InviteFriendsForm(_ref) {
-  var currentServer = _ref.currentServer;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "invite-friends-form"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "invite-friends-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.serverKeyInvite
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "invwite ur fwends with dis invite tokwen!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.invite)));
-};
+
+var InviteFriendsForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(InviteFriendsForm, _React$Component);
+
+  function InviteFriendsForm(props) {
+    var _this;
+
+    _classCallCheck(this, InviteFriendsForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(InviteFriendsForm).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(InviteFriendsForm, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      var invite = document.getElementById("server-invite-token");
+      invite.select();
+      document.execCommand('copy');
+      var copy = document.getElementById("copy-text");
+      copy.textContent = "copwied ! òwó";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var currentServer = this.props.currentServer;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invite-friends-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invite-friends-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "invwite fwends to ", currentServer.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.serverKeyInvite
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "invite-flavor"
+      }, "shware wif ne1 u want to gwant accwess to yer server ~"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invite-token-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onClick: this.handleClick,
+        readOnly: true,
+        id: "server-invite-token",
+        className: "invite-token",
+        value: currentServer.invite
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "copy-text",
+        className: "tooltiparrow"
+      }, "click 2 copeh"))));
+    }
+  }]);
+
+  return InviteFriendsForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state, ownProps) {
   return {
