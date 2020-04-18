@@ -11,7 +11,9 @@ const ServersReducer = (state = {}, action) => {
             debugger
             return Object.assign(newState, action.payload.server)
         case REMOVE_SERVER:
-            delete newState[action.server]
+            debugger
+            let server = Object.values(action.data.server)[0]
+            delete newState[server.id]
             return newState;
         case CHANGE_ACTIVE_CHANNEL: 
             newState[action.data.serverId].activeChannel = action.data.channelId;

@@ -16,9 +16,9 @@ const receiveServer = payload => ({
     payload
 })
 
-const removeServer = server => ({
+const removeServer = data => ({
     type: REMOVE_SERVER,
-    server
+    data
 
 })
 
@@ -40,7 +40,7 @@ export const createServer = (server) => dispatch => ServerAPIUtil.createServer(s
     .then(server => dispatch(receiveServer(server)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const deleteServer = (serverId) => dispatch => ServerAPIUtil.deleteServer(serverId)
-    .then((server) => dispatch(removeServer(serverId)), errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then((data) => dispatch(removeServer(data)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const updateServer = (server) => dispatch => ServerAPIUtil.updateServer(server)
     .then(server =>dispatch(receiveServer(server)),errors => dispatch(receiveErrors(errors)))
@@ -49,4 +49,4 @@ export const joinServer = (serverInvite) => dispatch => ServerAPIUtil.joinServer
     .then(server => dispatch(receiveServer(server)), errors => dispatch(receiveErrors(errors.responseJSON)))
 
 export const leaveServer = serverId => dispatch => ServerAPIUtil.leaveServer(serverId)
-    .then(server => dispatch(removeServer(serverId)), errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then(data => dispatch(removeServer(data)), errors => dispatch(receiveErrors(errors.responseJSON)))

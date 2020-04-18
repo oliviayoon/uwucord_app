@@ -61,8 +61,9 @@ class Api::ServersController < ApplicationController
 
     def destroy
         @server = current_user.owned_servers.find_by(id: params[:id])
-         
+        @server_membership = @server.memberships.find_by(user_id: current_user.id)
         if @server.destroy
+           @active_channels = 0
             render :destroy
         else
             render json: ["Cannot destroy server"], status: 422
@@ -87,6 +88,9 @@ class Api::ServersController < ApplicationController
     def leave 
         @server = current_user.servers.find_by(id: params[:serverId])
         if @server && @server.owner_id != current_user.id
+            @server_membership = @server.memberships.find_by(user_id: current_user.id)
+            @active_channels = {}
+            @active_channels = @server.channels.first.id
             @server.members.delete(current_user)
             render :destroy
         else

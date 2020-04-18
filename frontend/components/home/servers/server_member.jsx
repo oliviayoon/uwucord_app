@@ -8,6 +8,7 @@ class ServerMember extends React.Component {
 
     render(){
         const {serverUsers} = this.props
+        debugger
          
         const header = serverUsers.length ? (<h1 className="member-header">memebwers (⑅˘꒳˘)</h1>) : ("")
         return (

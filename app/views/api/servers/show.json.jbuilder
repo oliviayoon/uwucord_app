@@ -6,11 +6,17 @@ json.channel do
     json.partial! "/api/channels/channel", channel: @server.channels.first
 end
 end
-json.user do
+
+json.serverMembers do
     if @server.memberships.exists?
-    json.partial! "/api/server_users/serveruser", serveruser: @server.memberships.first
+        @server.memberships.each do |membership|
+            json.set! membership.id do
+                json.partial! "/api/server_users/serveruser", serveruser: membership
+            end
+        end
     end
 end
+
 json.users do
     @server.members.each do |member|
         json.set! member.id do
