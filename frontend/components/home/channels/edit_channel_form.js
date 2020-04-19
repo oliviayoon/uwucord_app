@@ -21,7 +21,6 @@ const mdp = dispatch => ({
     destroyChannel: channelId => dispatch(destroyChannel(channelId)),
     closeModal: () => dispatch(closeModal()),
     clearChannelErrors: () => dispatch(clearChannelErrors())
-
 })
 
 export default withRouter(connect(msp,mdp)(ChannelForm))

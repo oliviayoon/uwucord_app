@@ -11,6 +11,7 @@ import AddChannelForm from './home/channels/add_channel_form';
 import EditChannelForm from './home/channels/edit_channel_form';
 import InviteFriendsform from './home/channels/invite_friends';
 import Tutorial from './home/tutorial';
+import EditUser from './home/user/edit_user';
 
 
 function Modal({modal, closeModal}) {
@@ -48,6 +49,9 @@ function Modal({modal, closeModal}) {
             break;
         case 'userTutorial':
             component = <Tutorial />
+            break;
+        case 'editUser':
+            component = <EditUser />
             break;
         default:
             return null;

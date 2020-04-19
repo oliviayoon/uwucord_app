@@ -12,6 +12,19 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def update
+        @user = User.find_by(id: params[:user][:id])
+        if @user.update(username: params[:user][:username])
+            if !params[:user][:profile_pic].nil?
+                @user.profile_pic.purge
+                @user.profile_pic.attach(params[:user][:profile_pic])
+            end
+            render :show
+        else
+            render json: ["Could not update user details"], status: 422
+        end
+    end
+
     def show
         @user = User.find_by(id: params[:id])
         render :show

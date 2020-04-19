@@ -26,7 +26,6 @@ class ChannelIndex extends React.Component {
         const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)} className="fas fa-paw"><div className="tooltippaw">{ownerId === currentUser.id ? "edit dis sewvew" : "leave dis sewvew"}</div></i>
         </>)
         const homeItems = currentServer.name == "Home" ? (<div className="home-channels">
-            
             <div>
             DMs are under constwuction ! uwu
             </div>
@@ -49,7 +48,7 @@ class ChannelIndex extends React.Component {
         <div className="channel-list-container">
             <div className="channel-options">
             <h1>text channews :3</h1>
-            <i className="fas fa-fish" onClick={() => this.props.openModal("addChannel")}>
+            <i className="fas fa-fish" onClick={() => openModal("addChannel")}>
             <div className="tooltiparrow">add a channew</div>                
             </i>
         </div>
@@ -62,6 +61,8 @@ class ChannelIndex extends React.Component {
         </div>
         </div>
          </>)
+
+        const icon = currentUser.imageUrl ? (<img className="user-profile" src={currentUser.imageUrl} height="15"></img>) :  (<div className="user-profile">{currentUser.username[0]}</div>)
         return(
             <div className="channel-info">
                 <div className="server-header">
@@ -73,10 +74,13 @@ class ChannelIndex extends React.Component {
                 {homeItems}
             </div>
             <div className="user-info">
-                    <div className="user-profile">{currentUser.username[0]}</div>
-                <div className="user-text">
+                    
+                <div className="user-text-container" onClick={() => openModal("editUser")}>
+                    {icon}
+                    <div className="user-text">
                     <p className="username">{currentUser.username}</p>
                     <p className="user-num">#{currentUser.userNumber}</p>
+                    </div>
                 </div>
             <button className="logout" onClick={this.handleLogout}>w-wog out ? ;w;</button>
             </div>
