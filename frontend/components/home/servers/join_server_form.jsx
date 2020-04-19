@@ -35,7 +35,6 @@ class JoinServerForm extends React.Component {
          
         this.props.processForm(this.state.invite) // formData
             .then(res => {
-                debugger
                 this.props.closeModal();
                 this.props.history.push(`/channels/${Object.keys(res.payload.server)[0]}/${Object.values(res.payload.channels)[0].id}`)
             })

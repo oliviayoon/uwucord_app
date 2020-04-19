@@ -21,7 +21,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: { scope: :user_number }
     validates :password, length: {minimum: 6, allow_nil: true}
 
-    after_initialize :ensure_session_token, :ensure_user_number, :ensure_image
+    after_initialize :ensure_session_token, :ensure_user_number
     after_create :generate_home_server
     
     has_one_attached :profile_pic
@@ -33,31 +33,24 @@ class User < ApplicationRecord
 
     has_many :messages,
     foreign_key: :author_id,
-    class_name: :Message
+    class_name: :Message,
+    dependent: :destroy
 
     has_many :memberships,
     foreign_key: :user_id,
-    class_name: :ServerUser,
-    dependent: :destroy
-
-    # has_many :joined_servers,
-    # through: :memberships,
-    # source: :server
-
-    # def servers
-    #     self.joined_servers + self.owned_servers
-    # end
+    class_name: :ServerUser
 
     has_many :servers,
     through: :memberships,
-    source: :server
+    source: :server,
+    dependent: :destroy
 
-    def ensure_image
-        unless self.profile_pic.attached?
-            file = open('https://uwucord-seed.s3-us-west-1.amazonaws.com/user-profile-pic.png')
-            self.profile_pic.attach(io: file, filename: 'user-profile-pic.png')
-        end
-    end
+    # def ensure_image
+    #     unless self.profile_pic.attached?
+    #         file = open('https://uwucord-seed.s3-us-west-1.amazonaws.com/user-profile-pic.png')
+    #         self.profile_pic.attach(io: file, filename: 'user-profile-pic.png')
+    #     end
+    # end
 
     def self.find_by_creds(email, password)
         user = User.find_by(email: email)
@@ -81,7 +74,6 @@ class User < ApplicationRecord
     def generate_home_server
         @server = Server.create!(name: "Home", private: true, owner_id: self.id)
         ServerUser.create!(user_id: self.id, server_id: @server.id)
-
     end
 
     def ensure_session_token

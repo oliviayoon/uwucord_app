@@ -1382,7 +1382,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         value: this.state.body
       });
       var channelHeader = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fas fa-hashtag"
+        className: "fas fa-hashtag"
       }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, channel.name));
       var serverMembers = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "members-list"
@@ -1749,8 +1749,6 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.processForm(this.state.invite) // formData
       .then(function (res) {
-        debugger;
-
         _this2.props.closeModal();
 
         _this2.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(Object.values(res.payload.channels)[0].id));
@@ -2030,7 +2028,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       .then(function (res) {
         _this3.props.closeModal();
 
-        _this3.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(res.payload.channel.id));
+        _this3.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(Object.values(res.payload.channels)[0].id));
       });
     }
   }, {

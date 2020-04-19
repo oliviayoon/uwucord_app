@@ -15,7 +15,7 @@ class Server < ApplicationRecord
     validates :private, inclusion: { in: [true, false] }
     validates :invite, uniqueness: true
 
-    after_initialize :generate_invite
+    after_initialize :generate_invite, :ensure_image
     after_create :default_channel
 
     belongs_to :owner,
@@ -27,18 +27,26 @@ class Server < ApplicationRecord
 
     has_many :channel_messages,
     through: :channels,
-    source: :messages
+    source: :messages,
+    dependent: :destroy
 
     has_many :memberships,
     foreign_key: :server_id,
-    class_name: :ServerUser,
-    dependent: :destroy
+    class_name: :ServerUser
 
     has_many :members,
     through: :memberships,
-    source: :user
+    source: :user,
+    dependent: :destroy
 
     has_one_attached :profile_pic
+
+    def ensure_image
+        unless self.profile_pic.attached?
+            file = open('https://uwucord-seed.s3-us-west-1.amazonaws.com/user-profile-pic.png')
+            self.profile_pic.attach(io: file, filename: 'user-profile-pic.png')
+        end
+    end
 
     def generate_invite
         return if self.invite
