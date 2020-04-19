@@ -2788,9 +2788,7 @@ var Listener = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var serverIds = this.props.serverIds;
-      console.log(serverIds);
       this.chats = serverIds.map(function (id) {
-        console.log(id);
         return App.cable.subscriptions.create({
           channel: "MessageChannel",
           server: id

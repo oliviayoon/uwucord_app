@@ -33,9 +33,7 @@ class Listener extends React.Component {
 
     createSockets() {
         let serverIds = this.props.serverIds;
-        console.log(serverIds)
         this.chats = serverIds.map(id => {
-            console.log(id)
             return App.cable.subscriptions.create(
                 {
                     channel: "MessageChannel",
