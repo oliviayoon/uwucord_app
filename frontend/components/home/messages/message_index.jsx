@@ -12,6 +12,11 @@ class MessageIndex extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentDidUpdate(){
+        const messageBox = document.getElementById("messages-text-inner")
+        messageBox.scrollTo({left: 0, top: messageBox.scrollHeight, behavior: "smooth"})
+    }
+
     handleChange(){
         return e => this.setState({body: e.currentTarget.value})
     }
@@ -42,7 +47,7 @@ class MessageIndex extends React.Component {
                 </div>
                 <div className="messages-members-container">
                     <div className="messages-text">
-                        <div className="messages-text-inner">
+                        <div className="messages-text-inner" id="messages-text-inner">
                             {messageItems}
                         </div>
                         <div className="message-text-container">

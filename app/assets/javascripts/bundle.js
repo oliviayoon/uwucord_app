@@ -1392,6 +1392,16 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(MessageIndex, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var messageBox = document.getElementById("messages-text-inner");
+      messageBox.scrollTo({
+        left: 0,
+        top: messageBox.scrollHeight,
+        behavior: "smooth"
+      });
+    }
+  }, {
     key: "handleChange",
     value: function handleChange() {
       var _this2 = this;
@@ -1457,7 +1467,8 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messages-text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "messages-text-inner"
+        className: "messages-text-inner",
+        id: "messages-text-inner"
       }, messageItems), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-text-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
