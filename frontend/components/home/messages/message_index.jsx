@@ -33,7 +33,7 @@ class MessageIndex extends React.Component {
             </div>)
         const messageItems = !messages ? ("") :
             (<div className="chat-messages">
-                {messages.map(message => <MessageIndexItem key={message.id} message={message} users={users}/>)}
+                {messages.map(message => <MessageIndexItem key={message.id} message={message} users={users}/>)} 
             </div>)
         return(
             <div className="messages-content">
@@ -42,14 +42,14 @@ class MessageIndex extends React.Component {
                 </div>
                 <div className="messages-members-container">
                     <div className="messages-text">
-                    <div className="messages-text-inner">
-                        {messageItems}
-                        <div className="message-text-container">
-                            <form className="message-form" onSubmit={this.handleSubmit}>
-                            {messagesContainer}
-                            </form>
+                        <div className="messages-text-inner">
+                            {messageItems}
                         </div>
-                    </div>
+                        <div className="message-text-container">
+                                <form className="message-form" onSubmit={this.handleSubmit}>
+                                {messagesContainer}
+                                </form>
+                        </div>
                     </div>
                 {serverMembers}
                 </div>

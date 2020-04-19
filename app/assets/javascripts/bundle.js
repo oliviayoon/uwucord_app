@@ -1409,12 +1409,12 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         className: "messages-text"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "messages-text-inner"
-      }, messageItems, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, messageItems), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-text-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "message-form",
         onSubmit: this.handleSubmit
-      }, messagesContainer)))), serverMembers));
+      }, messagesContainer))), serverMembers));
     }
   }]);
 

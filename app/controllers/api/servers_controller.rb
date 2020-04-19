@@ -25,10 +25,19 @@ class Api::ServersController < ApplicationController
         @server = Server.find_by(id: params[:server][:id])
         
         if @server.update(name: params[:server][:name])
-            @server.profile_pic.purge
-            @server.profile_pic.attach(params[:server][:profile_pic])
+            
+            if !params[:server][:profile_pic].nil?
+                @server.profile_pic.purge
+                @server.profile_pic.attach(params[:server][:profile_pic])
+            end
             @active_channels = {}
             @active_channels[@server.id] = @server.channels.first.id
+            @messages = []
+            @server.channels.each do |channel|
+                if channel.messages.exists?
+                    @messages += channel.messages
+                end
+            end
             render :show
         else
             render json: ["Could not update server details"], status: 422

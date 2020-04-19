@@ -2,9 +2,9 @@
     display: flex;
     /* width: 100%; */
     flex: 1;
-    flex-direction: column;
-    align-items: stretch;
-    max-width: calc(100% - 240px);
+    /* flex-direction: column; */
+    /* align-items: stretch; */
+    /* max-width: calc(100% - 240px); */
     overflow: hidden;
 }
 
@@ -75,15 +75,11 @@
 
 .messages-text {
     /* flex-grow: 1; */
-    height: 100%;
-    min-height: 100%;
-    max-height: 100%;
     background-color: #36393F;
     position: relative;
     display: flex;
     width: 100%;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: flex-end;
 
 }
@@ -133,6 +129,7 @@
     left: 20px;
     right: 5px;
     bottom: 50px;
+    margin-top: 47px;
 }
 
 .message-body-text {
@@ -159,4 +156,5 @@
 
 .messages-text-inner {
     position: relative;
+    overflow:auto;
 }
