@@ -31,7 +31,10 @@ class MessageIndex extends React.Component {
         const serverMembers = !channel ? ("") : (<div className="members-list">
             <Route to="/:id" component={ServerMemberContainer} />
             </div>)
-        const messageItems = !messages ? ("") : (<div className="chat-messages"> {messages.map(message => <MessageIndexItem key={message.id} message={message} users={users}/>)}</div>)
+        const messageItems = !messages ? ("") :
+            (<div className="chat-messages">
+                {messages.map(message => <MessageIndexItem key={message.id} message={message} users={users}/>)}
+            </div>)
         return(
             <div className="messages-content">
                 <div className="channel-header">

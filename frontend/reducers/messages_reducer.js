@@ -6,17 +6,14 @@ const MessagesReducer = (state = {}, action) => {
    let newState = Object.assign({}, state)
     switch (action.type) {
         case RECEIVE_SERVERS:
-             
             if (typeof action.payload.messages === "undefined") return {}
             return action.payload.messages
-        // case RECEIVE_SERVER:
-        //     newState[action.payload.message.id] = action.payload.message
-        //     return newState
         case RECEIVE_MESSAGE:
             newState[action.message.id] = action.message
             return newState
-        case REMOVE_MESSAGE:
-             
+        case RECEIVE_SERVER:
+            return Object.assign(newState, action.payload.messages)
+        case REMOVE_MESSAGE:    
             delete newState[action.message]
             return newState
         default:

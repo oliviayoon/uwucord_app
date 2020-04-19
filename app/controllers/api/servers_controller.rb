@@ -36,7 +36,6 @@ class Api::ServersController < ApplicationController
     end
 
     def index
-
         @servers = current_user.servers
         @members = []
         @serverusers = []
@@ -71,12 +70,17 @@ class Api::ServersController < ApplicationController
     end
 
     def join
-        @server = Server.find_by(invite: params[:invite])
-         
+        @server = Server.find_by(invite: params[:invite]) 
         if @server
             ServerUser.create!(user_id: current_user.id, server_id: @server.id)
             @active_channels = {}
             @active_channels[@server.id] = @server.channels.first.id
+            @messages = []
+            @server.channels.each do |channel|
+                if channel.messages.exists?
+                    @messages += channel.messages
+                end
+            end
             render :show
         else
             

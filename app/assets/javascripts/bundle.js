@@ -1392,7 +1392,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
       }));
       var messageItems = !messages ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat-messages"
-      }, " ", messages.map(function (message) {
+      }, messages.map(function (message) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
           key: message.id,
           message: message,
@@ -3336,13 +3336,13 @@ var MessagesReducer = function MessagesReducer() {
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVERS"]:
       if (typeof action.payload.messages === "undefined") return {};
       return action.payload.messages;
-    // case RECEIVE_SERVER:
-    //     newState[action.payload.message.id] = action.payload.message
-    //     return newState
 
     case _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_MESSAGE"]:
       newState[action.message.id] = action.message;
       return newState;
+
+    case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVER"]:
+      return Object.assign(newState, action.payload.messages);
 
     case _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_MESSAGE"]:
       delete newState[action.message];
