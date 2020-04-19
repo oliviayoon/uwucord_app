@@ -3,6 +3,7 @@ import React from 'react';
 const MessageIndexItem = ({message, users}) => {
     const currentUser = users.filter(user => user.id == message.authorId)[0];
     if (!currentUser) return null;
+    const icon = currentUser.imageUrl ? (<img className="user-profile" src={currentUser.imageUrl} height="15"></img>) :  (<div className="user-profile">{currentUser.username[0]}</div>)
     const time = moment(message.createdAt);
     const now = moment();
     let timeDisplay
@@ -13,12 +14,12 @@ const MessageIndexItem = ({message, users}) => {
     
     return(
         <div className="message-items">
-        <img className="user-profile" height="15" src={currentUser.imageUrl} />
+        {icon}
         <div className="message-body-text">
             <div className="user-message-container">
-                <div className="message-username">
+                {<div className="message-username">
                 {currentUser.username} 
-                </div>
+                </div>}
                 <p className="time-stamp">{timeDisplay}</p>
             </div>
             <div className="message-body-detail">

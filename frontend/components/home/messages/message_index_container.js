@@ -5,7 +5,7 @@ import { createMessage } from '../../../actions/message_actions'
 
 
 const msp = (state, ownProps) => {
-     
+    //  debugger
     const channelId = ownProps.location.pathname.split("/")[3]
     return({
         channel: state.entities.channels[channelId],

@@ -1504,6 +1504,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  //  debugger
   var channelId = ownProps.location.pathname.split("/")[3];
   return {
     channel: state.entities.channels[channelId],
@@ -1546,17 +1547,20 @@ var MessageIndexItem = function MessageIndexItem(_ref) {
     return user.id == message.authorId;
   })[0];
   if (!currentUser) return null;
+  var icon = currentUser.imageUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "user-profile",
+    src: currentUser.imageUrl,
+    height: "15"
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-profile"
+  }, currentUser.username[0]);
   var time = moment(message.createdAt);
   var now = moment();
   var timeDisplay;
   if (now.diff(time, 'days') > 1) timeDisplay = time.format("MM D YY");else timeDisplay = time.fromNow();
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-items"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "user-profile",
-    height: "15",
-    src: currentUser.imageUrl
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, icon, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-body-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "user-message-container"
