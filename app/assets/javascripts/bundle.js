@@ -2058,11 +2058,14 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           formType = _this$props.formType,
-          errors = _this$props.errors; // will need one for create and edit
-
+          errors = _this$props.errors;
       var preview = this.state.picUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "preview-image",
         src: this.state.picUrl,
+        width: "100"
+      }) : this.state.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "preview-image",
+        src: this.state.photoUrl,
         width: "100"
       }) : null;
       var header = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "IZ TIME TO CWEATE") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {

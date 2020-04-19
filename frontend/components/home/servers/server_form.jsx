@@ -68,8 +68,8 @@ class ServerForm extends React.Component {
     }
 
     render(){
-        const { formType, errors } = this.props; // will need one for create and edit
-        const preview = this.state.picUrl ? <img className="preview-image" src={this.state.picUrl} width="100" /> : null
+        const { formType, errors } = this.props;
+        const preview = this.state.picUrl ? <img className="preview-image" src={this.state.picUrl} width="100" /> : this.state.photoUrl ? <img className="preview-image" src={this.state.photoUrl} width="100" /> : null  
         const header = formType === "Create" ? (<h1>IZ TIME TO CWEATE</h1>) : (<h1 className="edit-header">EDWIT UR SERVER ^U^</h1>)
         const text = formType === "Create" ? ("bye cweating a servew, u will has access to fwee voice and text chwat !!") : ("didn't wike ur sewver name, u b-baka ?! change it den !")
         const back = formType === "Create" ? (<button className="back-button" onClick={this.handleBack}> <i className="far fa-hand-point-left"></i> gowo back ?</button>) : ("")
