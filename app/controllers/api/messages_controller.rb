@@ -3,6 +3,17 @@ class Api::MessagesController < ApplicationController
     def create
         @message = Message.new(body: params[:message][:body], channel_id: params[:message][:channelId], author_id: current_user.id)
         if @message.save
+            ActionCable
+                .server
+                .broadcast("room-#{@message.server.id}:messages",
+                    message: {
+                        id: @message.id,
+                        authorId: @message.author_id,
+                        createdAt: @message.created_at,
+                        channelId: @message.channel_id,
+                        body: @message.body
+                    }
+                )
             render :create
         else
             render json: @messages.errors.full_messages, status: 422

@@ -16,4 +16,8 @@ class Message < ApplicationRecord
     foreign_key: :author_id
     
     belongs_to :channel
+
+    delegate :server,
+    to: :channel,
+    allow_nil: true
 end
