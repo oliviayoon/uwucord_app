@@ -1,9 +1,11 @@
 json.server do 
     json.partial! "/api/servers/server", server: @server, active_channels: @active_channels
 end
-json.channel do
-    if @server.channels.exists?
-    json.partial! "/api/channels/channel", channel: @server.channels.first
+json.channels do
+    @server.channels.each do |channel|
+        json.set! channel.id do
+            json.partial! "/api/channels/channel", channel: channel
+        end
     end
 end
 

@@ -1749,9 +1749,11 @@ var JoinServerForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.processForm(this.state.invite) // formData
       .then(function (res) {
+        debugger;
+
         _this2.props.closeModal();
 
-        _this2.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(res.payload.channel.id));
+        _this2.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(Object.values(res.payload.channels)[0].id));
       });
     }
   }, {
@@ -3234,8 +3236,7 @@ var ChannelsReducer = function ChannelsReducer() {
       return action.payload.channels;
 
     case _actions_server_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_SERVER"]:
-      newState[action.payload.channel.id] = action.payload.channel;
-      return newState;
+      return Object.assign(newState, action.payload.channels);
 
     case _actions_channel_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CHANNEL"]:
       newState[action.channel.id] = action.channel;

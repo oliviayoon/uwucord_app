@@ -8,8 +8,7 @@ const ChannelsReducer = (state = {}, action) => {
         case RECEIVE_SERVERS:
             return action.payload.channels
         case RECEIVE_SERVER:
-            newState[action.payload.channel.id] = action.payload.channel
-            return newState
+            return Object.assign(newState, action.payload.channels)
         case RECEIVE_CHANNEL:
             newState[action.channel.id] = action.channel
             return newState
