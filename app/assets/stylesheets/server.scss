@@ -7,6 +7,7 @@
     align-items: center;
     padding: 5px;
     box-sizing: border-box;
+    // overflow-y: auto;
     background-color: #36393F;
 }
 
@@ -111,7 +112,7 @@ li > p {
     height: 15px;
     line-height: 16px;
     position: absolute;
-    z-index: 1;
+    z-index: 10;
     top: 25px;
     left: 80px;
 }

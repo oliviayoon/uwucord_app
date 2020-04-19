@@ -1486,6 +1486,10 @@ var MessageIndexItem = function MessageIndexItem(_ref) {
     return user.id == message.authorId;
   })[0];
   if (!currentUser) return null;
+  var time = moment(message.createdAt);
+  var now = moment();
+  var timeDisplay;
+  if (now.diff(time, 'days') > 1) timeDisplay = time.format("MM D YY");else timeDisplay = time.fromNow();
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-items"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1495,8 +1499,12 @@ var MessageIndexItem = function MessageIndexItem(_ref) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-body-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-message-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-username"
-  }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "time-stamp"
+  }, timeDisplay)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-body-detail"
   }, message.body)));
 };

@@ -159,6 +159,16 @@
     overflow:auto;
 }
 
+.user-message-container {
+    display: flex;
+    align-items: baseline;
+}
+
+.time-stamp {
+    margin-left: 10px;
+    font-size: 13px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 16px;

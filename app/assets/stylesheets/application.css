@@ -27,7 +27,7 @@ body {
     background: linear-gradient(to bottom, #faaca8 0%, #6c7fec 100%);
     /* background-color: #faaca8; */
     /* background-size: cover; */
-    /* overflow: hidden; */
+    overflow: auto;
     overflow-x: hidden;
   }
   
