@@ -2,7 +2,7 @@
 
 # uwucord
 
-uwucord is a parody clone of Discord. This single page app allows users communicate with others through servers. Users can create their own or join an existing one with a unique invite token. Each server comes equipped with a general channel and users are able to freely create additional chat channels.
+uwucord is a pixel perfect clone of Discord. This single page app allows users communicate with others through servers. Users can create their own server or join an existing one with a unique invite token. Each server comes equipped with a general channel and users are able to freely create additional chat channels. Users are also able to communicate with each other with real-time messaging.
 
 ## Live Site
 
