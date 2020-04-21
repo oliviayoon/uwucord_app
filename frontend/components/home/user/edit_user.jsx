@@ -62,6 +62,7 @@ class EditUser extends React.Component {
                     <div className="file-upload border" onClick={this.handleImageClick}>
                             {preview}
                             <input id="image-upload" type="file" onChange={this.handleImageChange} />
+                            <p className="image-upload-text">upwoad a pic u bwaka</p>
                     </div>
                             <form className="username-edit-form-container">
                                  <label className="username-edit-input">
