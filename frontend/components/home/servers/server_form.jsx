@@ -44,11 +44,10 @@ class ServerForm extends React.Component {
         formData.append('server[owner_id]', this.state.owner_id)
         this.props.processForm(formData) // formData
         .then(res => {
-            debugger
             this.props.closeModal();
             this.props.history.push(`/channels/${Object.keys(res.payload.server)[0]}/${Object.values(res.payload.channels)[0].id}`)
         })
-        .catch(err)
+        .catch(res)
     }
 
     handleDelete(e){

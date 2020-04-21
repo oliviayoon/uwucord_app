@@ -1564,9 +1564,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1578,17 +1578,52 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(MessageIndexItem, _React$Component);
 
   function MessageIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, MessageIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MessageIndexItem).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(MessageIndexItem).call(this, props));
+    _this.uwufier = _this.uwufier.bind(_assertThisInitialized(_this)); // this.uwufier(this.props.message.body);
+
+    return _this;
   }
 
   _createClass(MessageIndexItem, [{
+    key: "uwufier",
+    value: function uwufier(sentence) {
+      var uwuSentence = "";
+      sentence.split(" ").forEach(function (word) {
+        if (word === "senpai") {
+          uwuSentence += "senpwai";
+        } else {
+          word.toLowerCase().split("").forEach(function (letter) {
+            if (letter === "l" || letter === "r") {
+              uwuSentence += "w";
+            } else uwuSentence += letter;
+          });
+        }
+
+        uwuSentence += " ";
+      });
+      var random = ["", "uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""];
+      var randomWord = random[Math.floor(Math.random() * random.length)];
+      return uwuSentence += randomWord;
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var result = this.uwufier(this.props.message.body);
+      this.setState({
+        uwufied: result
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           message = _this$props.message,
           users = _this$props.users;
+      var uwufied = this.state.uwufied;
       var currentUser = users.filter(function (user) {
         return user.id == message.authorId;
       })[0];
@@ -1618,7 +1653,7 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
       }, timeDisplay)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-body-detail",
         id: "message-body-detail-item"
-      }, message.body)));
+      }, uwufied)));
     }
   }]);
 
@@ -2150,12 +2185,10 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       formData.append('server[owner_id]', this.state.owner_id);
       this.props.processForm(formData) // formData
       .then(function (res) {
-        debugger;
-
         _this3.props.closeModal();
 
         _this3.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(Object.values(res.payload.channels)[0].id));
-      })["catch"](err);
+      })["catch"](res);
     }
   }, {
     key: "handleDelete",
