@@ -50,7 +50,7 @@ background-image: linear-gradient(
 .server-form-leave {
     background-color: white;
     width: 450px;
-    height: 200px;
+    // height: 200px;
     box-sizing: border-box;
     padding-top: 15px;
     border-radius: 10px;
@@ -58,6 +58,7 @@ background-image: linear-gradient(
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    animation: form-slide 0.4s ease-out 0s 1 forwards;
 }
 
 .server-form-container > h1 {
@@ -121,6 +122,7 @@ background-image: linear-gradient(
     line-height: 120px;
     font-size: 12px;
     user-select: none;
+    cursor: pointer;
     
 }
 
@@ -224,5 +226,6 @@ background-image: linear-gradient(
     height: 120px;
     width: 120px;
     border-radius: 50%;
+    cursor: pointer;
 }
 

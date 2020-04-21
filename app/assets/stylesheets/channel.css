@@ -62,6 +62,12 @@
     flex-direction: column;
 }
 
+.user-text:hover .tooltiparrow {
+    display: block;
+    margin-left: -55px;
+    margin-top: -41px
+}
+
 .username {
     font-size: 14px;
     font-weight: bold;
@@ -112,17 +118,6 @@
     display: block;
 }
 
-/* .tooltippaw::after {
-    content: " ";
-    position: absolute;
-    bottom: 100%;  
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent rgba(0,0,0,0.7) transparent;
-} */
-
 .invite-friends {
     background-color: #faaca8;
     color: white;
@@ -166,3 +161,4 @@
 .help-text {
     cursor: pointer;
 }
+

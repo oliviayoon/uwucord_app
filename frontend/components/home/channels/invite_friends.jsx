@@ -24,6 +24,7 @@ class InviteFriendsForm extends React.Component{
             return(
                 <div className="invite-friends-form">
                     <div className="invite-friends-container">
+                        <img src={window.colorSparkle} className="friends-sparkle"/>
                     <h1>invwite fwends to {currentServer.name}</h1>
                     <img src={window.serverKeyInvite}/>
                         <p className="invite-flavor" >shware wif ne1 u want to gwant accwess to yer server ~</p>

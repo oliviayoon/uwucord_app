@@ -43,10 +43,10 @@ class ChannelForm extends React.Component{
     }
 
     render(){
-        const {formType, errors} = this.props
+        const {formType, errors, closeModal} = this.props
          
         const header = formType === "Create" ? (<h1 className="channel-form-header" >add a channew :3</h1>) : (<h1 className="channel-form-header">edit yew baka ? >:3</h1>)
-        const deleteButton = formType === "Edit" ? (<button className="delete-channel-button" onClick={this.handleDelete} >dewete channew ?</button>) : ""
+        const deleteButton = formType === "Edit" ? (<button className="delete-channel-button" onClick={this.handleDelete} >dewete channew</button>) : (<button className="delete-channel-button" onClick={() => closeModal()} >or naw~</button>)
 
         return(
             <div className="channel-form-container">
@@ -58,8 +58,10 @@ class ChannelForm extends React.Component{
                             <input onChange={this.handleChange()} type="text" value={this.state.name} />
                         </label>
                     </form>
-                    <button onClick={this.handleClick}className="add-channel-button">wes dew dis</button>
-                    {deleteButton}
+                    <div className="channel-form-buttons">
+                        <button onClick={this.handleClick} className="add-channel-button">wes dew dis</button>
+                        {deleteButton}
+                    </div>
                 </div>
             </div>
         )}

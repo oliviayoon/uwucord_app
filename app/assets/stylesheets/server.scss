@@ -112,8 +112,9 @@ li > p {
     position: absolute;
     z-index: 10;
     margin-top: -55px;
-    left: 85px
+    left: 85px;
 }
+
 
 .server-name-hover::after, .tooltippaw::after {
     content: "";

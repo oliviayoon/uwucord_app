@@ -32,9 +32,21 @@ from {
   }
 }
 
+.user-edit-container {
+    animation: fadeInUp;
+    animation-duration: .5s;
+}
+
  
 .invite-friends-container > img {
     height: 200px;
+    margin-top: 10px;
+}
+
+.friends-sparkle {
+    position: absolute;
+    left: 300px;
+    top: -50px;
 }
 
 .invite-friends-container > h1 {

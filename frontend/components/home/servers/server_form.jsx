@@ -36,8 +36,6 @@ class ServerForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-         
-
         const formData = new FormData();
         if (this.state.id) formData.append('server[id]', this.state.id)
         formData.append('server[name]', this.state.name)
@@ -46,9 +44,11 @@ class ServerForm extends React.Component {
         formData.append('server[owner_id]', this.state.owner_id)
         this.props.processForm(formData) // formData
         .then(res => {
+            debugger
             this.props.closeModal();
             this.props.history.push(`/channels/${Object.keys(res.payload.server)[0]}/${Object.values(res.payload.channels)[0].id}`)
         })
+        .catch(err)
     }
 
     handleDelete(e){

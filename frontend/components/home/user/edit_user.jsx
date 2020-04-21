@@ -49,28 +49,33 @@ class EditUser extends React.Component {
     }
 
     render(){
-        const preview = this.state.picUrl ? <img className="preview-image" src={this.state.picUrl} width="100" /> : this.state.imageUrl ? <img className="preview-image" src={this.state.imageUrl} width="100" /> : null  
+        const {currentUser} = this.props
+        const preview = this.state.picUrl ? <img className="preview-image border" src={this.state.picUrl} width="100" /> : this.state.imageUrl ? <img className="preview-image border" src={this.state.imageUrl} width="100" /> : null  
         return(
             <div className="user-edit-container">
+                <img className="user-sparkles" src={window.whiteSparkle}></img>
+                {/* <img src={window.splashOwo} className="splash-shape" id="user-edit-owo"></img> */}
+                {/* <img src={window.splashUwu} className="splash-shape" id="user-edit-uwu"></img> */}
+                <img src={window.splashShapesDot} className="splash-shape" id="user-edit-dot" ></img>
+                <img src={window.splashShapesDot} className="splash-shape" id="user-edit-dot-2" ></img>
                 <div className="user-edit-form">
-                    <form>
-                        <label className="server-name-form-outer">
-                                    <p className="server-name-form">yer username:</p>
+                    <div className="file-upload border" onClick={this.handleImageClick}>
+                            {preview}
+                            <input id="image-upload" type="file" onChange={this.handleImageChange} />
+                    </div>
+                            <form className="username-edit-form-container">
+                                 <label className="username-edit-input">
                                     <input
                                     type="text"
                                     onChange={this.handleChange}
-                                    value={this.state.username}
-                                    placeholder="what's it gonna be pal òwó"
-                                    />
+                                    placeholder={`${currentUser.username}#${currentUser.userNumber}`}
+                                     />
                                 </label>
                         </form>
-                    <div className="file-upload" onClick={this.handleImageClick}>
-                            {preview}
-                            <input id="image-upload" type="file" onChange={this.handleImageChange} />
-                            upwoad a pwofile pic
                     </div>
-                    <button onClick={this.handleSubmit}>edwit</button>
-                </div>
+                        <div className="user-edit-button-container">
+                            <button onClick={this.handleSubmit}>edwit</button>
+                        </div>
             </div>
         )
     }

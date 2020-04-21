@@ -23,7 +23,6 @@ class Api::ServersController < ApplicationController
 
     def update 
         @server = Server.find_by(id: params[:server][:id])
-        
         if @server.update(name: params[:server][:name])
             
             if !params[:server][:profile_pic].nil?
@@ -40,7 +39,7 @@ class Api::ServersController < ApplicationController
             end
             render :show
         else
-            render json: ["Could not update server details"], status: 422
+            render json: ["nwame can't be bwank !!"], status: 422
         end
     end
 

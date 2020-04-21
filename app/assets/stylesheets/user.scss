@@ -1,0 +1,89 @@
+.user-edit-container {
+    background: linear-gradient(to bottom, #faaca8 0%, #6c7fec 100%);
+    width: 250px;
+    height: 300px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.user-edit-form {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 40px 0px;
+}
+
+.user-edit-button-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-edit-button-container button {
+    width: 50%;
+    height: 44px;
+    box-shadow: 0 9px #5364c9
+}
+
+.user-edit-button-container button:active {
+    box-shadow: 0 5px #5364c9;
+    transform: translateY(4px);
+}
+
+.username-edit-input input {
+    box-sizing: border-box;
+    padding: 10px;
+    height: 40px;
+    margin-top: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: lighter;
+    width: 100%;
+    border-style: inset
+}
+
+.username-edit-input input::placeholder {
+    color: white;
+}
+
+.preview-image.border {
+    border: 3px solid white;
+    z-index: 10;
+}
+
+.file-upload.border {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.user-sparkles {
+    position: absolute;
+    width: 100px;
+    left: 150px;
+}
+
+.username-edit-form-container {
+    z-index: 10;
+}
+
+#user-edit-dot {
+    top: 5%;
+    left: 15%;
+}
+
+#user-edit-dot-2 {
+    top: 38%;
+    left: 74%;
+    width: 8%;
+}

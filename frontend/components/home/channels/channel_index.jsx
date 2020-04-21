@@ -67,7 +67,7 @@ class ChannelIndex extends React.Component {
             <div className="channel-info">
                 <div className="server-header">
                     <div className="server-title">
-                    {edit}
+                        {edit}
                     </div>
                 </div>
             <div className="channel-index-items">
@@ -78,8 +78,9 @@ class ChannelIndex extends React.Component {
                 <div className="user-text-container" onClick={() => openModal("editUser")}>
                     {icon}
                     <div className="user-text">
-                    <p className="username">{currentUser.username}</p>
-                    <p className="user-num">#{currentUser.userNumber}</p>
+                        <div className="tooltiparrow bottom">edit ur pic or username</div>
+                        <p className="username">{currentUser.username}</p>
+                        <p className="user-num">#{currentUser.userNumber}</p>
                     </div>
                 </div>
             <button className="logout" onClick={this.handleLogout}>w-wog out ? ;w;</button>

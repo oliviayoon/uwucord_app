@@ -398,7 +398,7 @@ var updateServer = function updateServer(server) {
     return _util_server_api_util__WEBPACK_IMPORTED_MODULE_0__["updateServer"](server).then(function (server) {
       return dispatch(receiveServer(server));
     }, function (errors) {
-      return dispatch(receiveErrors(errors));
+      return dispatch(receiveErrors(errors.responseJSON));
     });
   };
 };
@@ -743,7 +743,8 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           formType = _this$props.formType,
-          errors = _this$props.errors;
+          errors = _this$props.errors,
+          closeModal = _this$props.closeModal;
       var header = formType === "Create" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "channel-form-header"
       }, "add a channew :3") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -752,7 +753,12 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
       var deleteButton = formType === "Edit" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "delete-channel-button",
         onClick: this.handleDelete
-      }, "dewete channew ?") : "";
+      }, "dewete channew") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "delete-channel-button",
+        onClick: function onClick() {
+          return closeModal();
+        }
+      }, "or naw~");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -767,10 +773,12 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleChange(),
         type: "text",
         value: this.state.name
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "channel-form-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleClick,
         className: "add-channel-button"
-      }, "wes dew dis"), deleteButton));
+      }, "wes dew dis"), deleteButton)));
     }
   }]);
 
@@ -927,7 +935,9 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
         }
       }, icon, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tooltiparrow bottom"
+      }, "edit ur pic or username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "username"
       }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-num"
@@ -1201,7 +1211,10 @@ var InviteFriendsForm = /*#__PURE__*/function (_React$Component) {
         className: "invite-friends-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invite-friends-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "invwite fwends to ", currentServer.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.colorSparkle,
+        className: "friends-sparkle"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "invwite fwends to ", currentServer.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.serverKeyInvite
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "invite-flavor"
@@ -2137,10 +2150,12 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
       formData.append('server[owner_id]', this.state.owner_id);
       this.props.processForm(formData) // formData
       .then(function (res) {
+        debugger;
+
         _this3.props.closeModal();
 
         _this3.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(Object.values(res.payload.channels)[0].id));
-      });
+      })["catch"](err);
     }
   }, {
     key: "handleDelete",
@@ -2704,36 +2719,49 @@ var EditUser = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var currentUser = this.props.currentUser;
       var preview = this.state.picUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "preview-image",
+        className: "preview-image border",
         src: this.state.picUrl,
         width: "100"
       }) : this.state.imageUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "preview-image",
+        className: "preview-image border",
         src: this.state.imageUrl,
         width: "100"
       }) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-edit-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "user-sparkles",
+        src: window.whiteSparkle
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesDot,
+        className: "splash-shape",
+        id: "user-edit-dot"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesDot,
+        className: "splash-shape",
+        id: "user-edit-dot-2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-edit-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "server-name-form-outer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "server-name-form"
-      }, "yer username:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        onChange: this.handleChange,
-        value: this.state.username,
-        placeholder: "what's it gonna be pal \xF2w\xF3"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "file-upload",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "file-upload border",
         onClick: this.handleImageClick
       }, preview, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "image-upload",
         type: "file",
         onChange: this.handleImageChange
-      }), "upwoad a pwofile pic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "username-edit-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "username-edit-input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleChange,
+        placeholder: "".concat(currentUser.username, "#").concat(currentUser.userNumber)
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-edit-button-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "edwit")));
     }
