@@ -61,7 +61,7 @@
 }
 
 .member-list-item:hover {
-    background-color:#faaca8;
+    background-color:#36393F;
     border-radius: 3px;
     color: white;
 }
@@ -124,7 +124,6 @@
 .chat-messages {
     display: flex;
     flex-direction: column;
-    padding: 0px 35px;
     top: 5px;
     left: 20px;
     right: 5px;
@@ -133,9 +132,9 @@
 }
 
 .message-body-text {
-    padding: 10px 0px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     margin-left: 10px;
     color: white;
 }
@@ -143,6 +142,11 @@
 .message-items {
     display: flex;
     align-items: center;
+    padding: 5px 30px;
+}
+
+.message-items:hover {
+    background-color: #2f3136
 }
 
 .message-username {
@@ -150,13 +154,13 @@
 }
 
 .message-body-detail {
-    line-height: 22px;
     font-size: 13px;
+    margin-top: 5px;
 }
 
 .messages-text-inner {
     position: relative;
-    overflow:auto;
+    overflow: auto;
 }
 
 .user-message-container {

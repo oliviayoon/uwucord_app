@@ -49,7 +49,7 @@ class ChannelIndex extends React.Component {
             <div className="channel-options">
             <h1>text channews :3</h1>
             <i className="fas fa-fish" onClick={() => openModal("addChannel")}>
-            <div className="tooltiparrow">add a channew</div>                
+            <div className="tooltippaw">add a channew</div>                
             </i>
         </div>
         <div className="channel-items">

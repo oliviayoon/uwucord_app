@@ -29,7 +29,7 @@ class InviteFriendsForm extends React.Component{
                         <p className="invite-flavor" >shware wif ne1 u want to gwant accwess to yer server ~</p>
                     <div className="invite-token-container">
                         <input onClick={this.handleClick} readOnly id="server-invite-token" className="invite-token" value={currentServer.invite}/>
-                        <div id="copy-text" className="tooltiparrow">click 2 copeh</div>
+                        <div id="copy-text" className="tooltiparrow bottom">click 2 copeh</div>
                     </div>
                     </div>
                 </div>

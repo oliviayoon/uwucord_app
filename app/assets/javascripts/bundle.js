@@ -887,7 +887,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
           return openModal("addChannel");
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tooltiparrow"
+        className: "tooltippaw"
       }, "add a channew"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-items"
       }, channels.map(function (channel) {
@@ -1061,7 +1061,7 @@ var ChannelIndexItem = /*#__PURE__*/function (_React$Component) {
         },
         className: "fas fa-star"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tooltiparrow"
+        className: "tooltiparrow bottom"
       }, "edit dis channew")) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "channel-item-info",
@@ -1215,7 +1215,7 @@ var InviteFriendsForm = /*#__PURE__*/function (_React$Component) {
         value: currentServer.invite
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "copy-text",
-        className: "tooltiparrow"
+        className: "tooltiparrow bottom"
       }, "click 2 copeh"))));
     }
   }]);
@@ -1432,7 +1432,8 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           channel = _this$props.channel,
           messages = _this$props.messages,
-          users = _this$props.users;
+          users = _this$props.users,
+          currentUsername = _this$props.currentUsername;
       var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "message-text",
         onChange: this.handleChange(),
@@ -1453,6 +1454,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         className: "chat-messages"
       }, messages.map(function (message) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          currentUsername: currentUsername,
           key: message.id,
           message: message,
           users: users
@@ -1509,6 +1511,7 @@ var msp = function msp(state, ownProps) {
   return {
     channel: state.entities.channels[channelId],
     users: Object.values(state.entities.users),
+    currentUsername: state.entities.users[state.session.id].username,
     messages: Object.values(state.entities.messages).filter(function (message) {
       return message.channelId == channelId;
     })
@@ -1538,40 +1541,76 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-var MessageIndexItem = function MessageIndexItem(_ref) {
-  var message = _ref.message,
-      users = _ref.users;
-  var currentUser = users.filter(function (user) {
-    return user.id == message.authorId;
-  })[0];
-  if (!currentUser) return null;
-  var icon = currentUser.imageUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "user-profile",
-    src: currentUser.imageUrl,
-    height: "15"
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "user-profile"
-  }, currentUser.username[0]);
-  var time = moment(message.createdAt);
-  var now = moment();
-  var timeDisplay;
-  if (now.diff(time, 'days') > 1) timeDisplay = time.format("MM D YY");else timeDisplay = time.fromNow();
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "message-items"
-  }, icon, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "message-body-text"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "user-message-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "message-username"
-  }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "time-stamp"
-  }, timeDisplay)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "message-body-detail"
-  }, message.body)));
-};
+
+var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(MessageIndexItem, _React$Component);
+
+  function MessageIndexItem(props) {
+    _classCallCheck(this, MessageIndexItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MessageIndexItem).call(this, props));
+  }
+
+  _createClass(MessageIndexItem, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          message = _this$props.message,
+          users = _this$props.users;
+      var currentUser = users.filter(function (user) {
+        return user.id == message.authorId;
+      })[0];
+      if (!currentUser) return null;
+      var icon = currentUser.imageUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "user-profile",
+        src: currentUser.imageUrl,
+        height: "15"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-profile"
+      }, currentUser.username[0]);
+      var time = moment(message.createdAt);
+      var now = moment();
+      var timeDisplay;
+      if (now.diff(time, 'days') > 1) timeDisplay = time.format("MM D YY");else timeDisplay = time.fromNow();
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-items"
+      }, icon, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-body-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-message-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-username",
+        id: "message-username-author"
+      }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "time-stamp"
+      }, timeDisplay)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-body-detail",
+        id: "message-body-detail-item"
+      }, message.body)));
+    }
+  }]);
+
+  return MessageIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (MessageIndexItem);
 
@@ -2374,9 +2413,9 @@ var ServerIndexItem = function ServerIndexItem(_ref) {
     className: "server-hover"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: server.photoUrl ? "server-name without" : "server-name"
-  }, icon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, icon, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "server-name-hover"
-  }, server.name));
+  }, server.name)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ServerIndexItem);
@@ -3299,7 +3338,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var link = this.props.formType === "signup" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Alweady have an account ? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login"
-      }, " uwu !!!")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Wanna sign in? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "uwu !!!")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Wanna sign in? ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/register"
       }, "Wegister !!"), " or T-twy a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         onClick: this.handleDemoLogin
@@ -3308,10 +3347,12 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var button = this.props.formType === "signup" ? "ÒwÓ LES GO !!" : "Wog In";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-background"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.pinkWogo,
         width: "180px"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "session-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "session-form-header"

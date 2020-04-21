@@ -110,19 +110,18 @@
 
 .fas.fa-paw:hover .tooltippaw {
     display: block;
-    margin-left: -43px;
-    margin-top: 5px;
 }
-.tooltippaw::after {
+
+/* .tooltippaw::after {
     content: " ";
     position: absolute;
-    bottom: 100%;  /* At the top of the tooltip */
+    bottom: 100%;  
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent rgba(0,0,0,0.7) transparent;
-}
+} */
 
 .invite-friends {
     background-color: #faaca8;

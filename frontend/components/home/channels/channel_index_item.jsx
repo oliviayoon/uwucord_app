@@ -15,7 +15,7 @@ class ChannelIndexItem extends React.Component{
 
     render(){
         const {channel, openModal, ownerId, currentUser} = this.props
-        const edit = ownerId === currentUser.id ? (<i onClick={() => openModal("editChannel")} className="fas fa-star"><div className="tooltiparrow">edit dis channew</div></i>) : null
+        const edit = ownerId === currentUser.id ? (<i onClick={() => openModal("editChannel")} className="fas fa-star"><div className="tooltiparrow bottom">edit dis channew</div></i>) : null
         return(
         <div className="channel-item-info" onClick={this.handleClickChannel}>
             <div className="channel-title-text">

@@ -10,6 +10,7 @@ const msp = (state, ownProps) => {
     return({
         channel: state.entities.channels[channelId],
         users: Object.values(state.entities.users),
+        currentUsername: state.entities.users[state.session.id].username,
         messages: Object.values(state.entities.messages).filter(message => message.channelId == channelId)
 
 })}

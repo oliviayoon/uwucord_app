@@ -9,13 +9,14 @@
     font-size: 14px;
     font-weight: bolder;
     text-transform: uppercase;
-    margin: 20px 0px;
+    /* margin: 20px 0px; */
 }
 
 .channel-options {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 45px;
 }
 
 .channel-options > .fas.fa-fish:hover {
@@ -24,9 +25,8 @@
     font-size: 16px;
 }
 
-.fas.fa-fish:hover .tooltiparrow {
+.fas.fa-fish:hover .tooltippaw {
     display: block;
-    
 }
 
 .tooltiparrow, .tooltippaw {
@@ -42,22 +42,10 @@
     font-weight: bold;
     text-transform: lowercase;
     border-radius: 5px;
-    margin-left: -41px;
-    margin-top: -53px;
+    margin-left: 31px;
+    margin-top: -23px;
     z-index: 100;
     display: none;
-    /* animation: tooltiparrow-fade 0.15s ease-out 0s 1 forwards; */
-  }
-
-  .tooltiparrow::after {
-    content: "";
-    position: absolute;
-    top: 100%; /* At the bottom of the tooltiparrow */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color:rgba(0,0,0,0.7) transparent transparent transparent;
     /* animation: tooltiparrow-fade 0.15s ease-out 0s 1 forwards; */
   }
   

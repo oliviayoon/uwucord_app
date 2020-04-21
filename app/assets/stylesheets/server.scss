@@ -7,7 +7,7 @@
     align-items: center;
     padding: 5px;
     box-sizing: border-box;
-    // overflow-y: auto;
+    overflow-y: auto;
     background-color: #36393F;
 }
 
@@ -18,8 +18,7 @@
 }
 
 .server-home > a, .server-membership > a {
-    /* padding: 15px; */
-    position: relative;
+
 }
 
 .server-name > li, .add-server > li, .search-server > li {
@@ -103,7 +102,6 @@ li > p {
 .server-name-hover {
     visibility: hidden;
     width: max-content;
-    // min-width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
@@ -113,11 +111,11 @@ li > p {
     line-height: 16px;
     position: absolute;
     z-index: 10;
-    top: 25px;
-    left: 80px;
+    margin-top: -55px;
+    left: 85px
 }
 
-.server-name-hover::after {
+.server-name-hover::after, .tooltippaw::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -126,6 +124,17 @@ li > p {
     border-width: 5px;
     border-style: solid;
     border-color: transparent black transparent transparent;
+}
+
+.tooltiparrow.bottom::after {
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:rgba(0,0,0,0.7) transparent transparent transparent;
   }
 
 .server-invite-image {

@@ -14,7 +14,7 @@ class MessageIndex extends React.Component {
 
     componentDidUpdate(){
         const messageBox = document.getElementById("messages-text-inner")
-        messageBox.scrollTo({left: 0, top: messageBox.scrollHeight, behavior: "smooth"})
+        messageBox.scrollTo({left: 0, top: messageBox.scrollHeight, behavior: "smooth"})  
     }
 
     handleChange(){
@@ -30,7 +30,7 @@ class MessageIndex extends React.Component {
     }
 
     render(){
-        const {channel, messages, users} = this.props
+        const {channel, messages, users, currentUsername} = this.props
         const messagesContainer = !channel ? ("") :  (<input id="message-text" onChange={this.handleChange()} type="text" placeholder="tywpepe ur message hewe ^w^" value={this.state.body}/>)
         const channelHeader = !channel ? ("") : (<><i className="fas fa-hashtag"></i> <p>{channel.name}</p></>)
         const serverMembers = !channel ? ("") : (<div className="members-list">
@@ -38,8 +38,9 @@ class MessageIndex extends React.Component {
             </div>)
         const messageItems = !messages ? ("") :
             (<div className="chat-messages">
-                {messages.map(message => <MessageIndexItem key={message.id} message={message} users={users}/>)} 
+                {messages.map(message => <MessageIndexItem currentUsername={currentUsername} key={message.id} message={message} users={users}/>)} 
             </div>)
+      
         return(
             <div className="messages-content">
                 <div className="channel-header">
