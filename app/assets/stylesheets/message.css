@@ -158,6 +158,8 @@
     margin-top: 5px;
 }
 
+
+
 .messages-text-inner {
     position: relative;
     overflow: auto;
@@ -210,3 +212,12 @@
     border-radius: 8px;
     width: 8px;
   }  
+
+  .message-body-detail:hover .tooltiparrow {
+    display: block;
+    background: black;
+    margin-top: -38px;
+    margin-left: 0px;
+    align-items: center;
+    width: none;
+}

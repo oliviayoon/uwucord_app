@@ -59,6 +59,7 @@ class MessageIndexItem extends React.Component{
                     <p className="time-stamp">{timeDisplay}</p>
                 </div>
                 <div className="message-body-detail" id="message-body-detail-item">
+                <div className="tooltiparrow bottom">{message.body}</div>
                     {uwufied}
                 </div>
             </div>

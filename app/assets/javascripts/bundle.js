@@ -1653,7 +1653,9 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
       }, timeDisplay)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-body-detail",
         id: "message-body-detail-item"
-      }, uwufied)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tooltiparrow bottom"
+      }, message.body), uwufied)));
     }
   }]);
 
