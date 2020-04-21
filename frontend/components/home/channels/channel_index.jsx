@@ -33,10 +33,10 @@ class ChannelIndex extends React.Component {
                 Check out some servers instead !
             <img className="left-arrow" src={ window.leftArrow }/>
             </div>
-            <div className="help-text" onClick={() => openModal("userTutorial")}>
+            {/* <div className="help-text" onClick={() => openModal("userTutorial")}>
                 <p>Need some halp ?</p>
                 <p>Check out the tuwutowial~</p>
-            </div>
+            </div> */}
             </div>)
         : (<>
         <div className="server-invite-form">

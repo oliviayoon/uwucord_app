@@ -870,12 +870,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "DMs are under constwuction ! uwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Check out some servers instead !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "left-arrow",
         src: window.leftArrow
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "help-text",
-        onClick: function onClick() {
-          return openModal("userTutorial");
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Need some halp ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Check out the tuwutowial~"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "server-invite-image",
@@ -3388,9 +3383,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
-        _this4.props.history.push('/channels/@me');
+        _this4.props.history.push('/channels/@me'); // this.props.openModal('userTutorial');
 
-        _this4.props.openModal('userTutorial');
       });
     }
   }, {

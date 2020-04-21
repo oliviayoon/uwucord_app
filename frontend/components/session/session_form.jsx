@@ -69,7 +69,7 @@ class SessionForm extends React.Component {
         this.props.processForm(user)
             .then(() => {
                 this.props.history.push('/channels/@me');
-                this.props.openModal('userTutorial');
+                // this.props.openModal('userTutorial');
             })
     }
 
