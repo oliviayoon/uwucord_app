@@ -1,5 +1,5 @@
 .tutorial-panels-container {
-    width: 72%;
+    flex: 1;
     display: flex;
     overflow: hidden;
     background-color: #2f3136;
@@ -18,9 +18,39 @@
     text-align: center;
     border-right: 2px solid rgba(0,0,0,0.3);
     color: white;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
+
+.tutorial-panel:hover {
+    width: 10%;
+    background-image: linear-gradient(
+        to bottom, #faaca8 0%, #6c7fec 100%
+    );
+    animation: pulse;
+    animation-duration: 1s;
+}
+
+.tutorial-panel.open:hover {
+    background-image:none;
+    animation: none;
+}
+
+@keyframes pulse {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  
+    50% {
+      -webkit-transform: scale3d(1.05, 1.05, 1.05);
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+  
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
 
 .tutorial-panel > h1 {
     writing-mode: vertical-lr;
@@ -39,6 +69,7 @@
     flex: 5;
     justify-content: start;
     flex-direction: column;
+
 }
 
 .tutorial-panel.open > h1 {

@@ -15,10 +15,14 @@ class ChannelIndex extends React.Component {
     }
 
     handleClick(){
-        const panels = document.querySelectorAll('.tutorial-panel')
-        panels.forEach(panel => setTimeout(() => {
-            panel.click()
-        }, 2));
+        for (let i = 1; i < 4; i++){
+            const panel = document.getElementById(`panel${i}`)
+            // debugger
+            setTimeout(() => {
+                panel.click()
+            }, 0);
+            
+        }
     }
 
     render(){

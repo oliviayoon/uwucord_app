@@ -15,7 +15,7 @@ class TutorialCollapse extends React.Component{
 
         return(
             <div className="tutorial-panels-container">
-                <div className="tutorial-panel panel1">
+                <div className="tutorial-panel" id="panel1">
                     <h1>Servers</h1>
                     <div className="tutorial-content">
                         <p>Click the "+" button on the left panel to either create or join a server</p>
@@ -26,7 +26,7 @@ class TutorialCollapse extends React.Component{
                         <img src={window.serverLeave} />
                     </div>
                 </div>
-                <div className="tutorial-panel panel2">
+                <div className="tutorial-panel " id="panel2">
                     <h1>Channels</h1>
                     <div className="tutorial-content">
                         <p>
@@ -43,7 +43,7 @@ class TutorialCollapse extends React.Component{
                         <img src={window.channelAdd} />
                     </div>
                 </div>
-                <div className="tutorial-panel panel3">
+                <div className="tutorial-panel" id="panel3" >
                     <h1>Profile</h1>
                     <div className="tutorial-content">
                         <p>

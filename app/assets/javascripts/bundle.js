@@ -846,12 +846,17 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick() {
-      var panels = document.querySelectorAll('.tutorial-panel');
-      panels.forEach(function (panel) {
-        return setTimeout(function () {
+      var _loop = function _loop(i) {
+        var panel = document.getElementById("panel".concat(i)); // debugger
+
+        setTimeout(function () {
           panel.click();
-        }, 2);
-      });
+        }, 0);
+      };
+
+      for (var i = 1; i < 4; i++) {
+        _loop(i);
+      }
     }
   }, {
     key: "render",
@@ -2727,7 +2732,8 @@ var TutorialCollapse = /*#__PURE__*/function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tutorial-panels-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tutorial-panel panel1"
+        className: "tutorial-panel",
+        id: "panel1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Servers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tutorial-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Click the \"+\" button on the left panel to either create or join a server"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2739,7 +2745,8 @@ var TutorialCollapse = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Didn't enjoy the server you joined ? It's easy to leave it all behind ya !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.serverLeave
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tutorial-panel panel2"
+        className: "tutorial-panel ",
+        id: "panel2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Channels"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tutorial-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Each server comes with a \"genewal\" channel !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "PS: it can't be destroyed >:3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2749,7 +2756,8 @@ var TutorialCollapse = /*#__PURE__*/function (_React$Component) {
       }), ",", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "but only owners of the server will be able to edit them !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.channelAdd
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tutorial-panel panel3"
+        className: "tutorial-panel",
+        id: "panel3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tutorial-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Upload a profile pic or change your username by clicking on your user information on the bottom !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
