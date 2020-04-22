@@ -7,10 +7,18 @@ class ChannelIndex extends React.Component {
         super(props)
 
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleLogout(){
         this.props.logout()
+    }
+
+    handleClick(){
+        const panels = document.querySelectorAll('.tutorial-panel')
+        panels.forEach(panel => setTimeout(() => {
+            panel.click()
+        }, 2));
     }
 
     render(){
@@ -33,10 +41,10 @@ class ChannelIndex extends React.Component {
                 Check out some servers instead !
             <img className="left-arrow" src={ window.leftArrow }/>
             </div>
-            {/* <div className="help-text" onClick={() => openModal("userTutorial")}>
+            <div className="help-text">
                 <p>Need some halp ?</p>
-                <p>Check out the tuwutowial~</p>
-            </div> */}
+                <img className="tut-image" onClick={this.handleClick} src={window.tutStart} />
+            </div>
             </div>)
         : (<>
         <div className="server-invite-form">

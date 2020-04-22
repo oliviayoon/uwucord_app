@@ -19,7 +19,7 @@
     height: 45px;
 }
 
-.channel-options > .fas.fa-fish:hover {
+.fas.fa-fish:hover {
     color: #4beaff;
     cursor: pointer;
     font-size: 16px;

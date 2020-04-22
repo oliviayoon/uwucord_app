@@ -834,6 +834,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ChannelIndex).call(this, props));
     _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -841,6 +842,16 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
     key: "handleLogout",
     value: function handleLogout() {
       this.props.logout();
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick() {
+      var panels = document.querySelectorAll('.tutorial-panel');
+      panels.forEach(function (panel) {
+        return setTimeout(function () {
+          panel.click();
+        }, 2);
+      });
     }
   }, {
     key: "render",
@@ -870,6 +881,12 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "DMs are under constwuction ! uwu"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Check out some servers instead !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "left-arrow",
         src: window.leftArrow
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Need some halp ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "tut-image",
+        onClick: this.handleClick,
+        src: window.tutStart
       }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1256,6 +1273,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _messages_message_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../messages/message_index_container */ "./frontend/components/home/messages/message_index_container.js");
 /* harmony import */ var _channels_channel_index_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../channels/channel_index_container */ "./frontend/components/home/channels/channel_index_container.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _tutorial_collapse__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../tutorial_collapse */ "./frontend/components/home/tutorial_collapse.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1280,6 +1298,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Main = /*#__PURE__*/function (_React$Component) {
   _inherits(Main, _React$Component);
 
@@ -1292,11 +1311,13 @@ var Main = /*#__PURE__*/function (_React$Component) {
   _createClass(Main, [{
     key: "render",
     value: function render() {
+      var currentServer = this.props.currentServer;
+      var mainContent = !!currentServer ? currentServer.name === "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tutorial_collapse__WEBPACK_IMPORTED_MODULE_5__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messages_message_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null) : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_servers_server_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_channels_channel_index_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        currentServer: this.props.currentServer
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_messages_message_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+        currentServer: currentServer
+      }), mainContent);
     }
   }]);
 
@@ -1324,7 +1345,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  var currentServer = ownProps.location.pathname.split("/")[2] === "@me" ? Object.values(store.getState()["entities"]["servers"]).filter(function (server) {
+  // debugger
+  var currentServer = ownProps.location.pathname.split("/")[2] === "@me" ? Object.values(state["entities"]["servers"]).filter(function (server) {
     return server.name == "Home";
   })[0] : state.entities.servers[ownProps.match.params.id];
   return {
@@ -2643,6 +2665,103 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Tutorial));
+
+/***/ }),
+
+/***/ "./frontend/components/home/tutorial_collapse.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/home/tutorial_collapse.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var TutorialCollapse = /*#__PURE__*/function (_React$Component) {
+  _inherits(TutorialCollapse, _React$Component);
+
+  function TutorialCollapse() {
+    _classCallCheck(this, TutorialCollapse);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TutorialCollapse).apply(this, arguments));
+  }
+
+  _createClass(TutorialCollapse, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var panels = document.querySelectorAll('.tutorial-panel'); // debugger
+
+      function toggleOpen() {
+        this.classList.toggle('open');
+      }
+
+      panels.forEach(function (panel) {
+        return panel.addEventListener('click', toggleOpen);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tutorial-panels-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tutorial-panel panel1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Servers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tutorial-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Click the \"+\" button on the left panel to either create or join a server"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.serverJoin
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "As a server owner, you'll be able to edit your server by clicking on the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-paw"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.serverEdit
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Didn't enjoy the server you joined ? It's easy to leave it all behind ya !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.serverLeave
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tutorial-panel panel2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Channels"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tutorial-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Each server comes with a \"genewal\" channel !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "PS: it can't be destroyed >:3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.channelGenewal
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "All users have the ability to add channels by click on the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-fish"
+      }), ",", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "but only owners of the server will be able to edit them !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.channelAdd
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tutorial-panel panel3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tutorial-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Upload a profile pic or change your username by clicking on your user information on the bottom !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.profileEdit
+      }))));
+    }
+  }]);
+
+  return TutorialCollapse;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (TutorialCollapse);
 
 /***/ }),
 

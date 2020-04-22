@@ -1,0 +1,61 @@
+.tutorial-panels-container {
+    width: 72%;
+    display: flex;
+    overflow: hidden;
+    background-color: #2f3136;
+    border-left: 1px solid rgba(0,0,0,0.3);
+}
+
+.tutorial-panel {
+    width: 7%;
+    // height: 80%;
+    position: relative;
+    left: 0;
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    // align-content: center;
+    text-align: center;
+    border-right: 2px solid rgba(0,0,0,0.3);
+    color: white;
+    cursor: pointer;
+    
+}
+
+.tutorial-panel > h1 {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+.tutorial-content {
+    display: flex;
+    align-items: center;
+    display: none;
+    overflow: hidden;
+    // justify-content: center;
+}
+
+.tutorial-panel.open {
+    flex: 5;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.tutorial-panel.open > h1 {
+    writing-mode: horizontal-tb;
+    font-size: 30px;
+    padding: 9px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.tutorial-panel.open .tutorial-content {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.tutorial-content > p {
+    margin: 10px;
+}
