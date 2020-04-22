@@ -20,6 +20,11 @@ class ChannelForm extends React.Component{
         this.props.destroyChannel(this.state.id)
             .then((res) => {
                 this.props.closeModal()
+                // debugger
+                this.props.changeActiveChannel({
+                    serverId: this.props.currentServer.id,
+                    channelId: this.props.generalChannel.id
+                })
                 this.props.history.push(`/channels/${this.props.currentServer.id}/${this.props.generalChannel.id}`)
             })
     }

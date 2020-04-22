@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import ChannelForm from './channel_form'
-import { updateChannel, destroyChannel, clearChannelErrors } from '../../../actions/channel_actions';
+import { updateChannel, destroyChannel, clearChannelErrors, changeActiveChannel } from '../../../actions/channel_actions';
 import { closeModal } from '../../../actions/modal_actions';
 
 
@@ -20,7 +20,8 @@ const mdp = dispatch => ({
     processChannel: channel => dispatch(updateChannel(channel)),
     destroyChannel: channelId => dispatch(destroyChannel(channelId)),
     closeModal: () => dispatch(closeModal()),
-    clearChannelErrors: () => dispatch(clearChannelErrors())
+    clearChannelErrors: () => dispatch(clearChannelErrors()),
+    changeActiveChannel: data => dispatch(changeActiveChannel(data))
 })
 
 export default withRouter(connect(msp,mdp)(ChannelForm))

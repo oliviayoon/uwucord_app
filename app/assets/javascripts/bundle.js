@@ -711,7 +711,13 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.destroyChannel(this.state.id).then(function (res) {
-        _this3.props.closeModal();
+        _this3.props.closeModal(); // debugger
+
+
+        _this3.props.changeActiveChannel({
+          serverId: _this3.props.currentServer.id,
+          channelId: _this3.props.generalChannel.id
+        });
 
         _this3.props.history.push("/channels/".concat(_this3.props.currentServer.id, "/").concat(_this3.props.generalChannel.id));
       });
@@ -1165,6 +1171,9 @@ var mdp = function mdp(dispatch) {
     },
     clearChannelErrors: function clearChannelErrors() {
       return dispatch(Object(_actions_channel_actions__WEBPACK_IMPORTED_MODULE_3__["clearChannelErrors"])());
+    },
+    changeActiveChannel: function changeActiveChannel(data) {
+      return dispatch(Object(_actions_channel_actions__WEBPACK_IMPORTED_MODULE_3__["changeActiveChannel"])(data));
     }
   };
 };
