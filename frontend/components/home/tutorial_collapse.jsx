@@ -4,7 +4,6 @@ class TutorialCollapse extends React.Component{
 
     componentDidMount(){
         const panels = document.querySelectorAll('.tutorial-panel');
-        // debugger
         function toggleOpen(){
             this.classList.toggle('open')
         }

@@ -127,7 +127,7 @@ li > p {
     border-color: transparent black transparent transparent;
 }
 
-.tooltiparrow.bottom::after {
+.tooltiparrow.bottom::after, .tooltipuwu::after {
     content: "";
     position: absolute;
     top: 100%; 

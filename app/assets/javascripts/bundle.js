@@ -1671,7 +1671,7 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
       var time = moment(message.createdAt);
       var now = moment();
       var timeDisplay;
-      if (now.diff(time, 'days') > 1) timeDisplay = time.format("MM D YY");else timeDisplay = time.fromNow();
+      if (now.diff(time, 'days') > 1) timeDisplay = time.format("MM-DD-YY");else timeDisplay = time.fromNow();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-items"
       }, icon, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1687,7 +1687,7 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "message-body-detail",
         id: "message-body-detail-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tooltiparrow bottom"
+        className: "tooltipuwu"
       }, message.body), uwufied)));
     }
   }]);
@@ -2727,7 +2727,7 @@ var TutorialCollapse = /*#__PURE__*/function (_React$Component) {
   _createClass(TutorialCollapse, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var panels = document.querySelectorAll('.tutorial-panel'); // debugger
+      var panels = document.querySelectorAll('.tutorial-panel');
 
       function toggleOpen() {
         this.classList.toggle('open');

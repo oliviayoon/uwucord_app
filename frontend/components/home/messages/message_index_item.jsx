@@ -45,7 +45,7 @@ class MessageIndexItem extends React.Component{
         const now = moment();
         let timeDisplay
         if (now.diff(time, 'days') > 1)
-            timeDisplay = time.format("MM D YY");
+            timeDisplay = time.format("MM-DD-YY");
         else
         timeDisplay = time.fromNow();
         return(
@@ -59,7 +59,7 @@ class MessageIndexItem extends React.Component{
                     <p className="time-stamp">{timeDisplay}</p>
                 </div>
                 <div className="message-body-detail" id="message-body-detail-item">
-                <div className="tooltiparrow bottom">{message.body}</div>
+                <div className="tooltipuwu">{message.body}</div>
                     {uwufied}
                 </div>
             </div>

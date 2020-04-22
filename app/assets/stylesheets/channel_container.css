@@ -47,7 +47,7 @@
     z-index: 100;
     display: none;
     animation: tooltiparrow-fade 0.15s ease-out 0s 1 forwards;
-  }
+}
   
   @keyframes tooltiparrow-fade {
     from { background-color: rgba(0,0,0,0.0); color: rgba(255,255,255,0) }

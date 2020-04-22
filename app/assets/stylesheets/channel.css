@@ -91,7 +91,7 @@
     font-size: 16px;
     line-height: 1.2em;
     color: white;
-    background-color: #faa51a;
+    background: linear-gradient(to bottom, #faaca8 0%, #6c7fec 100%);
     /* background-color: #faaca8; */
     user-select: none;
 }
