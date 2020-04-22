@@ -833,6 +833,9 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ChannelIndex);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ChannelIndex).call(this, props));
+    _this.state = {
+      clicked: false
+    };
     _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -846,6 +849,8 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick() {
+      var clicked = this.state.clicked;
+
       var _loop = function _loop(i) {
         var panel = document.getElementById("panel".concat(i)); // debugger
 
@@ -857,6 +862,12 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       for (var i = 1; i < 4; i++) {
         _loop(i);
       }
+
+      clicked ? this.setState({
+        clicked: false
+      }) : this.setState({
+        clicked: true
+      });
     }
   }, {
     key: "render",
@@ -869,9 +880,9 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
           changeActiveChannel = _this$props.changeActiveChannel;
       var ownerId = currentServer ? currentServer.ownerId : "";
       if (!currentUser) return null;
-      if (!currentServer) return null; // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
-      // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
-
+      if (!currentServer) return null;
+      var clicked = this.state.clicked;
+      var tutImage = clicked ? window.tutEnd : window.tutStart;
       var modal = currentServer ? ownerId === currentUser.id ? "editServer" : "leaveServer" : "";
       var edit = currentServer.name == "Home" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Direct Messages") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentServer.name), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         onClick: function onClick() {
@@ -891,7 +902,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Need some halp ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "tut-image",
         onClick: this.handleClick,
-        src: window.tutStart
+        src: tutImage
       }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "server-invite-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

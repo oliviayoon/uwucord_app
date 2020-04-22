@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 class ChannelIndex extends React.Component {
     constructor(props){
         super(props)
-
+        this.state = {clicked: false}
         this.handleLogout = this.handleLogout.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
@@ -15,14 +15,15 @@ class ChannelIndex extends React.Component {
     }
 
     handleClick(){
+        const {clicked} = this.state
         for (let i = 1; i < 4; i++){
             const panel = document.getElementById(`panel${i}`)
             // debugger
             setTimeout(() => {
                 panel.click()
-            }, 0);
-            
+            }, 0);   
         }
+        clicked ? this.setState({clicked: false}) : this.setState({clicked: true})
     }
 
     render(){
@@ -30,12 +31,11 @@ class ChannelIndex extends React.Component {
         const ownerId = currentServer ? currentServer.ownerId : ""
         if (!currentUser) return null;
         if (!currentServer) return null;
-        // const channels = this.props.channels.map(channel => <ChannelIndexItem channel={channel} />)
-         
-        // const channeledit = currentUser.id === ownerId && currentServer ? (<p onClick={() => openModal("editServer")}>{currentServer.name}</p>) : (<p>{currentServer.name}</p>)
-         
+        const {clicked} = this.state
+        const tutImage = clicked ? window.tutEnd : window.tutStart
         const modal = currentServer ? (ownerId === currentUser.id ? "editServer" : "leaveServer") : ("")
         const edit = currentServer.name == "Home" ? (<p>Direct Messages</p>) : (<><p>{currentServer.name}</p> <i onClick={() => openModal(modal)} className="fas fa-paw"><div className="tooltippaw">{ownerId === currentUser.id ? "edit dis sewvew" : "leave dis sewvew"}</div></i>
+        
         </>)
         const homeItems = currentServer.name == "Home" ? (<div className="home-channels">
             <div>
@@ -47,7 +47,7 @@ class ChannelIndex extends React.Component {
             </div>
             <div className="help-text">
                 <p>Need some halp ?</p>
-                <img className="tut-image" onClick={this.handleClick} src={window.tutStart} />
+                <img className="tut-image" onClick={this.handleClick} src={tutImage} />
             </div>
             </div>)
         : (<>
