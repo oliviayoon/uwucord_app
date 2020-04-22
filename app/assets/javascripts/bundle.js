@@ -2996,7 +2996,7 @@ var EditUser = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleImageChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "image-upload-text"
-      }, "upwoad a pic u bwaka")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, currentUser.username[0])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "username-edit-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "username-edit-input"
