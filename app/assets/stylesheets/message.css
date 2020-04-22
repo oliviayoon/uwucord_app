@@ -141,7 +141,6 @@
 
 .message-items {
     display: flex;
-    align-items: baseline;
     padding: 5px 30px;
 }
 
