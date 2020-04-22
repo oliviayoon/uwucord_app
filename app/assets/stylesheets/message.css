@@ -141,7 +141,7 @@
 
 .message-items {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     padding: 5px 30px;
 }
 

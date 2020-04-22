@@ -1443,6 +1443,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.uwufier = _this.uwufier.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1473,7 +1474,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       if (this.state.body === "") return;
       var message = {
-        body: this.state.body,
+        body: this.uwufier(this.state.body),
         channelId: this.props.channel.id
       };
       this.setState({
@@ -1482,13 +1483,43 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
       this.props.createMessage(message);
     }
   }, {
+    key: "uwufier",
+    value: function uwufier(message) {
+      var uwuSentence = ""; // sentence.forEach(message => 
+
+      message.split(" ").forEach(function (word) {
+        if (word === "senpai") {
+          uwuSentence += "senpwai";
+        } else if (word === "LOL" || word === "uwu" || word === "owo" || word === "lol") {
+          uwuSentence += word;
+        } else if (word === "amazing") {
+          uwuSentence += "amajing";
+        } else {
+          word.toLowerCase().split("").forEach(function (letter) {
+            if (letter === "l" || letter === "r") {
+              uwuSentence += "w";
+            } else uwuSentence += letter;
+          });
+        }
+
+        uwuSentence += " ";
+      }); // )
+      // debugger
+
+      var random = ["", "uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""];
+      var randomWord = random[Math.floor(Math.random() * random.length)]; // debugger
+
+      return uwuSentence += randomWord;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           channel = _this$props.channel,
           messages = _this$props.messages,
           users = _this$props.users,
-          currentUsername = _this$props.currentUsername;
+          currentUsername = _this$props.currentUsername,
+          messageBlocks = _this$props.messageBlocks;
       var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "message-text",
         onChange: this.handleChange(),
@@ -1505,13 +1536,16 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         to: "/:id",
         component: _servers_server_member_container__WEBPACK_IMPORTED_MODULE_1__["default"]
       }));
-      var messageItems = !messages ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var messageItems = !messages.length ? "" : // (<div className="chat-messages">
+      //     {messages.map(message => <MessageIndexItem currentUsername={currentUsername} key={message.id} message={message} users={users}/>)} 
+      // </div>)
+      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat-messages"
-      }, messages.map(function (message) {
+      }, messageBlocks.map(function (messageBlock) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
           currentUsername: currentUsername,
-          key: message.id,
-          message: message,
+          key: messageBlock[0].id,
+          message: messageBlock,
           users: users
         });
       }));
@@ -1561,15 +1595,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  //  debugger
+  //  debugger 
   var channelId = ownProps.location.pathname.split("/")[3];
+  var messages = Object.values(state.entities.messages).filter(function (message) {
+    return message.channelId == channelId;
+  });
+  var currentUser = null;
+  var prevUser = null;
+  var messageBlocks = [];
+  var messageBlock = [];
+
+  for (var i = 0; i < messages.length; i++) {
+    currentUser = messages[i].authorId;
+
+    if (prevUser != currentUser) {
+      prevUser = currentUser;
+      if (messageBlock.length > 0) messageBlocks.push(messageBlock);
+      messageBlock = [messages[i]];
+    } else {
+      messageBlock.push(messages[i]);
+    }
+  }
+
+  messageBlocks.push(messageBlock);
   return {
     channel: state.entities.channels[channelId],
     users: Object.values(state.entities.users),
     currentUsername: state.entities.users[state.session.id].username,
-    messages: Object.values(state.entities.messages).filter(function (message) {
-      return message.channelId == channelId;
-    })
+    messages: messages,
+    messageBlocks: messageBlocks
   };
 };
 
@@ -1606,9 +1660,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1620,56 +1674,66 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(MessageIndexItem, _React$Component);
 
   function MessageIndexItem(props) {
-    var _this;
-
     _classCallCheck(this, MessageIndexItem);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MessageIndexItem).call(this, props));
-    _this.uwufier = _this.uwufier.bind(_assertThisInitialized(_this)); // this.uwufier(this.props.message.body);
+    return _possibleConstructorReturn(this, _getPrototypeOf(MessageIndexItem).call(this, props)); // this.state = {uwufied: []}
+    // this.uwufier = this.uwufier.bind(this);
+    // this.uwufier(this.props.message.body);
+  } // uwufier(message){
+  //     let uwuSentence = ""
+  //     // sentence.forEach(message => 
+  //         message.body.split(" ").forEach(word => {
+  //         if (word === "senpai") {
+  //             uwuSentence += "senpwai"
+  //         } else if (word === "LOL" || word === "uwu" || word === "owo" || word === "lol" ){
+  //             uwuSentence += word
+  //         } else {
+  //             word.toLowerCase().split("").forEach(letter => 
+  //             {if (letter === "l" || letter === "r") {
+  //                 uwuSentence += "w"
+  //             } else 
+  //                 uwuSentence += letter
+  //             })
+  //         }
+  //         uwuSentence += " "
+  //     })
+  //     // )
+  //     // debugger
+  //     const random = ["","uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""]
+  //     const randomWord = random[Math.floor(Math.random() * random.length)]
+  //     // debugger
+  //     return uwuSentence += randomWord
+  // }
+  // componentDidMount(){
+  //     const messages = this.props.message
+  //     let result = messages.map(message =>
+  //                this.uwufier(message)
+  //         )
+  //     this.setState({ uwufied: result})
+  //         // debugger
+  // }
 
-    return _this;
-  }
 
   _createClass(MessageIndexItem, [{
-    key: "uwufier",
-    value: function uwufier(sentence) {
-      var uwuSentence = "";
-      sentence.split(" ").forEach(function (word) {
-        if (word === "senpai") {
-          uwuSentence += "senpwai";
-        } else {
-          word.toLowerCase().split("").forEach(function (letter) {
-            if (letter === "l" || letter === "r") {
-              uwuSentence += "w";
-            } else uwuSentence += letter;
-          });
-        }
-
-        uwuSentence += " ";
-      });
-      var random = ["", "uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""];
-      var randomWord = random[Math.floor(Math.random() * random.length)];
-      return uwuSentence += randomWord;
-    }
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var result = this.uwufier(this.props.message.body);
-      this.setState({
-        uwufied: result
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           message = _this$props.message,
-          users = _this$props.users;
-      var uwufied = this.state.uwufied;
+          users = _this$props.users; // const messages = message
+      // const {uwufied} = this.state
+      // let uwufied = messages.map(message =>
+      //     this.uwufier(message)
+      //     )
+
       var currentUser = users.filter(function (user) {
-        return user.id == message.authorId;
+        return user.id == message[0].authorId;
       })[0];
       if (!currentUser) return null;
+      var otherContent = message.map(function (message) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "message-content-text"
+        }, message.body);
+      });
       var icon = currentUser.imageUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "user-profile",
         src: currentUser.imageUrl,
@@ -1677,7 +1741,7 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-profile"
       }, currentUser.username[0]);
-      var time = moment(message.createdAt);
+      var time = moment(message[0].createdAt);
       var now = moment();
       var timeDisplay;
       if (now.diff(time, 'days') > 1) timeDisplay = time.format("MM-DD-YY");else timeDisplay = time.fromNow();
@@ -1695,9 +1759,7 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
       }, timeDisplay)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-body-detail",
         id: "message-body-detail-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tooltipuwu"
-      }, message.body), uwufied)));
+      }, otherContent)));
     }
   }]);
 
@@ -3205,10 +3267,9 @@ function Modal(_ref) {
     case 'inviteFriends':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_channels_invite_friends__WEBPACK_IMPORTED_MODULE_11__["default"], null);
       break;
-
-    case 'userTutorial':
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_tutorial__WEBPACK_IMPORTED_MODULE_12__["default"], null);
-      break;
+    // case 'userTutorial':
+    //     component = <Tutorial />
+    //     break;
 
     case 'editUser':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_user_edit_user__WEBPACK_IMPORTED_MODULE_13__["default"], null);
@@ -3506,8 +3567,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var login = function login() {
         _this3.props.processForm(_this3.state).then(function () {
           _this3.props.history.push('/channels/@me');
-
-          _this3.props.openModal('userTutorial');
         });
 
         _this3.setState({

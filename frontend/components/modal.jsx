@@ -47,9 +47,9 @@ function Modal({modal, closeModal}) {
         case 'inviteFriends':
             component = <InviteFriendsform />
             break;
-        case 'userTutorial':
-            component = <Tutorial />
-            break;
+        // case 'userTutorial':
+        //     component = <Tutorial />
+        //     break;
         case 'editUser':
             component = <EditUser />
             break;

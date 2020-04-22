@@ -7,9 +7,10 @@ class MessageIndex extends React.Component {
         super(props)
          
         this.state = {body: ""}
-        
+         
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.uwufier = this.uwufier.bind(this)
     }
 
     componentDidUpdate(){
@@ -24,22 +25,57 @@ class MessageIndex extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         if (this.state.body === "") return;
-        let message = {body: this.state.body, channelId: this.props.channel.id}
+        let message = {body: this.uwufier(this.state.body), channelId: this.props.channel.id}
         this.setState({body: ""})
         this.props.createMessage(message)
     }
 
+
+    uwufier(message){
+        let uwuSentence = ""
+        // sentence.forEach(message => 
+            message.split(" ").forEach(word => {
+            if (word === "senpai") {
+                uwuSentence += "senpwai"
+            } else if (word === "LOL" || word === "uwu" || word === "owo" || word === "lol" ){
+                uwuSentence += word
+            } else if (word === "amazing") {
+                uwuSentence += "amajing"
+            } 
+            else {
+                word.toLowerCase().split("").forEach(letter => 
+                {if (letter === "l" || letter === "r") {
+                    uwuSentence += "w"
+                } else 
+                    uwuSentence += letter
+                })
+            }
+            uwuSentence += " "
+        })
+        // )
+        // debugger
+        const random = ["","uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""]
+        const randomWord = random[Math.floor(Math.random() * random.length)]
+        
+        // debugger
+        return uwuSentence += randomWord
+    }
+
     render(){
-        const {channel, messages, users, currentUsername} = this.props
+        const {channel, messages, users, currentUsername, messageBlocks} = this.props
         const messagesContainer = !channel ? ("") :  (<input id="message-text" onChange={this.handleChange()} type="text" placeholder="tywpepe ur message hewe ^w^" value={this.state.body}/>)
         const channelHeader = !channel ? ("") : (<><i className="fas fa-hashtag"></i> <p>{channel.name}</p></>)
         const serverMembers = !channel ? ("") : (<div className="members-list">
             <Route to="/:id" component={ServerMemberContainer} />
             </div>)
-        const messageItems = !messages ? ("") :
+        const messageItems = !messages.length ? ("") :
+            // (<div className="chat-messages">
+            //     {messages.map(message => <MessageIndexItem currentUsername={currentUsername} key={message.id} message={message} users={users}/>)} 
+            // </div>)
             (<div className="chat-messages">
-                {messages.map(message => <MessageIndexItem currentUsername={currentUsername} key={message.id} message={message} users={users}/>)} 
-            </div>)
+                {messageBlocks.map(messageBlock => <MessageIndexItem currentUsername={currentUsername} key={messageBlock[0].id} message={messageBlock} users={users} />)}
+            </div>
+            )
       
         return(
             <div className="messages-content">

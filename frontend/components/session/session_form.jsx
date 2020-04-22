@@ -50,7 +50,6 @@ class SessionForm extends React.Component {
             this.props.processForm(this.state)
                 .then(() => {
                     this.props.history.push('/channels/@me');
-                    this.props.openModal('userTutorial');
                 })
             this.setState({email: "", password: ""});
         }
