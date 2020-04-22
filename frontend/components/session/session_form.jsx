@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export const DEMO_USER = {
-    email: "demo@uwu.com",
-    password: "passwod"
-}
+export const demoUsers = [
+    {email: "demo@uwu.com", password: "passwod"},
+    {email: "recruiter@uwu.com", password: "passwod"},
+    {email: "boss@uwu.com", password: "passwod"}
+]
 
 class SessionForm extends React.Component {
     constructor(){
@@ -27,7 +28,11 @@ class SessionForm extends React.Component {
 
     animateLogin(speed = 100) {
 
-        let {email, password} = DEMO_USER;
+        
+
+        const user = demoUsers[Math.floor(Math.random() * demoUsers.length)]
+
+        let {email, password} = user;
 
         if (this.state.email !== email) {
             const inputUser = setInterval(() => {

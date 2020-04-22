@@ -3465,12 +3465,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 /*!******************************************************!*\
   !*** ./frontend/components/session/session_form.jsx ***!
   \******************************************************/
-/*! exports provided: DEMO_USER, default */
+/*! exports provided: demoUsers, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEMO_USER", function() { return DEMO_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "demoUsers", function() { return demoUsers; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
@@ -3496,10 +3496,16 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var DEMO_USER = {
+var demoUsers = [{
   email: "demo@uwu.com",
   password: "passwod"
-};
+}, {
+  email: "recruiter@uwu.com",
+  password: "passwod"
+}, {
+  email: "boss@uwu.com",
+  password: "passwod"
+}];
 
 var SessionForm = /*#__PURE__*/function (_React$Component) {
   _inherits(SessionForm, _React$Component);
@@ -3535,8 +3541,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       var speed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
-      var email = DEMO_USER.email,
-          password = DEMO_USER.password;
+      var user = demoUsers[Math.floor(Math.random() * demoUsers.length)];
+      var email = user.email,
+          password = user.password;
 
       if (this.state.email !== email) {
         var inputUser = setInterval(function () {
@@ -3704,148 +3711,189 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _session_session_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session/session_form */ "./frontend/components/session/session_form.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
 
-var Splash = function Splash(_ref) {
-  var login = _ref.login;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "splish-splash"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "is tiem 2 dwitch skwypwe and tweamspeak \xF9w\xFA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "splish-splash-text"
-  }, "Aww-in-one vwoice and textie chwat fow gamews dat's fwee, secuwe, and wowks on both youw desktop and phone !! Stop paying fow teamspeak sewvews and hasswing with skype. Simpwify youw wife. ;3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "splish-buttons"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/channels/@me"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "splash-button demo",
-    onClick: function onClick() {
-      return login(_session_session_form__WEBPACK_IMPORTED_MODULE_2__["DEMO_USER"]);
+
+var Splash = /*#__PURE__*/function (_React$Component) {
+  _inherits(Splash, _React$Component);
+
+  function Splash() {
+    var _this;
+
+    _classCallCheck(this, Splash);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Splash).call(this));
+    _this.state = {
+      demoUsers: _session_session_form__WEBPACK_IMPORTED_MODULE_2__["demoUsers"]
+    };
+    return _this;
+  }
+
+  _createClass(Splash, [{
+    key: "render",
+    value: function render() {
+      var login = this.props.login;
+      var demoUsers = this.state.demoUsers;
+      var user = demoUsers[Math.floor(Math.random() * demoUsers.length)];
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splish-splash"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "is tiem 2 dwitch skwypwe and tweamspeak \xF9w\xFA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "splish-splash-text"
+      }, "Aww-in-one vwoice and textie chwat fow gamews dat's fwee, secuwe, and wowks on both youw desktop and phone !! Stop paying fow teamspeak sewvews and hasswing with skype. Simpwify youw wife. ;3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splish-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/channels/@me"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "splash-button demo",
+        onClick: function onClick() {
+          return login(user);
+        }
+      }, "twy da demowo !")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/register"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "splash-button"
+      }, "go wegister")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-images-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesMonitor,
+        id: "splash-images-monitor"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesLaptop,
+        className: "splash-image",
+        id: "splash-images-laptop"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesController,
+        className: "splash-image",
+        id: "splash-images-controller"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesMobile1,
+        className: "splash-image",
+        id: "splash-images-mobile1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesMobile2,
+        className: "splash-image",
+        id: "splash-images-mobile2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesPotion,
+        className: "splash-image",
+        id: "splash-images-potion"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesCd,
+        className: "splash-image",
+        id: "splash-images-cd"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesHeadset,
+        className: "splash-image",
+        id: "splash-images-headset"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashImagesCoinbox,
+        className: "splash-image",
+        id: "splash-images-coinbox"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesDot,
+        className: "splash-shape",
+        id: "splash-shapes-dot1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesDot,
+        className: "splash-shape",
+        id: "splash-shapes-dot2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashUwu,
+        className: "splash-shape",
+        id: "splash-shapes-dot3"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesDot,
+        className: "splash-shape",
+        id: "splash-shapes-dot4"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesDot,
+        className: "splash-shape",
+        id: "splash-shapes-dot5"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesTriangle,
+        className: "splash-shape",
+        id: "splash-shapes-triangle1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesTriangle,
+        className: "splash-shape",
+        id: "splash-shapes-triangle2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesTriangle,
+        className: "splash-shape",
+        id: "splash-shapes-triangle3"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashOwo,
+        className: "splash-shape",
+        id: "splash-shapes-circle1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesCircle,
+        className: "splash-shape",
+        id: "splash-shapes-circle2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesCircle,
+        className: "splash-shape",
+        id: "splash-shapes-circle3"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesCross,
+        className: "splash-shape",
+        id: "splash-shapes-cross1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesCross,
+        className: "splash-shape",
+        id: "splash-shapes-cross2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesSquare,
+        className: "splash-shape",
+        id: "splash-shapes-square1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesSquare,
+        className: "splash-shape",
+        id: "splash-shapes-square2"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashShapesSquare,
+        className: "splash-shape",
+        id: "splash-shapes-square3"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashFloatBomb,
+        className: "splash-image",
+        id: "splash-float-bomb"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashFloatDisk,
+        className: "splash-image",
+        id: "splash-float-disk"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashFloatCoin,
+        className: "splash-image",
+        id: "splash-float-coin1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.splashFloatCoin,
+        className: "splash-image",
+        id: "splash-float-coin2"
+      })));
     }
-  }, "twy da demowo !")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/register"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "splash-button"
-  }, "go wegister")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "splash-images-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesMonitor,
-    id: "splash-images-monitor"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesLaptop,
-    className: "splash-image",
-    id: "splash-images-laptop"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesController,
-    className: "splash-image",
-    id: "splash-images-controller"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesMobile1,
-    className: "splash-image",
-    id: "splash-images-mobile1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesMobile2,
-    className: "splash-image",
-    id: "splash-images-mobile2"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesPotion,
-    className: "splash-image",
-    id: "splash-images-potion"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesCd,
-    className: "splash-image",
-    id: "splash-images-cd"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesHeadset,
-    className: "splash-image",
-    id: "splash-images-headset"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashImagesCoinbox,
-    className: "splash-image",
-    id: "splash-images-coinbox"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesDot,
-    className: "splash-shape",
-    id: "splash-shapes-dot1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesDot,
-    className: "splash-shape",
-    id: "splash-shapes-dot2"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashUwu,
-    className: "splash-shape",
-    id: "splash-shapes-dot3"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesDot,
-    className: "splash-shape",
-    id: "splash-shapes-dot4"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesDot,
-    className: "splash-shape",
-    id: "splash-shapes-dot5"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesTriangle,
-    className: "splash-shape",
-    id: "splash-shapes-triangle1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesTriangle,
-    className: "splash-shape",
-    id: "splash-shapes-triangle2"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesTriangle,
-    className: "splash-shape",
-    id: "splash-shapes-triangle3"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashOwo,
-    className: "splash-shape",
-    id: "splash-shapes-circle1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesCircle,
-    className: "splash-shape",
-    id: "splash-shapes-circle2"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesCircle,
-    className: "splash-shape",
-    id: "splash-shapes-circle3"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesCross,
-    className: "splash-shape",
-    id: "splash-shapes-cross1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesCross,
-    className: "splash-shape",
-    id: "splash-shapes-cross2"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesSquare,
-    className: "splash-shape",
-    id: "splash-shapes-square1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesSquare,
-    className: "splash-shape",
-    id: "splash-shapes-square2"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashShapesSquare,
-    className: "splash-shape",
-    id: "splash-shapes-square3"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashFloatBomb,
-    className: "splash-image",
-    id: "splash-float-bomb"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashFloatDisk,
-    className: "splash-image",
-    id: "splash-float-disk"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashFloatCoin,
-    className: "splash-image",
-    id: "splash-float-coin1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: window.splashFloatCoin,
-    className: "splash-image",
-    id: "splash-float-coin2"
-  })));
-};
+  }]);
+
+  return Splash;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Splash);
 
