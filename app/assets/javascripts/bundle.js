@@ -711,8 +711,7 @@ var ChannelForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.destroyChannel(this.state.id).then(function (res) {
-        _this3.props.closeModal(); // debugger
-
+        _this3.props.closeModal();
 
         _this3.props.changeActiveChannel({
           serverId: _this3.props.currentServer.id,
@@ -858,8 +857,7 @@ var ChannelIndex = /*#__PURE__*/function (_React$Component) {
       var clicked = this.state.clicked;
 
       var _loop = function _loop(i) {
-        var panel = document.getElementById("panel".concat(i)); // debugger
-
+        var panel = document.getElementById("panel".concat(i));
         setTimeout(function () {
           panel.click();
         }, 0);
@@ -1370,7 +1368,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  // debugger
   var currentServer = ownProps.location.pathname.split("/")[2] === "@me" ? Object.values(state["entities"]["servers"]).filter(function (server) {
     return server.name == "Home";
   })[0] : state.entities.servers[ownProps.match.params.id];
@@ -1485,8 +1482,7 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "uwufier",
     value: function uwufier(message) {
-      var uwuSentence = ""; // sentence.forEach(message => 
-
+      var uwuSentence = "";
       message.split(" ").forEach(function (word) {
         if (word === "senpai") {
           uwuSentence += "senpwai";
@@ -1498,6 +1494,8 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
           uwuSentence += "dis" + word.slice(4);
         } else if (word.includes("that")) {
           uwuSentence += "dat" + word.slice(4);
+        } else if (word === "these") {
+          uwuSentence += "deez";
         } else {
           word.toLowerCase().split("").forEach(function (letter) {
             if (letter === "l" || letter === "r") {
@@ -1507,12 +1505,9 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         }
 
         uwuSentence += " ";
-      }); // )
-      // debugger
-
+      });
       var random = ["", "uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""];
-      var randomWord = random[Math.floor(Math.random() * random.length)]; // debugger
-
+      var randomWord = random[Math.floor(Math.random() * random.length)];
       return uwuSentence += randomWord;
     }
   }, {
@@ -1522,7 +1517,6 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
           channel = _this$props.channel,
           messages = _this$props.messages,
           users = _this$props.users,
-          currentUsername = _this$props.currentUsername,
           messageBlocks = _this$props.messageBlocks;
       var messagesContainer = !channel ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "message-text",
@@ -1547,7 +1541,6 @@ var MessageIndex = /*#__PURE__*/function (_React$Component) {
         className: "chat-messages"
       }, messageBlocks.map(function (messageBlock) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          currentUsername: currentUsername,
           key: messageBlock[0].id,
           message: messageBlock,
           users: users
@@ -1599,7 +1592,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  //  debugger 
   var channelId = ownProps.location.pathname.split("/")[3];
   var messages = Object.values(state.entities.messages).filter(function (message) {
     return message.channelId == channelId;
@@ -1621,13 +1613,13 @@ var msp = function msp(state, ownProps) {
     }
   }
 
-  messageBlocks.push(messageBlock);
+  messageBlocks.push(messageBlock); // debugger
+
   return {
     channel: state.entities.channels[channelId],
     users: Object.values(state.entities.users),
-    currentUsername: state.entities.users[state.session.id].username,
-    messages: messages,
-    messageBlocks: messageBlocks
+    messageBlocks: messageBlocks,
+    messages: messages
   };
 };
 
@@ -1680,61 +1672,22 @@ var MessageIndexItem = /*#__PURE__*/function (_React$Component) {
   function MessageIndexItem(props) {
     _classCallCheck(this, MessageIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(MessageIndexItem).call(this, props)); // this.state = {uwufied: []}
-    // this.uwufier = this.uwufier.bind(this);
-    // this.uwufier(this.props.message.body);
-  } // uwufier(message){
-  //     let uwuSentence = ""
-  //     // sentence.forEach(message => 
-  //         message.body.split(" ").forEach(word => {
-  //         if (word === "senpai") {
-  //             uwuSentence += "senpwai"
-  //         } else if (word === "LOL" || word === "uwu" || word === "owo" || word === "lol" ){
-  //             uwuSentence += word
-  //         } else {
-  //             word.toLowerCase().split("").forEach(letter => 
-  //             {if (letter === "l" || letter === "r") {
-  //                 uwuSentence += "w"
-  //             } else 
-  //                 uwuSentence += letter
-  //             })
-  //         }
-  //         uwuSentence += " "
-  //     })
-  //     // )
-  //     // debugger
-  //     const random = ["","uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""]
-  //     const randomWord = random[Math.floor(Math.random() * random.length)]
-  //     // debugger
-  //     return uwuSentence += randomWord
-  // }
-  // componentDidMount(){
-  //     const messages = this.props.message
-  //     let result = messages.map(message =>
-  //                this.uwufier(message)
-  //         )
-  //     this.setState({ uwufied: result})
-  //         // debugger
-  // }
-
+    return _possibleConstructorReturn(this, _getPrototypeOf(MessageIndexItem).call(this, props));
+  }
 
   _createClass(MessageIndexItem, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
           message = _this$props.message,
-          users = _this$props.users; // const messages = message
-      // const {uwufied} = this.state
-      // let uwufied = messages.map(message =>
-      //     this.uwufier(message)
-      //     )
-
+          users = _this$props.users;
       var currentUser = users.filter(function (user) {
         return user.id == message[0].authorId;
       })[0];
       if (!currentUser) return null;
       var otherContent = message.map(function (message) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: message.id,
           className: "message-content-text"
         }, message.body);
       });
@@ -2298,7 +2251,7 @@ var ServerForm = /*#__PURE__*/function (_React$Component) {
         _this3.props.closeModal();
 
         _this3.props.history.push("/channels/".concat(Object.keys(res.payload.server)[0], "/").concat(Object.values(res.payload.channels)[0].id));
-      })["catch"](res);
+      })["catch"]();
     }
   }, {
     key: "handleDelete",
@@ -3093,13 +3046,9 @@ var Listener = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      // debugger
       if (this.props.serverIds.length !== prevProps.serverIds.length) {
         this.createSockets();
-      } // if (this.props.currentUser && this.props.currentUser !== prevProps.currentUser) {
-      //     this.createSockets();
-      // }
-
+      }
     }
   }, {
     key: "componentWillUnmount",
@@ -3124,12 +3073,12 @@ var Listener = /*#__PURE__*/function (_React$Component) {
           disconnected: function disconnected() {},
           received: function received(data) {
             var payload = {
-              messages: {
+              data: {
                 message: data.message
               }
             };
 
-            _this2.props.receiveMessage(payload.messages.message);
+            _this2.props.receiveMessage(payload.data.message);
           }
         });
       });

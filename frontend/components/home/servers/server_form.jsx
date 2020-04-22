@@ -47,7 +47,7 @@ class ServerForm extends React.Component {
             this.props.closeModal();
             this.props.history.push(`/channels/${Object.keys(res.payload.server)[0]}/${Object.values(res.payload.channels)[0].id}`)
         })
-        .catch(res)
+        .catch()
     }
 
     handleDelete(e){

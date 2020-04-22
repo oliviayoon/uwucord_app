@@ -3,7 +3,6 @@ import Main from './main'
 import {logout} from '../../../actions/session_actions'
 
 const msp = (state, ownProps) => {
-    // debugger
     const currentServer = ownProps.location.pathname.split("/")[2] === "@me" ? 
     (Object.values(state["entities"]["servers"]).filter(server => server.name == "Home")[0]) 
         : (state.entities.servers[ownProps.match.params.id])

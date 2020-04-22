@@ -14,13 +14,9 @@ class Listener extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
         if (this.props.serverIds.length !== prevProps.serverIds.length) {
             this.createSockets();
         }
-        // if (this.props.currentUser && this.props.currentUser !== prevProps.currentUser) {
-        //     this.createSockets();
-        // }
     }
 
     componentWillUnmount() {
@@ -49,12 +45,12 @@ class Listener extends React.Component {
                     received: data => {
                         
                         let payload = {
-                            messages: {
+                            data: {
                                 message: data.message
                             }
                         }
                         
-                        this.props.receiveMessage(payload.messages.message);
+                        this.props.receiveMessage(payload.data.message);
                     }
                 }               
             );

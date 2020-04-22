@@ -33,7 +33,6 @@ class MessageIndex extends React.Component {
 
     uwufier(message){
         let uwuSentence = ""
-        // sentence.forEach(message => 
             message.split(" ").forEach(word => {
             if (word === "senpai") {
                 uwuSentence += "senpwai"
@@ -45,8 +44,9 @@ class MessageIndex extends React.Component {
                 uwuSentence += "dis" + word.slice(4)
             } else if (word.includes("that")){
                 uwuSentence += "dat" + word.slice(4)
-            }
-            else {
+            } else if (word === "these") {
+                uwuSentence += "deez"
+            } else {
                 word.toLowerCase().split("").forEach(letter => 
                 {if (letter === "l" || letter === "r") {
                     uwuSentence += "w"
@@ -56,17 +56,14 @@ class MessageIndex extends React.Component {
             }
             uwuSentence += " "
         })
-        // )
-        // debugger
         const random = ["","uwu", "hehehoo", "owo", "~~!", "", "heheh", "b-baka", "bwaka !", ""]
         const randomWord = random[Math.floor(Math.random() * random.length)]
         
-        // debugger
         return uwuSentence += randomWord
     }
 
     render(){
-        const {channel, messages, users, currentUsername, messageBlocks} = this.props
+        const {channel, messages, users, messageBlocks} = this.props
         const messagesContainer = !channel ? ("") :  (<input id="message-text" onChange={this.handleChange()} type="text" placeholder="tywpepe ur message hewe ^w^" value={this.state.body}/>)
         const channelHeader = !channel ? ("") : (<><i className="fas fa-hashtag"></i> <p>{channel.name}</p></>)
         const serverMembers = !channel ? ("") : (<div className="members-list">
@@ -77,7 +74,7 @@ class MessageIndex extends React.Component {
             //     {messages.map(message => <MessageIndexItem currentUsername={currentUsername} key={message.id} message={message} users={users}/>)} 
             // </div>)
             (<div className="chat-messages">
-                {messageBlocks.map(messageBlock => <MessageIndexItem currentUsername={currentUsername} key={messageBlock[0].id} message={messageBlock} users={users} />)}
+                {messageBlocks.map(messageBlock => <MessageIndexItem key={messageBlock[0].id} message={messageBlock} users={users} />)}
             </div>
             )
       

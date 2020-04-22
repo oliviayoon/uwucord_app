@@ -18,7 +18,6 @@ class ChannelIndex extends React.Component {
         const {clicked} = this.state
         for (let i = 1; i < 4; i++){
             const panel = document.getElementById(`panel${i}`)
-            // debugger
             setTimeout(() => {
                 panel.click()
             }, 0);   
