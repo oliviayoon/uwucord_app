@@ -35,7 +35,7 @@ class TutorialCollapse extends React.Component{
                         </p>
                         <img src={window.channelGenewal} />
                         <p>
-                        All users have the ability to add channels by click on the <i className="fas fa-fish"></i>,
+                        All users have the ability to add channels by clicking on the <i className="fas fa-fish"></i>,
                         <br/>
                         but only owners of the server will be able to edit them !
                         </p>

@@ -2762,7 +2762,7 @@ var TutorialCollapse = /*#__PURE__*/function (_React$Component) {
         className: "tutorial-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Each server comes with a \"genewal\" channel !", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "PS: it can't be destroyed >:3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.channelGenewal
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "All users have the ability to add channels by click on the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "All users have the ability to add channels by clicking on the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-fish"
       }), ",", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "but only owners of the server will be able to edit them !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.channelAdd
