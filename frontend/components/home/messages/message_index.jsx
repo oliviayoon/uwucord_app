@@ -41,7 +41,11 @@ class MessageIndex extends React.Component {
                 uwuSentence += word
             } else if (word === "amazing") {
                 uwuSentence += "amajing"
-            } 
+            } else if (word.includes("this")){
+                uwuSentence += "dis" + word.slice(4)
+            } else if (word.includes("that")){
+                uwuSentence += "dat" + word.slice(4)
+            }
             else {
                 word.toLowerCase().split("").forEach(letter => 
                 {if (letter === "l" || letter === "r") {
