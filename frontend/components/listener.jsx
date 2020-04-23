@@ -40,16 +40,14 @@ class Listener extends React.Component {
                         
                     },
                     disconnected: () => {
-                        
+
                     },
                     received: data => {
-                        
                         let payload = {
                             data: {
                                 message: data.message
                             }
                         }
-                        
                         this.props.receiveMessage(payload.data.message);
                     }
                 }               

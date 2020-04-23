@@ -54,7 +54,8 @@
 
 .tutorial-panel > h1 {
     writing-mode: vertical-lr;
-    text-orientation: upright;
+    // text-orientation: upright;
+    transform: rotate(180deg);
 }
 
 .tutorial-content {
