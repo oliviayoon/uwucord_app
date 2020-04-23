@@ -3704,6 +3704,8 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   _createClass(Splash, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var login = this.props.login;
       var demoUsers = this.state.demoUsers;
       var user = demoUsers[Math.floor(Math.random() * demoUsers.length)];
@@ -3713,14 +3715,12 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         className: "splish-splash-text"
       }, "Aww-in-one vwoice and textie chwat fow gamews dat's fwee, secuwe, and wowks on both youw desktop and phone !! Stop paying fow teamspeak sewvews and hasswing with skype. Simpwify youw wife. ;3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splish-buttons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/channels/@me"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "splash-button demo",
         onClick: function onClick() {
-          return login(user);
+          return login(user).then(_this2.props.history.push("/channels/@me"));
         }
-      }, "twy da demowo !")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "twy da demowo !"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/register"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "splash-button"

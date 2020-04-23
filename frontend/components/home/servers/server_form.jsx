@@ -43,11 +43,11 @@ class ServerForm extends React.Component {
         formData.append('server[private]', this.state.private)
         formData.append('server[owner_id]', this.state.owner_id)
         this.props.processForm(formData) // formData
-        .then(res => {
-            this.props.closeModal();
-            this.props.history.push(`/channels/${Object.keys(res.payload.server)[0]}/${Object.values(res.payload.channels)[0].id}`)
-        })
-        .catch()
+            .then(res => {
+                this.props.closeModal();
+                this.props.history.push(`/channels/${Object.keys(res.payload.server)[0]}/${Object.values(res.payload.channels)[0].id}`)
+            })
+            .catch()
     }
 
     handleDelete(e){
