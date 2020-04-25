@@ -2512,8 +2512,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ServerIndexItem = function ServerIndexItem(_ref) {
-  var server = _ref.server,
-      channels = _ref.channels;
+  var server = _ref.server;
   var icon = server.photoUrl ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "server-image-icon",
     src: server.photoUrl

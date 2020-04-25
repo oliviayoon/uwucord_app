@@ -19,7 +19,7 @@ class ChannelIndexItem extends React.Component{
         return(
         <div className="channel-item-info" onClick={this.handleClickChannel}>
             <div className="channel-title-text">
-        <i className="fas fa-hashtag"></i><p>{channel.name}</p>
+                <i className="fas fa-hashtag"></i><p>{channel.name}</p>
             </div>
             <div>
                 {edit}

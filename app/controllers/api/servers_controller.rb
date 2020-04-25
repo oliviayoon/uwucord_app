@@ -44,14 +44,14 @@ class Api::ServersController < ApplicationController
     end
 
     def index
-        @servers = current_user.servers
+        @servers = current_user.servers.includes(:members, :memberships, :channels)
         @members = []
         @serverusers = []
         @channels = []
         @messages = []
         @active_channels = {}
         @servers.each do |server|
-            @active_channels[server.id] = server.channels.first.id if !server.channels.empty?
+            @active_channels[server.id] = server.channels.first.id if server.channels.first
             @members += server.members
             @serverusers += server.memberships
             @channels += server.channels
