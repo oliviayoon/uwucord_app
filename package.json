@@ -31,18 +31,18 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode=development --watch",
+    "start": "node --openssl-legacy-provider -- ./node_modules/.bin/webpack --mode=development --watch",
     "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jigglycode/uwucord_app.git"
+    "url": "git+https://github.com/oliviayoon/uwucord_app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jigglycode/uwucord_app/issues"
+    "url": "https://github.com/oliviayoon/uwucord_app/issues"
   },
-  "homepage": "https://github.com/jigglycode/uwucord_app#readme"
+  "homepage": "https://github.com/oliviayoon/uwucord_app#readme"
 }

@@ -5,7 +5,7 @@ module.exports = {
   entry: './frontend/uwucord_app.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -15,14 +15,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           query: {
-            presets: ['@babel/env', '@babel/react']
-          }
+            presets: ['@babel/env', '@babel/react'],
+          },
         },
-      }
-    ]
+      },
+    ],
   },
   devtool: 'source-map',
   resolve: {
-    extensions: [".js", ".jsx", "*"]
-  }
+    extensions: ['.js', '.jsx', '*'],
+  },
 };
